@@ -33,6 +33,12 @@ class BackendController extends Controller
         return view('menu', Compact('main_menu','child_menus', 'sub_child_menus','main_menu_two','main_menu_four','child_menu_four'));
     }
 
+    public function system()
+    {
+        
+        return view('system');
+    }
+
     
 
     public function delete_page($id){
@@ -122,9 +128,10 @@ class BackendController extends Controller
 
     public function pages()
     {
+        $main_menu = DB::table('menus')->where('menu_link','!=','#')->get();
         $pages = DB::table('page')->get();
         $page_section = DB::table('page_section')->get();
-        return view('pages', Compact('pages','page_section'));
+        return view('pages', Compact('pages','main_menu','page_section'));
     }
 
     public function page_sections()

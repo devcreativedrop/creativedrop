@@ -35,7 +35,7 @@
 <section id="page-account-settings">
   <div class="row">
       <!-- left menu section -->
-      <div class="col-md-3 mb-2 mb-md-0">
+      <div class="col-md-2 mb-2 mb-md-0">
           <ul class="nav nav-pills flex-column mt-md-0 mt-1">
               <li class="nav-item">
                   <a class="nav-link d-flex active" id="account-pill-general" data-toggle="pill"
@@ -54,7 +54,7 @@
           </ul>
       </div>
       <!-- right content section -->
-      <div class="col-md-9">
+      <div class="col-md-10">
           <div class="card">
               <div class="card-content">
                   <div class="card-body">
@@ -91,6 +91,43 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                        <label  style="font-weight:bold" for="account-username">Main Menu</label>
+                                                        <select id="page_sections" class="form-control" name="main_menu">
+                                                            <option value="#">  --- Select Services --- </option>
+                                                            @foreach($main_menu as $row_main_menu)
+                                                                <option value="{{$row_main_menu->id}}"> {{$row_main_menu->menu_name}} </option>
+                                                            @endforeach
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label  style="font-weight:bold" for="account-username">Sub Menu</label>
+                                                        <select id="dependent_page_sections" class="form-control" name="sub_menu">
+                                                            <option></option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label  style="font-weight:bold" for="account-username">Child Menu</label>
+                                                        <select id="child_dependent_page_sections" class="form-control" name="child_sub_menu">
+                                                            <option></option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <div class="col-12">
                                         <div class="form-group">
@@ -924,6 +961,46 @@
 
 
   });
+
+  
+$('#page_sections').change(function() {
+    if ($(this).val() != '') {
+        var select = $(this).attr("id");
+        var value = $(this).val();
+
+        var dependent = $(this).data('dependent');
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "services_by_id/" + value,
+            method: "GET",
+            success: function(result) {
+                console.log(result);
+                $('#dependent_page_sections').html(result);
+            }
+
+        })
+    }
+});
+
+$('#dependent_page_sections').change(function() {
+    if ($(this).val() != '') {
+        var select = $(this).attr("id");
+        var value = $(this).val();
+
+        var dependent_page_sections = $(this).data('dependent');
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "child_services_by_id/" + value,
+            method: "GET",
+            success: function(result) {
+                console.log(result);
+                $('#child_dependent_page_sections').html(result);
+            }
+
+        })
+    }
+});
+
   </script>
 
   @endsection

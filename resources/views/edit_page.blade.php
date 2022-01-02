@@ -45,7 +45,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link d-flex" href="{{url('/')}}"
+                  <a class="nav-link d-flex" href="{{url('/admin/pages')}}"
                       aria-expanded="false">
                       <i class="feather icon-list"></i>
                       Go Back
@@ -120,7 +120,7 @@
                                             <div class="controls">
                                                 <label style="font-weight:bold;"for="account-username">Page Status  <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->status}}</span></label>
                                                 <select id="page_sections" class="form-control" name="status">
-                                                    <option value=""> --- Select Status --- </option>
+                                                    <option value="{{$page[0]->status}}"> {{$page[0]->status}}</option>
                                                     <option value="published"> Published </option>
                                                     <option value="unpublished"> Unpublished </option>
                                                 </select>
@@ -131,9 +131,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 1</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 1: <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section1 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_1" class="form-control" name="section1">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section1}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section1 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -144,9 +155,9 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 1</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 1: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_1_type}}</span></label>
                                                 <select id="dependent_page_sections_1" class="form-control" name="section_1_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_1_type}}">  {{$page[0]->section_1_type}} </option>
                                                 </select>
                                             </div>
                                             <div id="sliders_data"> </div>
@@ -157,9 +168,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 2</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 2: <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section2 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_2" class="form-control" name="section2">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section2}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section2 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -170,12 +192,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 2</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 2 : <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_2_type}}</span></label>
                                                 <select id="dependent_page_sections_2" class="form-control" name="section_2_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_2_type}}">  {{$page[0]->section_2_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_2"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -183,9 +205,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 3</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 3 : <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section3 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_3" class="form-control" name="section3">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section3}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section3 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -197,12 +230,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 3</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 3: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_3_type}}</span></label>
                                                 <select id="dependent_page_sections_3" class="form-control" name="section_3_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_3_type}}">  {{$page[0]->section_3_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_3"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -211,9 +244,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 4</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 4 : <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section3 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_4" class="form-control" name="section4">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section4}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section4 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -224,22 +268,31 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 4</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 4: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_4_type}}</span></label>
                                                 <select id="dependent_page_sections_4" class="form-control" name="section_4_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_4_type}}">  {{$page[0]->section_4_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_4"> </div>
-                                            
                                         </div>
                                     </div>
                 
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 5</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 5 : <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section5 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_5" class="form-control" name="section5">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section5}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section5 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -250,13 +303,11 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 5</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 5: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_5_type}}</span></label>
                                                 <select id="dependent_page_sections_5" class="form-control" name="section_5_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_5_type}}">  {{$page[0]->section_5_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_5"> </div>
-                                            
                                         </div>
                                     </div>
                 
@@ -265,9 +316,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 6</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 6: <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section6 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_6" class="form-control" name="section6">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section6}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section6 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -279,12 +341,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 6</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 6: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_6_type}}</span></label>
                                                 <select id="dependent_page_sections_6" class="form-control" name="section_6_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_6_type}}">  {{$page[0]->section_6_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_6"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -295,9 +357,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 7</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 7:  <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section7 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_7" class="form-control" name="section7">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section7}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section7 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -309,12 +382,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 7</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 7 : <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_7_type}}</span></label>
                                                 <select id="dependent_page_sections_7" class="form-control" name="section_7_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_7_type}}">  {{$page[0]->section_7_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_7"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -322,9 +395,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 8</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 8: <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section8 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_8" class="form-control" name="section8">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section8}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section8 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -335,12 +419,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 8</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 8: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_8_type}}</span></label>
                                                 <select id="dependent_page_sections_8" class="form-control" name="section_8_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_8_type}}">  {{$page[0]->section_8_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_8"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -348,9 +432,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 9</label>
+                                                <label style="font-weight:bold;"for="account-username">Section 9: <span style="font-weight:bold; color:green; font-size:16px;">  
+                                                    @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section9 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                    </span></label>
                                                 <select id="page_sections_9" class="form-control" name="section9">
-                                                    <option value="">  --- Select Section --- </option>
+                                                    <option value="{{$page[0]->section9}}">  @foreach($page_section as $row_ps)
+                                                        @if($page[0]->section9 == $row_ps->id)
+                                                            {{$row_ps->name}}
+                                                        @endif
+                                                    @endforeach
+                                                     </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
@@ -361,12 +456,12 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 9</label>
+                                                <label style="font-weight:bold;"for="account-username">Select Section 9: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_9_type}}</span></label>
                                                 <select id="dependent_page_sections_9" class="form-control" name="section_9_type">
-                                                    <option></option>
+                                                    <option value="{{$page[0]->section_9_type}}">  {{$page[0]->section_9_type}} </option>
                                                 </select>
                                             </div>
-                                            <div id="sliders_data_9"> </div>
+                                            
                                             
                                         </div>
                                     </div>
@@ -571,7 +666,7 @@
             //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_1').html(data);
@@ -587,7 +682,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_2').html(data);
@@ -603,7 +698,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_3').html(data);
@@ -619,7 +714,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_4').html(data);
@@ -635,7 +730,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_5').html(data);
@@ -651,7 +746,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_6').html(data);
@@ -667,7 +762,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_7').html(data);
@@ -683,7 +778,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_8').html(data);
@@ -697,7 +792,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_9').html(data);
@@ -723,7 +818,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_2').html(data);
@@ -739,7 +834,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_3').html(data);
@@ -755,7 +850,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_4').html(data);
@@ -771,7 +866,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_5').html(data);
@@ -787,7 +882,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_6').html(data);
@@ -803,7 +898,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_7').html(data);
@@ -819,7 +914,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_8').html(data);
@@ -835,7 +930,7 @@
         //    alert(page_section);
            $.ajax({
                                 type:'GET',
-                                url:'http://localhost/creativedrop/cdapp0/public/admin/page_section_id/'+page_section,
+                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
                                 success:function(data){
                                      console.log(data);
                                    $('#dependent_page_sections_9').html(data);

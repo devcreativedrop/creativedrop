@@ -296,6 +296,7 @@
                     </li>
                     <li class="nav-item" data-menu="dropdown"><a class="nav-link" href="{{url('admin/page_sections')}}"><i class="feather icon-list"></i><span data-i18n="Dashboard">Page Sections</span></a></li>
                     <li class="nav-item" data-menu="dropdown"><a class="nav-link" href="{{url('admin/pages')}}"><i class="feather icon-list"></i><span data-i18n="Dashboard">Pages</span></a></li>
+                    <li class="nav-item" data-menu="dropdown"><a class="nav-link" href="{{url('admin/system')}}"><i class="feather icon-list"></i><span data-i18n="Dashboard">System Configuration</span></a></li>
                 </ul>
             </div>
             <!-- /horizontal menu content-->

@@ -22,8 +22,17 @@ Auth::routes();
 Route::get('/case_study/{id}', 'WelcomeController@case_study');
 
 Route::get('/admin/home', 'HomeController@index');
+
+Route::get('/admin/system', 'BackendController@system');
+
+
 Route::get('/admin/page_section_id/{id}', 'BackendController@page_section_id')->name('admin.page_section_id');
 Route::get('/services_by_id/{id}', 'WelcomeController@services_by_id')->name('services_by_id');
+Route::get('/admin/services_by_id/{id}', 'WelcomeController@services_by_id')->name('services_by_id');
+Route::get('/admin/child_services_by_id/{id}', 'WelcomeController@child_services_by_id')->name('child_services_by_id');
+
+
+
 
 // Pages
 Route::get('/admin/pages', 'BackendController@pages')->name('pages');

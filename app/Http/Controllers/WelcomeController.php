@@ -80,4 +80,16 @@ class WelcomeController extends Controller
             // return response()->json(["sliders" => $final_Result]);
             return $final_Result;
     }
+
+    public function child_services_by_id($id){
+        
+        $sub_category = DB::table('sub_child_menus')->where('child_menu_id', '=', $id)->get();
+            $Array = [];
+            foreach($sub_category as $row){
+                $Array[] = '<option value="'.$row->id.'">'.$row->item_name.'</option>';
+            }
+            $final_Result = $Array;
+            // return response()->json(["sliders" => $final_Result]);
+            return $final_Result;
+    }
 }
