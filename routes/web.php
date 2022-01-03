@@ -169,6 +169,11 @@ Route::post('/admin/store_footer_section', 'BackendController@store_footer_secti
 Route::post('/admin/edit_footer_section', 'BackendController@edit_footer_section')->name('edit_footer_section');
 Route::get('/admin/delete_footer_section/{id}', 'BackendController@delete_footer_section')->name('delete_footer_section');
 
+// Logo Section
+Route::post('/admin/store_logo', 'BackendController@store_logo')->name('store_logo');
+Route::post('/admin/edit_logo', 'BackendController@edit_logo')->name('edit_logo');
+Route::get('/admin/delete_logo/{id}', 'BackendController@delete_logo')->name('delete_footer_section');
+
 
 Route::get('/{id}', 'WelcomeController@index')->name('pages');
 Route::get('/admin/page_sections', 'BackendController@page_sections')->name('page_sections');

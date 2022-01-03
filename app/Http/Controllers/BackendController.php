@@ -1550,6 +1550,28 @@ class BackendController extends Controller
 
      }
 
+
+
+     public function store_logo(Request $request)
+     {
+ 
+         // dd($request->text_1);
+         // die();
+         $data = $request->all();
+             $file = $data['logo']; // will get all files
+             $file_name = $file->getClientOriginalName(); //Get file original name
+             $file->move(public_path('logo') , $file_name); // move files to destination folder
+ 
+                 DB::table('logo')->insert(
+                     ['logo' => $file_name]
+                 );
+
+     //return dd($data);
+     $message = 'Logo Inserted successfully';
+     return redirect('admin/system')->with('message', $message);
+ 
+     }
+
    
 
     
