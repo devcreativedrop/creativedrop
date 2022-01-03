@@ -35,8 +35,10 @@ class BackendController extends Controller
 
     public function system()
     {
-        
-        return view('system');
+        $social = DB::table('social_media')->get();
+        $footer_section = DB::table('footer_sections')->get();
+        $logo = DB::table('logo')->get();
+        return view('system', Compact('social','footer_section','logo'));
     }
 
     
@@ -1443,7 +1445,110 @@ class BackendController extends Controller
      }
 
 
+// Store Social Media
+     public function store_social_media(Request $request)
+     {
+ 
+         // dd($request->text_1);
+         // die();
+         $data = $request->all();
+         // dd($data);
+         // die();
+         // $product_id = $data['product_id'];
+         for ($i = 0; $i < count($request->icon); $i++) {
+ 
+             $file = $data['icon'][$i]; // will get all files
+             $file_name = $file->getClientOriginalName(); //Get file original name
+             $file->move(public_path('social_media') , $file_name); // move files to destination folder
+ 
+                 // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+                 // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                 DB::table('social_media')->insert(
+                     [
+                         'icon' => $file_name,
+                         'name' => $data['name'][$i],
+                         'link' => $data['link'][$i]
+                         ]
+                 );
+         }
+     //return dd($data);
+     $message = 'Social Media Inserted successfully';
+     return redirect('admin/system')->with('message', $message);
+ 
+     }
 
+
+     public function delete_social_media($id){
+
+        DB::table('social_media')->where('id', '=', $id)->delete();
+        return redirect()->back();
+
+     }
+
+
+     // Store Social Media
+     public function store_footer_section(Request $request)
+     {
+         // dd($request->text_1);
+         // die();
+         $data = $request->all();
+         // dd($data);
+         // die();
+         // $product_id = $data['product_id'];
+         for ($i = 0; $i < count($request->footer_section_1_menu); $i++) {
+             //  $file = $data['icon'][$i]; // will get all files
+            //  $file_name = $file->getClientOriginalName(); //Get file original name
+            //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                  DB::table('footer_sections')->insert(
+                     [
+                        'section_id' => $data['footer_section_1_id'], 
+                        'name' => $data['footer_section_name_1'],
+                         'menu' => $data['footer_section_1_menu'][$i],
+                         'link' => $data['footer_section_1_link'][$i]
+                         ]
+                 );
+         }
+         for ($i = 0; $i < count($request->footer_section_2_menu); $i++) {
+            //  $file = $data['icon'][$i]; // will get all files
+           //  $file_name = $file->getClientOriginalName(); //Get file original name
+           //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                 DB::table('footer_sections')->insert(
+                    [
+                       'section_id' => $data['footer_section_2_id'], 
+                       'name' => $data['footer_section_name_2'],
+                        'menu' => $data['footer_section_2_menu'][$i],
+                        'link' => $data['footer_section_2_link'][$i]
+                        ]
+                );
+        }
+
+        for ($i = 0; $i < count($request->footer_section_3_menu); $i++) {
+            //  $file = $data['icon'][$i]; // will get all files
+           //  $file_name = $file->getClientOriginalName(); //Get file original name
+           //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                 DB::table('footer_sections')->insert(
+                    [
+                       'section_id' => $data['footer_section_3_id'], 
+                       'name' => $data['footer_section_name_3'],
+                        'menu' => $data['footer_section_3_menu'][$i],
+                        'link' => $data['footer_section_3_link'][$i]
+                        ]
+                );
+        }
+
+     //return dd($data);
+     $message = 'Footer Section Inserted successfully';
+     return redirect('admin/system')->with('message', $message);
+ 
+     }
+
+
+     public function delete_footer_section($id){
+
+        DB::table('footer_sections')->where('id', '=', $id)->delete();
+        return redirect()->back();
+
+     }
 
    
 

@@ -63,7 +63,7 @@
                               aria-labelledby="account-pill-general" aria-expanded="true">
                               <div class="media">
                                   
-                                  <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                  <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                       Create Page
                                   </div>
                               </div>
@@ -406,7 +406,7 @@
                                     </div>
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                          <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                          <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               Page</button>
                                           <button type="reset" class="btn btn-light">Cancel</button>
                                       </div>
@@ -437,7 +437,7 @@
                                                     <div class="col-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h4 style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75" class="card-title">Pages List</h4>
+                                                                <h4 style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75" class="card-title">Pages List</h4>
                                                             </div>
                                                             <div class="card-content collapse show">
                                                                 <div class="card-body card-dashboard">
@@ -513,7 +513,7 @@
                                     </div>
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                          <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                          <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               Menu</button>
                                           <button type="reset" class="btn btn-light">Cancel</button>
                                       </div>
@@ -593,7 +593,7 @@
                                     </div>
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                          <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                          <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               Menu</button>
                                           <button type="reset" class="btn btn-light">Cancel</button>
                                       </div>

@@ -259,39 +259,40 @@
                                 <div class="row">
                                     <div class="col-6 col-md-3">
                                         <div class="foot">
-                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">Agency</h5>
+											@php
+												$footer_section_1 = DB::table('footer_sections')->where('section_id','=','1')->get();
+											@endphp
+                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">{{$footer_section_1[0]->name}}</h5>
                                             <ul class="mt-2">
-                                                <li><a href="#">Leadership</a></li>
-                                                <li><a href="#">Overview</a></li>
-                                                <li><a href="#">Services</a></li>
+                                                @foreach($footer_section_1 as $row_fs_1)
+													<li><a href="{{$row_fs_1->link}}">{{$row_fs_1->menu}}</a></li>
+												@endforeach
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="foot">
-                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">Services</h5>
+											@php
+												$footer_section_2 = DB::table('footer_sections')->where('section_id','=','2')->get();
+											@endphp
+                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">{{$footer_section_2[0]->name}}</h5>
                                             <ul class="mt-2">
-                                                <li><a href="#">Design Services</a></li>
-                                                <li><a href="#">Websites & mobile Apps</a></li>
-                                                <li><a href="#">Videos & photography</a></li>
-                                                <li><a href="#">3D & 2D Animation</a></li>
-                                                <li><a href="#">Digital Marketing</a></li>
-                                                <li><a href="#">Consultancy Services</a></li>
+												@foreach($footer_section_2 as $row_fs_2)
+													<li><a href="{{$row_fs_2->link}}">{{$row_fs_2->menu}}</a></li>
+												@endforeach
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="foot">
-                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">Industries</h5>
+											@php
+												$footer_section_3 = DB::table('footer_sections')->where('section_id','=','3')->get();
+											@endphp
+                                            <h5 class="web-h5 web-border-bottom pb-3 mb-0">{{$footer_section_3[0]->name}}</h5>
                                             <ul class="mt-2">
-                                                <li><a href="#">FMCG</a></li>
-                                                <li><a href="#">F&B</a></li>
-                                                <li><a href="#">Industrial</a></li>
-                                                <li><a href="#">Technology</a></li>
-                                                <li><a href="#">Government</a></li>
-                                                <li><a href="#">Aviation</a></li>
-                                                <li><a href="#">Finance</a></li>
-                                                <li><a href="#">Trading</a></li>
+                                                @foreach($footer_section_3 as $row_fs_3)
+													<li><a href="{{$row_fs_3->link}}">{{$row_fs_3->menu}}</a></li>
+												@endforeach
                                             </ul>
                                         </div>
                                     </div>

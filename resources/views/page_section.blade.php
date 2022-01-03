@@ -201,7 +201,7 @@
                           <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
                               aria-labelledby="account-pill-general" aria-expanded="true">
                               <div class="media">
-                                  <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                  <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                       Create Slider
                                   </div>
                               </div>
@@ -301,7 +301,7 @@
 
                                                 
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                                         Slider</button>
                                                     <button type="reset" class="btn btn-light">Cancel</button>
                                                 </div>
@@ -423,7 +423,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                         Slider</button>
                                                                     <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                                 </div>
@@ -460,7 +460,7 @@
                                <!-- BEGIN: Content-->
                                <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Create Video Section
                                 </div>
                             </div>
@@ -595,7 +595,7 @@
 
                                     
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                             Video</button>
                                         <button type="reset" class="btn btn-light">Cancel</button>
                                     </div>
@@ -700,7 +700,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit Video</button>
+                                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit Video</button>
                                                                     <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-light">Cancel</button>
                                                                 </div>
                                                             </div>
@@ -737,7 +737,7 @@
                               aria-labelledby="account-pill-info-services" aria-expanded="false">
                               <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Services
                                 </div>
                             </div>
@@ -754,7 +754,7 @@
                               aria-labelledby="account-pill-info" aria-expanded="false">
                               <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Create Case Study Section
                                 </div>
                             </div>
@@ -852,7 +852,7 @@
                                   </div>
 
                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create Case Study</button>
+                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create Case Study</button>
                                     </div>
                                 </div>
                             </form>
@@ -960,7 +960,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                     Slider</button>
                                                                 <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                             </div>
@@ -993,7 +993,7 @@
                               aria-labelledby="account-pill-info-team" aria-expanded="false">
                               <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Create Team Member
                                 </div>
                             </div>
@@ -1089,7 +1089,7 @@
 
                                     
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Add
+                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Add
                                             Team Member Info</button>
                                     </div>
                                 </div>
@@ -1185,7 +1185,7 @@
                         
                                                             
                                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                     Team</button>
                                                                 <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                             </div>
@@ -1219,7 +1219,7 @@
                               
                               <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Create Clients and Partners
                                 </div>
                             </div>
@@ -1310,7 +1310,7 @@
 
   
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                             Client and Partner Image </button>
                                         <button type="reset" class="btn btn-light">Cancel</button>
                                     </div>
@@ -1387,7 +1387,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                     Client and Partner</button>
                                                                 <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                             </div>
@@ -1416,7 +1416,7 @@
                           <div class="tab-pane fade" id="account-vertical-connections" role="tabpanel"
                               aria-labelledby="account-pill-connections" aria-expanded="false">
                             <div class="media">
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Create Industries Section
                                 </div>
                             </div>
@@ -1514,7 +1514,7 @@
 
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                          <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                          <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               Industries </button>
                                           <button type="reset" class="btn btn-light">Cancel</button>
                                       </div>
@@ -1593,7 +1593,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit Industry</button>
+                                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit Industry</button>
                                                                     <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                                 </div>
                                                             </div>
@@ -1625,7 +1625,7 @@
                           <div class="tab-pane fade" id="account-vertical-news" role="tabpanel"
                               aria-labelledby="account-pill-news" aria-expanded="false">
                             <div class="media">
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     News & Opinions
                                 </div>
                             </div>
@@ -1684,7 +1684,7 @@
                                     </div>
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                          <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                          <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               News and Opinions </button>
                                           <button type="reset" class="btn btn-light">Cancel</button>
                                       </div>
@@ -1791,7 +1791,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                         Slider</button>
                                                                     <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                                 </div>
@@ -1826,7 +1826,7 @@
                           <div class="tab-pane fade" id="account-vertical-request" role="tabpanel"
                           aria-labelledby="account-pill-request" aria-expanded="false">
                                 <div class="media">
-                                    <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                    <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                         Request a Meeting
                                     </div>
                                 </div>
@@ -1915,7 +1915,7 @@
                                       </div>
                                         
                                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                            <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                                 Request a Meeting </button>
                                             <button type="reset" class="btn btn-light">Cancel</button>
                                         </div>
@@ -1990,7 +1990,7 @@
                                                                     </div>
 
                                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                             Request a Meeting</button>
                                                                         <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                                     </div>
@@ -2024,7 +2024,7 @@
                       <div class="tab-pane fade" id="account-vertical-style_1" role="tabpanel"
                       aria-labelledby="account-pill-style_1" aria-expanded="false">
                             <div class="media">
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Paragraph Left Image Right Text
                                 </div>
                             </div>
@@ -2121,7 +2121,7 @@
                                    
                                     
                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                             Paragraph style 1 </button>
                                         <button type="reset" class="btn btn-light">Cancel</button>
                                     </div>
@@ -2248,7 +2248,7 @@
                                                                 </div>
 
                                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                         Para Style 1</button>
                                                                     <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                                 </div>
@@ -2282,7 +2282,7 @@
                   <div class="tab-pane fade" id="account-vertical-style_2" role="tabpanel"
                   aria-labelledby="account-pill-style_2" aria-expanded="false">
                         <div class="media">
-                            <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                            <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                 Paragraph Right Image Left Text
                             </div>
                         </div>
@@ -2390,7 +2390,7 @@
                                 
                                 
                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                         Paragraph style 2 </button>
                                     <button type="reset" class="btn btn-light">Cancel</button>
                                 </div>
@@ -2519,7 +2519,7 @@
                                                             </div>
 
                                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                     Para Style 2</button>
                                                                 <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                             </div>
@@ -2552,7 +2552,7 @@
               <div class="tab-pane fade" id="account-vertical-style_3" role="tabpanel"
               aria-labelledby="account-pill-style_3" aria-expanded="false">
                     <div class="media">
-                        <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                        <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                             Paragraph Two Column Image Top
                         </div>
                     </div>
@@ -2650,7 +2650,7 @@
 
                             
                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                     Paragraph style 3 </button>
                                 <button type="reset" class="btn btn-light">Cancel</button>
                             </div>
@@ -2775,7 +2775,7 @@
                                                         </div>
 
                                                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                            <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                 Para Style 3</button>
                                                             <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                         </div>
@@ -2811,7 +2811,7 @@
           <div class="tab-pane fade" id="account-vertical-style_4" role="tabpanel"
               aria-labelledby="account-pill-style_4" aria-expanded="false">
                     <div class="media">
-                        <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                        <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                             Paragraph with Button
                         </div>
                     </div>
@@ -2905,7 +2905,7 @@
                             
                             
                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                     Paragraph style 4 </button>
                                 <button type="reset" class="btn btn-light">Cancel</button>
                             </div>
@@ -2993,7 +2993,7 @@
                                                         
 
                                                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                            <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                                 Para Style 4</button>
                                                             <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                         </div>
@@ -3025,7 +3025,7 @@
           <div class="tab-pane fade" id="account-vertical-style_5" role="tabpanel"
           aria-labelledby="account-pill-style_5" aria-expanded="false">
                 <div class="media">
-                    <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                    <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                         Paragraph with main heading left right text 
                     </div>
                 </div>
@@ -3123,7 +3123,7 @@
                          
                         
                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                            <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                 Paragraph style 5 </button>
                             <button type="reset" class="btn btn-light">Cancel</button>
                         </div>
@@ -3223,7 +3223,7 @@
                                                     </div>
                 
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                             Para Style 5</button>
                                                         <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                     </div>
@@ -3256,7 +3256,7 @@
       <div class="tab-pane fade" id="account-vertical-image-bellow-text-and-button" role="tabpanel"
       aria-labelledby="account-pill-image-bellow-text-and-button" aria-expanded="false">
             <div class="media">
-                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                     Image below text and button
                 </div>
             </div>
@@ -3354,7 +3354,7 @@
 
 
                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                        <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                             Section 15 </button>
                         <button type="reset" class="btn btn-light">Cancel</button>
                     </div>
@@ -3453,7 +3453,7 @@
                                                 </div>
 
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                         Para Style 5</button>
                                                     <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                                 </div>
@@ -3485,7 +3485,7 @@
   <div class="tab-pane fade" id="account-vertical-paragraph-with-icon" role="tabpanel"
   aria-labelledby="account-pill-paragraph-with-icon" aria-expanded="false">
         <div class="media">
-            <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+            <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                 Paragraph with icon
             </div>
         </div>
@@ -3579,7 +3579,7 @@
               </div>
                 
                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                    <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                    <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                         Section 16 </button>
                     <button type="reset" class="btn btn-light">Cancel</button>
                 </div>
@@ -3680,7 +3680,7 @@
                                             </div>
 
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                     Para Style 5</button>
                                                 <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                             </div>
@@ -3714,7 +3714,7 @@
 <div class="tab-pane fade" id="account-vertical-section_17" role="tabpanel"
 aria-labelledby="account-pill-section_17" aria-expanded="false">
       <div class="media">
-          <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+          <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
               Section 17
           </div>
       </div>
@@ -3808,7 +3808,7 @@ aria-labelledby="account-pill-section_17" aria-expanded="false">
               
               
               <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                  <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create
+                  <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                       Section 17 </button>
                   <button type="reset" class="btn btn-light">Cancel</button>
               </div>
@@ -3895,7 +3895,7 @@ aria-labelledby="account-pill-section_17" aria-expanded="false">
                                           
 
                                           <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                              <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                              <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                   Section 17</button>
                                               <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                           </div>
@@ -3929,7 +3929,7 @@ aria-labelledby="account-pill-section_17" aria-expanded="false">
 <div class="tab-pane fade" id="account-vertical-section_18" role="tabpanel"
 aria-labelledby="account-pill-section_18" aria-expanded="false">
       <div class="media">
-          <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+          <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
               Section 18
           </div>
       </div>
@@ -4045,7 +4045,7 @@ aria-labelledby="account-pill-section_18" aria-expanded="false">
               
               
               <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                  <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Create Section 18 </button>
+                  <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create Section 18 </button>
                   <button type="reset" class="btn btn-light">Cancel</button>
               </div>
           </div>
@@ -4140,7 +4140,7 @@ aria-labelledby="account-pill-section_18" aria-expanded="false">
                                           
 
                                           <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                              <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit
+                                              <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Edit
                                                   Section 17</button>
                                               <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">Cancel</button>
                                           </div>

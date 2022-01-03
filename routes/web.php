@@ -158,6 +158,17 @@ Route::post('/admin/edit_section_19', 'BackendController@edit_section_19')->name
 Route::get('/admin/delete_section_19/{id}', 'BackendController@delete_section_19')->name('delete_section_19');
 
 
+// Social Media
+Route::post('/admin/store_social_media', 'BackendController@store_social_media')->name('store_social_media');
+Route::post('/admin/edit_social_media', 'BackendController@edit_social_media')->name('edit_social_media');
+Route::get('/admin/delete_social_media/{id}', 'BackendController@delete_social_media')->name('delete_social_media');
+
+
+// Footer Section
+Route::post('/admin/store_footer_section', 'BackendController@store_footer_section')->name('store_footer_section');
+Route::post('/admin/edit_footer_section', 'BackendController@edit_footer_section')->name('edit_footer_section');
+Route::get('/admin/delete_footer_section/{id}', 'BackendController@delete_footer_section')->name('delete_footer_section');
+
 
 Route::get('/{id}', 'WelcomeController@index')->name('pages');
 Route::get('/admin/page_sections', 'BackendController@page_sections')->name('page_sections');

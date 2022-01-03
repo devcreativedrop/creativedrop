@@ -57,10 +57,10 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link d-flex" id="account-pill-password" data-toggle="pill" href="#account-vertical-password"
+                  <a class="nav-link d-flex" id="account-pill-footer_section" data-toggle="pill" href="#account-vertical-footer_section"
                       aria-expanded="false">
                       <i class="feather icon-list"></i>
-                      Footer
+                      Footer Section
                   </a>
               </li>
               <li class="nav-item">
@@ -75,7 +75,7 @@
                   <a class="nav-link d-flex" id="account-pill-password" data-toggle="pill" href="#account-vertical-password"
                       aria-expanded="false">
                       <i class="feather icon-list"></i>
-                      Create Password
+                      Change Password
                   </a>
               </li>
 
@@ -98,13 +98,15 @@
                           <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
                               aria-labelledby="account-pill-general" aria-expanded="true">
                               <div class="media">
-                                  <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                  <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                       Social Media
                                   </div>
                               </div>
                               <hr>
-                              <div class="row">
-                                {{-- <img style="width:100%" src="{{asset('page_sections/slider.png')}}"/> --}}
+                              <form method="POST" action="{{url('admin/store_social_media')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                  {{-- <img style="width:100%" src="{{asset('page_sections/slider.png')}}"/> --}}
                                     <div class="col-md-12">
                                        <h1>Add Social Media</h1>
 
@@ -170,75 +172,332 @@
                                           
                                         </div>
                                   </div>
-
+                                  
                                     </div>
                                     
+                                    
                                 </div>
+                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                  <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create Social Media</button>
+                                  <button type="reset" class="btn btn-light">Cancel</button>
+                              </div>
+                              </form>
                               <hr/>
                               <table class="table table-striped table-bordered dom-jQuery-events">
                                 <thead>
                                     <tr>
-                                        <th>Slider Name</th>
-                                        <th>Slider Image</th>
-                                        <th>Slider Heading 1</th>
-                                        <th>Slider Heading 2</th>
-                                        <th>Status</th>
+                                        <th>Icon Image</th>
+                                        <th>Name</th>
+                                        <th>Link</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  
-                                    
+                                    @foreach( $social as $row_social_media)
+
+                                    <tr>
+                                      <td><img style="width:50px;" src="{{asset('social_media/'.$row_social_media->icon)}}"/></td>
+                                      <td>{{$row_social_media->name}}</td>
+                                      <td>{{$row_social_media->link}}</td>
+                                      <td><a class="btn btn-danger" href="{{url('admin/delete_social_media/'.$row_social_media->id)}}">Delete</a></td>
+                                  </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        
-                                        <th>Slider Name</th>
-                                        <th>Slider Image</th>
-                                        
-                                        <th>Slider Heading 1</th>
-                                        <th>Slider Heading 2</th>
-                                        <th>Status</th>
+                                        <th>Icon Image Name</th>
+                                        <th>Name</th>
+                                        <th>Link</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
                           </div>
-                          <div class="tab-pane fade " id="account-vertical-password" role="tabpanel"
-                              aria-labelledby="account-pill-password" aria-expanded="false">
+                          <div class="tab-pane fade " id="account-vertical-footer_section" role="tabpanel"
+                              aria-labelledby="account-pill-footer_section" aria-expanded="false">
                                <!-- BEGIN: Content-->
                                <div class="media">
-                                  
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
-                                    Create Video Section
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
+                                    Footer Section
                                 </div>
                             </div>
                             <hr>
-                          
+
+                            <form method="POST" action="{{url('admin/store_footer_section')}}" enctype="multipart/form-data">
+                              @csrf
+                              <div class="row">
+                                {{-- <img style="width:100%" src="{{asset('page_sections/slider.png')}}"/> --}}
+                                  <div class="col-md-4">
+                                     <h1>Add Footer Section 1</h1>
+
+                                     <div class="col-12">
+                                      <div class="form-group">
+                                          <div class="controls">
+                                              <label for="account-username">Footer Section 1 Name </label>
+                                              <input type="text" name="footer_section_name_1" class="form-control" id="account-username" required
+                                                  data-validation-required-message="This username field is required">
+                                                  <input type="hidden" name="footer_section_1_id" value="1">
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                     <div class="col-12">
+                                      <script>
+                                        $(document).ready(function () {
+                                          // Denotes total number of rows
+                                          var FooterSection1rowIdx = 0;
+                                          // jQuery button click event to add a row
+                                          $('#FooterSection1addBtn').on('click', function () {
+                                            // Adding a row inside the tbody.
+                                            $('#FooterSection1tbody').append(`<tr id="R${++FooterSection1rowIdx}">
+                                                <td class="row-index text-center"><input type="text" name="footer_section_1_menu[]" class="form-control"/></td>
+                                                <td class="row-index text-center"><input type="text" name="footer_section_1_link[]" class="form-control"/></td>
+                                                <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
+                                                </tr>`);
+                                          });
+                                          // jQuery button click event to remove a row.
+                                          $('#FooterSection1tbody').on('click', '.remove', function () {
+                                            // Getting all the rows next to the row
+                                            // containing the clicked button
+                                            var child = $(this).closest('tr').nextAll();
+                                            // Iterating across all the rows 
+                                            // obtained to change the index
+                                            child.each(function () {
+                                              // Getting <tr> id.
+                                              var id = $(this).attr('id');
+                                              // Getting the <p> inside the .row-index class.
+                                              var idx = $(this).children('.row-index').children('p');
+                                              // Gets the row number from <tr> id.
+                                              var dig = parseInt(id.substring(1));
+                                              // Modifying row index.
+                                              idx.html(`Row ${dig - 1}`);
+                                              // Modifying row id.
+                                              $(this).attr('id', `R${dig - 1}`);
+                                            });
+                                            // Removing the current row.
+                                            $(this).closest('tr').remove();
+                                            // Decreasing total number of rows by 1.
+                                            FooterSection1rowIdx--;
+                                          });
+                                        });
+                                      </script>
+                                    
+                                      <div class="container pt-4">
+                                        <button class="btn btn-md btn-primary" id="FooterSection1addBtn" type="button"> Add Footer Section 1 </button>
+                                        <div class="table-responsive">
+                                          <table class="table table-bordered">
+                                            <thead>
+                                              <tr>
+                                                <th class="text-center">Menu</th>
+                                                <th class="text-center">Link</th>
+                                                <th class="text-center">Remove Row</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody id="FooterSection1tbody">
+                                      
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                        
+                                      </div>
+                                </div>
+                                
+                                  </div>
+
+
+                                  <div class="col-md-4">
+                                    <h1>Add Footer Section 2</h1>
+
+                                    <div class="col-12">
+                                     <div class="form-group">
+                                         <div class="controls">
+                                             <label for="account-username">Footer Section 2 Name </label>
+                                             <input type="text" name="footer_section_name_2" class="form-control" id="account-username" required
+                                                 data-validation-required-message="This username field is required">
+                                                 <input type="hidden" name="footer_section_2_id" value="2">
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                    <div class="col-12">
+                                     <script>
+                                       $(document).ready(function () {
+                                         // Denotes total number of rows
+                                         var FooterSection2rowIdx = 0;
+                                         // jQuery button click event to add a row
+                                         $('#FooterSection2addBtn').on('click', function () {
+                                           // Adding a row inside the tbody.
+                                           $('#FooterSection2tbody').append(`<tr id="R${++FooterSection2rowIdx}">
+                                               <td class="row-index text-center"><input type="text" name="footer_section_2_menu[]" class="form-control"/></td>
+                                               <td class="row-index text-center"><input type="text" name="footer_section_2_link[]" class="form-control"/></td>
+                                               <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
+                                               </tr>`);
+                                         });
+                                         // jQuery button click event to remove a row.
+                                         $('#FooterSection2tbody').on('click', '.remove', function () {
+                                           // Getting all the rows next to the row
+                                           // containing the clicked button
+                                           var child = $(this).closest('tr').nextAll();
+                                           // Iterating across all the rows 
+                                           // obtained to change the index
+                                           child.each(function () {
+                                             // Getting <tr> id.
+                                             var id = $(this).attr('id');
+                                             // Getting the <p> inside the .row-index class.
+                                             var idx = $(this).children('.row-index').children('p');
+                                             // Gets the row number from <tr> id.
+                                             var dig = parseInt(id.substring(1));
+                                             // Modifying row index.
+                                             idx.html(`Row ${dig - 1}`);
+                                             // Modifying row id.
+                                             $(this).attr('id', `R${dig - 1}`);
+                                           });
+                                           // Removing the current row.
+                                           $(this).closest('tr').remove();
+                                           // Decreasing total number of rows by 1.
+                                           FooterSection2rowIdx--;
+                                         });
+                                       });
+                                     </script>
+                                   
+                                     <div class="container pt-4">
+                                       <button class="btn btn-md btn-primary" id="FooterSection2addBtn" type="button"> Add Footer Section 2 </button>
+                                       <div class="table-responsive">
+                                         <table class="table table-bordered">
+                                           <thead>
+                                             <tr>
+                                               <th class="text-center">Menu</th>
+                                               <th class="text-center">Link</th>
+                                               <th class="text-center">Remove Row</th>
+                                             </tr>
+                                           </thead>
+                                           <tbody id="FooterSection2tbody">
+                                     
+                                           </tbody>
+                                         </table>
+                                       </div>
+                                       
+                                     </div>
+                               </div>
+                               
+                                 </div>
+
+
+                                 <div class="col-md-4">
+                                  <h1>Add Footer Section 3</h1>
+
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label for="account-username">Footer Section 3 Name </label>
+                                            <input type="text" name="footer_section_name_3" class="form-control" id="account-username" required
+                                                data-validation-required-message="This username field is required">
+                                                <input type="hidden" name="footer_section_3_id" value="3">
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-12">
+                                   <script>
+                                     $(document).ready(function () {
+                                       // Denotes total number of rows
+                                       var FooterSection3rowIdx = 0;
+                                       // jQuery button click event to add a row
+                                       $('#FooterSection3addBtn').on('click', function () {
+                                         // Adding a row inside the tbody.
+                                         $('#FooterSection3tbody').append(`<tr id="R${++FooterSection3rowIdx}">
+                                             <td class="row-index text-center"><input type="text" name="footer_section_3_menu[]" class="form-control"/></td>
+                                             <td class="row-index text-center"><input type="text" name="footer_section_3_link[]" class="form-control"/></td>
+                                             <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
+                                             </tr>`);
+                                       });
+                                       // jQuery button click event to remove a row.
+                                       $('#FooterSection3tbody').on('click', '.remove', function () {
+                                         // Getting all the rows next to the row
+                                         // containing the clicked button
+                                         var child = $(this).closest('tr').nextAll();
+                                         // Iterating across all the rows 
+                                         // obtained to change the index
+                                         child.each(function () {
+                                           // Getting <tr> id.
+                                           var id = $(this).attr('id');
+                                           // Getting the <p> inside the .row-index class.
+                                           var idx = $(this).children('.row-index').children('p');
+                                           // Gets the row number from <tr> id.
+                                           var dig = parseInt(id.substring(1));
+                                           // Modifying row index.
+                                           idx.html(`Row ${dig - 1}`);
+                                           // Modifying row id.
+                                           $(this).attr('id', `R${dig - 1}`);
+                                         });
+                                         // Removing the current row.
+                                         $(this).closest('tr').remove();
+                                         // Decreasing total number of rows by 1.
+                                         FooterSection3rowIdx--;
+                                       });
+                                     });
+                                   </script>
+                                 
+                                   <div class="container pt-4">
+                                     <button class="btn btn-md btn-primary" id="FooterSection3addBtn" type="button"> Add Footer Sections 3 </button>
+                                     <div class="table-responsive">
+                                       <table class="table table-bordered">
+                                         <thead>
+                                           <tr>
+                                             <th class="text-center">Menu</th>
+                                             <th class="text-center">Link</th>
+                                             <th class="text-center">Remove Row</th>
+                                           </tr>
+                                         </thead>
+                                         <tbody id="FooterSection3tbody">
+                                   
+                                         </tbody>
+                                       </table>
+                                     </div>
+                                     
+                                   </div>
+                             </div>
+                             
+                               </div>
+                                  
+                                  
+                              </div>
+                              <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create Footer Section</button>
+                                <button type="reset" class="btn btn-light">Cancel</button>
+                            </div>
+                            </form>
                             <hr/>
+                          
+                            
                             <table class="table table-striped table-bordered dom-jQuery-events">
                               <thead>
                                   <tr>
-                                      <th>Video Name</th>
-                                      <th>Video Title</th>
-                                      <th>Video Link</th>
-                                      <th>Button Label</th>
-                                      <th>Button Link</th>
+                                      <th>Section Name</th>
+                                      <th>Menu</th>
+                                      <th>Link</th>
                                       <th>Action</th>
                                   </tr>
                               </thead>
                               <tbody>
-                               
+                                @foreach($footer_section as $row_footer_section)
+
+                                <tr>
+                                  <td>{{$row_footer_section->name}}</td>
+                                  <td>{{$row_footer_section->menu}}</td>
+                                  <td>{{$row_footer_section->link}}</td>
+                                  <td><a class="btn btn-danger" href="{{url('admin/delete_footer_section/'.$row_footer_section->id)}}">Delete</a></td>
+                              </tr>
+
+                                @endforeach
                                   
                               </tbody>
                               <tfoot>
                                   <tr>
-                                      
-                                      <th>Page Name</th>
-                                      <th>Page Description</th>
-                                      <th>Page Slug</th>
-                                      <th>Status</th>
-                                      <th>Action</th>
+                                    <th>Section Name</th>
+                                    <th>Menu</th>
+                                    <th>Link</th>
+                                    <th>Action</th>
                                   </tr>
                               </tfoot>
                           </table>
@@ -252,21 +511,38 @@
                                <!-- BEGIN: Content-->
                                <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
-                                    Logo
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
+                                    Add Website Logo
                                 </div>
                             </div>
                             <hr>
-                          
+                            <form method="POST" action="{{url('admin/store_logo')}}" enctype="multipart/form-data">
+                              @csrf
+
+
+                              <div class="col-12">
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <label for="account-username">Logo </label>
+                                        <input type="file" name="logo" class="form-control" id="account-username" required
+                                            data-validation-required-message="This username field is required">
+                                            
+                                    </div>
+                                </div>
+                              </div>
+                                
+
+                              <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Add Logo</button>
+                                <button type="reset" class="btn btn-light">Cancel</button>
+                            </div>
+
+                            </form>
                             <hr/>
                             <table class="table table-striped table-bordered dom-jQuery-events">
                               <thead>
                                   <tr>
-                                      <th>Video Name</th>
-                                      <th>Video Title</th>
-                                      <th>Video Link</th>
-                                      <th>Button Label</th>
-                                      <th>Button Link</th>
+                                      <th>Logo</th>
                                       <th>Action</th>
                                   </tr>
                               </thead>
@@ -276,11 +552,7 @@
                               </tbody>
                               <tfoot>
                                   <tr>
-                                      
-                                      <th>Page Name</th>
-                                      <th>Page Description</th>
-                                      <th>Page Slug</th>
-                                      <th>Status</th>
+                                      <th>Logo</th>
                                       <th>Action</th>
                                   </tr>
                               </tfoot>
@@ -294,7 +566,7 @@
                                <!-- BEGIN: Content-->
                                <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Logo
                                 </div>
                             </div>
@@ -337,7 +609,7 @@
                                <!-- BEGIN: Content-->
                                <div class="media">
                                   
-                                <div style="color:#fff; border-radius:5px; background-color:#00B5B8; padding:10px;" class="media-body mt-75">
+                                <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
                                     Footer Bottom
                                 </div>
                             </div>
