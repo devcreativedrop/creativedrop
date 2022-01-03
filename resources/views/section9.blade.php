@@ -1,11 +1,5 @@
-@extends('layouts.frontend')
-@section('meta_description')@if(!$pages->isEmpty()){{$pages[0]->meta_desc}}@endif @endsection
-@section('meta_keywords')@if(!$pages->isEmpty()){{$pages[0]->meta_keyword}}@endif @endsection @section('content')
- <!-- BEGIN: Content-->
- 
- @if(!$pages->isEmpty())
 
-    @if( $pages[0]->section1 == '1' )
+    @if( $pages[0]->section9 == '1' )
 
     
 
@@ -21,7 +15,7 @@
                                 <a href="#section-2" id="sectionTwo" class="mouse" aria-hidden="true">
                                 <span class="mouse__wheel"></span>
                                 <span class="mouse__text">SCROLL TO EXPLORE</span>
-                                </a>
+                                  </a>
                                 <ol class="carousel-indicators">
                                     @php $num = 0; @endphp
                                         @foreach($sliders as $row_slider)
@@ -57,7 +51,7 @@
                 <!-- Images slider - End -->
             </section>
     
-    @elseif( $pages[0]->section1 == '2' )
+    @elseif( $pages[0]->section9 == '2' )
     @php
         $videos = DB::table('videos')->where('video_title', '=', $pages[0]->section_1_type)->get();
     @endphp
@@ -81,7 +75,7 @@
     @endforeach
 
         
-    @elseif( $pages[0]->section1 == '3' )
+    @elseif( $pages[0]->section9 == '3' )
 
     @php
         $team_section = DB::table('teams')->where('section_name', '=', $pages[0]->section_1_type)->get();
@@ -122,7 +116,7 @@
             </div>
         </div>
     </section>
-    @elseif( $pages[0]->section1 == '4' )
+    @elseif( $pages[0]->section9 == '4' )
         
 
     @php
@@ -193,7 +187,7 @@
                 </div>
             </section>
 
-    @elseif( $pages[0]->section1 == '5' )
+    @elseif( $pages[0]->section9 == '5' )
             <section id="section-2" class="section-bg-grey-grad section-padtop-70 section-padbottom-70 service-block">
                 <div class="web-container">
                     <div class="row">
@@ -276,7 +270,7 @@
                     </div>
                 </div>
             </section>
-    @elseif( $pages[0]->section1 == '6' )
+    @elseif( $pages[0]->section9 == '6' )
 
     @php
         $client_and_partner = DB::table('clientandparterimage')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -311,7 +305,7 @@
         </div>
     </section>
     
-    @elseif( $pages[0]->section1 == '7' )
+    @elseif( $pages[0]->section9 == '7' )
        
     @php
         $industries = DB::table('industries')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -369,7 +363,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '8' )
+    @elseif( $pages[0]->section9 == '8' )
         
 
     @php
@@ -418,7 +412,7 @@
         </div>
     </section>
 
-    @elseif( $pages[0]->section1 == '9' )
+    @elseif( $pages[0]->section9 == '9' )
 
     @php
         $requests = DB::table('requests')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -438,7 +432,7 @@
             </section>
     
 
-    @elseif( $pages[0]->section1 == '10' )
+    @elseif( $pages[0]->section9 == '10' )
     @php
         $para_style_1 = DB::table('para_style_1')->where('name', '=', $pages[0]->section_1_type)->get();
     @endphp
@@ -464,7 +458,7 @@
     
     
 
-    @elseif( $pages[0]->section1 == '11' )
+    @elseif( $pages[0]->section9 == '11' )
             
     @php
         $para_style_2 = DB::table('para_style_2')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -496,7 +490,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '12' )
+    @elseif( $pages[0]->section9 == '12' )
 
     @php
         $para_style_3 = DB::table('para_style_3')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -528,7 +522,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '13' )
+    @elseif( $pages[0]->section9 == '13' )
 
     @php
         $para_style_4 = DB::table('para_style_4')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -554,7 +548,7 @@
     </section>
 
 
-    @elseif( $pages[0]->section1 == '14' )
+    @elseif( $pages[0]->section9 == '14' )
     
     @php
         $para_style_5 = DB::table('para_style_5')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -584,7 +578,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '15' )
+    @elseif( $pages[0]->section9 == '15' )
     
     @php
         $section_15 = DB::table('section_15')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -596,18 +590,18 @@
 		<div class="row no-gutters">
 			<div class="col-md-12">
 				<div class="design-banner-content text-center">
-					<h1 class="web-h1 mb-0">{{$section_15[0]->heading1}}</h1>
-					<h4 class="web-h4 mt-4 mb-4">{{$section_15[0]->heading2}}</h4>
+					<h1 class="web-h1 mb-0">@if(!$section_15->isEmpty()) {{$section_15[0]->heading1}} @endif </h1>
+					<h4 class="web-h4 mt-4 mb-4">@if(!$section_15->isEmpty()){{$section_15[0]->heading2}}@endif </h4>
 					<a href="javascript:void(0)" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a>
 				</div>
 				<div class="banner-image text-center mt-5 mb-3">
 					<div class="img-block web-border-radius-5">
-                        <img class="obj-cover" src="{{asset('section_15/'.$section_15[0]->image)}}" alt="">
+                        <img class="obj-cover" src="@if(!$section_15->isEmpty()) {{asset('section_15/'.$section_15[0]->image)}} @endif" alt="">
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-8 col-md-8 col-lg-9 align-self-center">
-				<h3 class="web-h3 mb-0">{{$section_15[0]->text}}</h3>
+				<h3 class="web-h3 mb-0">@if(!$section_15->isEmpty()) {{$section_15[0]->text}} @endif</h3>
 			</div>
 			<div class="col-sm-4 col-md-4 col-lg-3 align-self-center">
 				<a href="javascript:void(0)" class="btn web-btn web-btn-blue float-right" data-toggle="modal" data-target="#creativeModal">Request for a meeting</a>
@@ -620,7 +614,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '16' )
+    @elseif( $pages[0]->section9 == '16' )
     
     @php
         $section_16 = DB::table('section_16')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -652,7 +646,7 @@
 
 
 
-    @elseif( $pages[0]->section1 == '17' )
+    @elseif( $pages[0]->section9 == '17' )
     
     @php
         $section_17 = DB::table('section_17')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -677,7 +671,7 @@
     
 
 
-        @elseif( $pages[0]->section1 == '18' )
+        @elseif( $pages[0]->section9 == '18' )
     
         @php
             $section_18 = DB::table('section_18')->where('name', '=', $pages[0]->section_1_type)->get();
@@ -727,80 +721,3 @@
     
 
     @endif
-
-   @include('section2');
-
-   @include('section3');
-
-   @include('section4');
-   @include('section5');
-   @include('section6');
-   @include('section7');
-   @include('section8');
-   @include('section9');
-
-   
-<!-- END: Content-->
-
-
-<!-- END: Content-->
-
-
-
-
-
-@endif
-
-
-@if($pages->isEmpty())
-
-@section('meta_description')@if(!$pages->isEmpty()){{$pages[0]->meta_desc}}@endif @endsection
-@section('meta_keywords')@if(!$pages->isEmpty()){{$pages[0]->meta_keyword}}@endif @endsection @section('content')
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<style>
-    body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);}
-.error-template {padding: 40px 15px;text-align: center;}
-.error-actions {margin-top:15px;margin-bottom:15px;}
-.error-actions .btn { margin-right:10px; }
-</style>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    Oops!</h1>
-                <h2>
-                    404 Not Found</h2>
-                <div style="font-size:21px;" class="error-details">
-                    Sorry, an error has occured, Requested page not found!
-                </div>
-                <div class="error-actions">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-@endsection
-
-@endif
-
-
-    
-       
-    
-        
-        
-    
-
-
