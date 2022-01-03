@@ -7,6 +7,8 @@
 
     @if( $pages[0]->section1 == '1' )
 
+    
+
     @php
         $sliders = DB::table('sliders')->where('name', '=', $pages[0]->section_1_type)->get();
     @endphp

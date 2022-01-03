@@ -35,6 +35,11 @@
 			<button type="button" id="sidebarCollapse" class="btn"><i class="fas fa-bars fa-lg"></i></button>
 		</nav>
 
+	
+@php
+	$page = DB::table('page')->where('title','=',Request::segment(1))->get();
+@endphp
+
 		<nav class="navbar navbar-expand-xl navbar-light sticky-top desktop-navbar">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="web-container-fluid">
@@ -47,7 +52,9 @@
 
 					<ul class="navbar-nav navbar-light mr-auto">
 						<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
+						@if(!$page->isEmpty())
 
+						
                         @php
                             $main_menus = DB::table('menus')->where('menu_link', '!=', '#')->get();
                         @endphp
@@ -116,11 +123,31 @@
 							<a href="tel:+971503119300" class="btn web-btn web-btn-blue">Call Now</a>
 							<a href="https://api.whatsapp.com/send?phone=+971503119300" class="text-white whatsapp-link" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
 						</form>
-
+					@endif
 					</ul>
 				</div>
 			</div>
 		</nav>
+		@if(!$page->isEmpty())
+		<section class="section-bg-white design-page-menu web-border-bottom">
+			<div class="web-container">
+				<!-- Swiper -->
+				<div class="sub-nav">
+					{{-- <h4> {{ Request::segment(1)}} </h4> --}}
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><a href="logo-design.php">Logo Design</a></div>
+							<div class="swiper-slide"><a href="corporate-identity.php">Corporate Branding</a></div>
+							<div class="swiper-slide"><a href="brand-guildeline-book.php">Brand Guideline Book</a></div>
+							<div class="swiper-slide"><a href="packaging-design.php">Brand Packaging Design</a></div>
+							<div class="swiper-slide"><a href="uniform-branding.php">Uniform Branding</a></div>
+							<div class="swiper-slide"><a href="vehicle-branding.php">Vehicle Branding</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		@endif
 	</header>
 
 	<div class="wrapper">

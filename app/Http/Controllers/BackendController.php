@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class BackendController extends Controller
 {
@@ -1581,6 +1582,62 @@ class BackendController extends Controller
         return redirect()->back();
 
      }
+
+
+     public function store_system_user(Request $request)
+     {
+ 
+         // dd($request->text_1);
+         // die();
+         $data = $request->all();
+            //  $file = $data['logo']; // will get all files
+            //  $file_name = $file->getClientOriginalName(); //Get file original name
+            //  $file->move(public_path('logo') , $file_name); // move files to destination folder
+ 
+                 DB::table('users')->insert([
+                     'name' => $data['name'],
+                     'email' => $data['email'],
+                     'password' => Hash::make($data['password']),
+                     'role_id' => $data['role_id']
+                     ]
+                 );
+
+     //return dd($data);
+     $message = 'Logo Inserted successfully';
+     return redirect('admin/system')->with('message', $message);
+ 
+     }
+
+
+     public function edit_system_user(Request $request){
+        
+        $data = $request->all();
+        $affected = DB::table('users')
+              ->where('id', $request->user_id)
+              ->update([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                    'role_id' => $data['role_id']
+                ]);
+
+     $message = 'User Updated successfully';
+     return redirect('admin/user_profile/'.$request->user_id)->with('message', $message);
+
+     }
+
+
+
+     public function system_user_profile($id)
+    {
+        $users = DB::table('users')->where('id','=', $id)->get();
+        $main_menu_two = DB::table('menus')->get();
+        $main_menu_four = DB::table('menus')->get();
+        $child_menu_four = DB::table('child_menus')->get();
+        $child_menus = DB::table('child_menus')->get();
+        $sub_child_menus = DB::table('sub_child_menus')->get();
+        return view('user_profile', Compact('users'));
+    }
 
    
 

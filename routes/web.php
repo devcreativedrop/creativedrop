@@ -175,6 +175,7 @@ Route::post('/admin/edit_logo', 'BackendController@edit_logo')->name('edit_logo'
 Route::get('/admin/delete_logo/{id}', 'BackendController@delete_logo')->name('delete_footer_section');
 
 // Create System users
+Route::get('/admin/user_profile/{id}', 'BackendController@system_user_profile')->name('system_user_profile');
 Route::post('/admin/store_system_user', 'BackendController@store_system_user')->name('store_system_user');
 Route::post('/admin/edit_system_user', 'BackendController@edit_system_user')->name('edit_system_user');
 Route::get('/admin/delete_system_user/{id}', 'BackendController@delete_system_user')->name('delete_system_user');

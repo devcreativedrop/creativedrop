@@ -581,7 +581,8 @@
                             @php
                               $users = DB::table('users')->get();
                             @endphp
-                            <form action="{{url('store_system_user')}}" method="POST">
+                            <form action="{{url('admin/store_system_user')}}" method="POST">
+                              @csrf
                               <div class="col-12">
                                 <div class="form-group">
                                     <div class="controls">
@@ -603,7 +604,7 @@
                             <div class="col-12">
                               <div class="form-group">
                                   <div class="controls">
-                                      <label for="account-username">Reset Password </label>
+                                      <label for="account-username">Password </label>
                                       <input type="password" name="password" class="form-control" id="account-username" required>
                                           
                                   </div>
@@ -614,11 +615,10 @@
                               <div class="form-group">
                                   <div class="controls">
                                       <label for="account-username">Role </label>
-                                      <select name="role" class="form-control">
+                                      <select name="role_id" class="form-control">
                                         <option value="1"> Admin </option>
                                         <option value="2"> Manager </option>
                                         <option value="3"> Staff </option>
-                                      
                                       </select>
                                   </div>
                               </div>
@@ -646,11 +646,11 @@
                                   <td>{{$row_system_user->name}}</td>
                                   <td>{{$row_system_user->email}}</td>
                                   <td>
-                                    @if($row_system_user->role == 1)
+                                    @if($row_system_user->role_id == 1)
                                       Admin
-                                    @elseif($row_system_user->role == 2)
+                                    @elseif($row_system_user->role_id == 2)
                                       Manager
-                                      @elseif($row_system_user->role == 3)
+                                      @elseif($row_system_user->role_id == 3)
                                       Staff
                                     @else
                                     @endif

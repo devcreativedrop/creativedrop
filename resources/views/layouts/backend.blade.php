@@ -259,8 +259,10 @@
                     </li>
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="avatar avatar-online"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div><span class="user-name">John Doe</span></a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a>
+                            <div class="avatar avatar-online"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div><span class="user-name">
+                                    {{auth()->user()->name}}
+                            </span></a>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{url('admin/user_profile/'.auth()->user()->id)}}"><i class="feather icon-user"></i> View Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a>
                             <a class="dropdown-item" href="user-cards.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
                             <div class="dropdown-divider"></div>
                                     
