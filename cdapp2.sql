@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2022 at 08:36 AM
+-- Generation Time: Jan 03, 2022 at 09:00 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -491,8 +491,8 @@ CREATE TABLE `page` (
 --
 
 INSERT INTO `page` (`id`, `title`, `body`, `image`, `slug`, `status`, `meta_keyword`, `meta_desc`, `design_menu`, `user_id`, `section1`, `section2`, `section3`, `section4`, `section5`, `section6`, `section7`, `section8`, `section9`, `created_at`, `updated_at`, `section_1_type`, `section_2_type`, `section_3_type`, `section_4_type`, `section_5_type`, `section_6_type`, `section_7_type`, `section_8_type`, `section_9_type`) VALUES
-(24, 'Home', NULL, NULL, 'home', 'Published', 'meta keyword for home page', 'meta description for home page', 'N', NULL, '1', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-30 20:02:54', '2021-12-30 20:02:54', 'slider 1', 'testing title', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 'logo_design', NULL, NULL, 'logo_design', 'Published', NULL, 'logo_design meta description', 'N', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-31 12:43:35', '2021-12-31 12:43:35', 'slider 3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'Home', NULL, NULL, 'home', 'Published', 'meta keyword for home page', 'meta description for home page', 'N', NULL, '1', '4', '6', '11', '12', '11', '18', '13', '15', '2021-12-30 20:02:54', '2021-12-30 20:02:54', 'slider 1', 'case study 1', 'client group 8', 'section 1', 'section 1', 'section 1', 'Logo Design 2', 'section 1', 'section 1'),
+(25, 'logo_design', NULL, NULL, 'logo_design', 'Published', 'logo design for meta keyword', 'logo_design meta description', 'N', NULL, '8', '13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-31 12:43:35', '2021-12-31 12:43:35', 'section 1', 'section 8', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (26, 'work', NULL, NULL, 'work', 'Published', NULL, 'meta description for work', 'N', NULL, '17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-31 14:55:25', '2021-12-31 14:55:25', 'one', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (27, 'agency', NULL, NULL, 'agency', 'Published', 'meta keywords', 'agency', 'N', NULL, '1', '2', '4', '2', '16', '8', '10', '11', '13', '2022-01-02 07:38:09', '2022-01-02 07:38:09', 'slider 1', 'checking', 'case study 1', 'testing title', 'section 2', 'section 1', 'section 1', 'section 8', 'section 1');
 
