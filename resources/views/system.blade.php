@@ -75,7 +75,7 @@
                   <a class="nav-link d-flex" id="account-pill-password" data-toggle="pill" href="#account-vertical-password"
                       aria-expanded="false">
                       <i class="feather icon-list"></i>
-                      Change Password
+                      Create System User
                   </a>
               </li>
 
@@ -547,13 +547,20 @@
                                   </tr>
                               </thead>
                               <tbody>
-                               
+                                @foreach($logo as $row_logo)
+                                <tr>
+                                  <th><img class="img-responsive" src="{{asset('logo/'.$row_logo->logo)}}"/></th>
+                                  <th><a class="btn btn-danger" href="{{url('admin/delete_logo/'.$row_logo->id)}}"> Delete</a></th>
+                                </tr>
+                                @endforeach
+
                                   
                               </tbody>
                               <tfoot>
                                   <tr>
-                                      <th>Logo</th>
-                                      <th>Action</th>
+                                      
+                                    <th>Logo</th>
+                                    <th>Action</th>
                                   </tr>
                               </tfoot>
                           </table>
@@ -567,39 +574,103 @@
                                <div class="media">
                                   
                                 <div style="color:#fff; border-radius:5px; background-color:#31036e; padding:10px;" class="media-body mt-75">
-                                    Logo
+                                    Create System User 
                                 </div>
                             </div>
                             <hr>
-                          
+                            @php
+                              $users = DB::table('users')->get();
+                            @endphp
+                            <form action="{{url('store_system_user')}}" method="POST">
+                              <div class="col-12">
+                                <div class="form-group">
+                                    <div class="controls">
+                                        <label for="account-username">Name </label>
+                                        <input type="text" name="name" class="form-control" id="account-username">
+                                    </div>
+                                </div>
+                              </div>  
+
+                            <div class="col-12">
+                              <div class="form-group">
+                                  <div class="controls">
+                                      <label for="account-username">Email ID </label>
+                                      <input type="text" name="email" class="form-control" id="account-username">
+                                  </div>
+                              </div>
+                            </div>  
+
+                            <div class="col-12">
+                              <div class="form-group">
+                                  <div class="controls">
+                                      <label for="account-username">Reset Password </label>
+                                      <input type="password" name="password" class="form-control" id="account-username" required>
+                                          
+                                  </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12">
+                              <div class="form-group">
+                                  <div class="controls">
+                                      <label for="account-username">Role </label>
+                                      <select name="role" class="form-control">
+                                        <option value="1"> Admin </option>
+                                        <option value="2"> Manager </option>
+                                        <option value="3"> Staff </option>
+                                      
+                                      </select>
+                                  </div>
+                              </div>
+                            </div>  
+
+                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                              <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create User</button>
+                              <button type="reset" class="btn btn-light">Cancel</button>
+                          </div>
+                          </form>
+
                             <hr/>
                             <table class="table table-striped table-bordered dom-jQuery-events">
                               <thead>
                                   <tr>
-                                      <th>Video Name</th>
-                                      <th>Video Title</th>
-                                      <th>Video Link</th>
-                                      <th>Button Label</th>
-                                      <th>Button Link</th>
+                                      <th>Username</th>
+                                      <th>Email</th>
+                                      <th>Role</th>
                                       <th>Action</th>
                                   </tr>
                               </thead>
                               <tbody>
-                               
+                                @foreach($system_user as $row_system_user)
+                                <tr>
+                                  <td>{{$row_system_user->name}}</td>
+                                  <td>{{$row_system_user->email}}</td>
+                                  <td>
+                                    @if($row_system_user->role == 1)
+                                      Admin
+                                    @elseif($row_system_user->role == 2)
+                                      Manager
+                                      @elseif($row_system_user->role == 3)
+                                      Staff
+                                    @else
+                                    @endif
+                                  </td>
+                                  <td><a class="btn btn-primary" href="{{url('admin/delete_system_user/'.$row_system_user->id)}}"> Edit</a> <a class="btn btn-danger" href="{{url('admin/delete_system_user/'.$row_system_user->id)}}"> Delete</a></td>
+                                </tr>
+                                @endforeach
+
                                   
                               </tbody>
                               <tfoot>
                                   <tr>
-                                      
-                                      <th>Page Name</th>
-                                      <th>Page Description</th>
-                                      <th>Page Slug</th>
-                                      <th>Status</th>
+                                      <th>Username</th>
+                                      <th>Email</th>
+                                      <th>Role</th>
                                       <th>Action</th>
                                   </tr>
                               </tfoot>
                           </table>
-                                    <!-- END: Content-->
+                            <hr/>
   
                           </div>
 

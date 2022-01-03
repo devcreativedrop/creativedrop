@@ -38,7 +38,8 @@ class BackendController extends Controller
         $social = DB::table('social_media')->get();
         $footer_section = DB::table('footer_sections')->get();
         $logo = DB::table('logo')->get();
-        return view('system', Compact('social','footer_section','logo'));
+        $system_user = DB::table('users')->get();
+        return view('system', Compact('social','footer_section','logo','system_user'));
     }
 
     
@@ -1570,6 +1571,15 @@ class BackendController extends Controller
      $message = 'Logo Inserted successfully';
      return redirect('admin/system')->with('message', $message);
  
+     }
+
+
+
+     public function delete_logo($id){
+
+        DB::table('logo')->where('id', '=', $id)->delete();
+        return redirect()->back();
+
      }
 
    
