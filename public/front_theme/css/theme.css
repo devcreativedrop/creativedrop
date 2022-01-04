@@ -369,6 +369,7 @@ header nav.desktop-navbar .nav-link {
 header nav.desktop-navbar .dropdown-menu {
 	top: 90% !important;
 	z-index: 99 !important;
+
 }
 header nav.desktop-navbar .dropdown-item:focus, header nav.desktop-navbar .dropdown-item:hover {
 	background-color: inherit !important;
@@ -400,10 +401,17 @@ header nav.desktop-navbar a.whatsapp-link {
 	line-height: 37px;
 	text-align: center;
 }
+header nav.desktop-navbar a.whatsapp-link i {
+	line-height: 37px;
+}
 header nav.desktop-navbar a.whatsapp-link:hover {
 	color: #40C351 !important;
 	background-color: #fff !important;
 	border: 1px solid #40C351;
+	  -webkit-transition:none !important;
+  -moz-transition:none !important;
+  -o-transition:none !important;
+  transition:none !important;
 }
 header nav.desktop-navbar .dropdown-menu {
 	padding: 0 !important;

@@ -56,41 +56,65 @@ class BackendController extends Controller
     public function create_page(Request $request)
     {
 
-        DB::table('page')->insert([
-                    'title' => $request->page_title,
-                    'slug' => $request->page_slug,
-                    'meta_desc' => $request->meta_desc,
-                    'meta_keyword' => $request->meta_keyword,
-                    'status' => $request->status,
-                    'section1' => $request->section1,
-                    'section2' => $request->section2,
-                    'section3' => $request->section3,
-                    'section4' => $request->section4,
-                    'section5' => $request->section5,
-                    'section6' => $request->section6,
-                    'section7' => $request->section7,
-                    'section8' => $request->section8,
-                    'section9' => $request->section9,
-                    'section_1_type' => $request->section_1_type,
-                    'section_2_type' => $request->section_2_type,
-                    'section_3_type' => $request->section_3_type,
-                    'section_4_type' => $request->section_4_type,
-                    'section_5_type' => $request->section_5_type,
-                    'section_6_type' => $request->section_6_type,
-                    'section_7_type' => $request->section_7_type,
-                    'section_8_type' => $request->section_8_type,
-                    'section_9_type' => $request->section_9_type
+
+         // dd($request->text_1);
+        // die();
+        $data = $request->all();
+
+        
+        $id = DB::table('page')->insertGetId(array(
+            'title' => $request->page_title,
+            'slug' => $request->page_slug,
+            'menu_id' => $request->main_menu_id,
+            'sub_menu_id' => $request->sub_menu_id,
+            'child_menu_id' => $request->child_menu_id,
+            'meta_desc' => $request->meta_desc,
+            'meta_keyword' => $request->meta_keyword,
+            'status' => $request->status,
+        ));
+
+
+
+        // dd($data);
+        // die();
+        // $product_id = $data['product_id'];
+        for ($i = 0; $i < count($request->section); $i++) {
+
+            // $file = $data['slider_image'][$i]; // will get all files
+            // $file_name = $file->getClientOriginalName(); //Get file original name
+            // $file->move(public_path('slider') , $file_name); // move files to destination folder
+
+                // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+                // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                DB::table('page_detail')->insert(
+                    [
+                        'page_id' => $id,
+                        'section_no' => $i+1,
+                        'section' => $data['section'][$i],
+                        'section_type' => $data['section_type'][$i]
                     ]
-        );
+                );
+        }
+    //return dd($data);
+
+
 
         return redirect()->back();
     }
 
     public function edit_page_content($id){
         // echo $id;
-        $page = DB::table('page')->where('id', '=', $id)->get();
+        // $page = DB::table('page')->where('id', '=', $id)->get();
+        $main_menu = DB::table('menus')->where('menu_link','!=','#')->get();
+        $page = DB::table('page')
+            ->join('page_detail', 'page_detail.page_id', '=', 'page.id')
+            ->where('page.id', '=', $id)
+            ->get();
+        // dd($pages);
+        // die();
+        $count = count($page);
         $page_section = DB::table('page_section')->get();
-        return view('edit_page', Compact('page','page_section'));
+        return view('edit_page', Compact('page','page_section','main_menu','count'));
     }
 
 
@@ -1221,6 +1245,19 @@ class BackendController extends Controller
             // return response()->json(["sliders" => $final_Result]);
             return $final_Result;
          }
+
+         if($id == 19){
+            $teams = DB::table('section_19')->get();
+            
+            $Array = [];
+            foreach($teams->unique('name') as $row){
+                
+                $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
+            }
+            $final_Result = $Array;
+            // return response()->json(["sliders" => $final_Result]);
+            return $final_Result;
+         }
         
         
 
@@ -1638,6 +1675,54 @@ class BackendController extends Controller
         $sub_child_menus = DB::table('sub_child_menus')->get();
         return view('user_profile', Compact('users'));
     }
+
+
+
+
+     // Para Style 18  Section
+     public function store_section_19(Request $request)
+     {
+        $data = $request->all();
+      
+                DB::table('section_19')->insert(
+                    [
+                     'name' => $request->name,
+                     'padding_top' => $data['padding_top'],
+                     'padding_bottom' => $data['padding_bottom']
+                    ]
+                );
+      
+
+        //return dd($data);
+        $message = 'Section 19 Added successfully';
+        return redirect('admin/page_sections')->with('message', $message);
+
+
+     }
+ 
+     public function edit_section_19(Request $request)
+     {
+        // $file = $request->file('image'); // will get all files
+        // $file_name = $file->getClientOriginalName(); //Get file original name
+        // $file->move(public_path('para_style_5') , $file_name); // move files to destination folder
+         $affected = DB::table('section_19')
+         ->where('id', $request->id)
+         ->update([
+            // 'image' => $file_name,
+            'page_id' => $request->page_id,
+            'name' => $request->name,
+            'padding_top' => $request->padding_top,
+            'padding_bottom' => $request->padding_bottom
+            ]
+         );
+         return redirect()->back();
+     }
+ 
+     public function delete_section_19($id)
+     {
+         DB::table('section_19')->where('id', '=', $id)->delete();
+         return redirect()->back();
+     }
 
    
 

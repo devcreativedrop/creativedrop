@@ -1,6 +1,11 @@
 @extends('layouts.backend')
 
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 @section('content')
  <!-- BEGIN: Content-->
  
@@ -96,7 +101,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                         <label  style="font-weight:bold" for="account-username">Main Menu</label>
-                                                        <select id="page_sections" class="form-control" name="main_menu">
+                                                        <select id="page_sections" class="form-control" name="main_menu_id">
                                                             <option value="#">  --- Select Services --- </option>
                                                             @foreach($main_menu as $row_main_menu)
                                                                 <option value="{{$row_main_menu->id}}"> {{$row_main_menu->menu_name}} </option>
@@ -110,7 +115,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label  style="font-weight:bold" for="account-username">Sub Menu</label>
-                                                        <select id="dependent_page_sections" class="form-control" name="sub_menu">
+                                                        <select id="dependent_page_sections" class="form-control" name="sub_menu_id">
                                                             <option></option>
                                                         </select>
                                             </div>
@@ -121,7 +126,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label  style="font-weight:bold" for="account-username">Child Menu</label>
-                                                        <select id="child_dependent_page_sections" class="form-control" name="child_sub_menu">
+                                                        <select id="child_dependent_page_sections" class="form-control" name="child_menu_id">
                                                             <option></option>
                                                         </select>
                                             </div>
@@ -162,249 +167,94 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 1</label>
-                                                <select id="page_sections_1" class="form-control" name="section1">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 1</label>
-                                                <select id="dependent_page_sections_1" class="form-control" name="section_1_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data"> </div>
-                                            
-                                        </div>
-                                    </div>
 
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 2</label>
-                                                <select id="page_sections_2" class="form-control" name="section2">
+                                    <div class="col-12">
+                                        <script>
+                                          $(document).ready(function () {
+                                            // Denotes total number of rows
+                                            var caseStudyrowIdx = 0;
+                                            // jQuery button click event to add a row
+                                            $('#caseStudyaddBtn').on('click', function () {
+                                              // Adding a row inside the tbody.
+                                              $('#caseStudytbody').append(`<tr id="R${++caseStudyrowIdx}">
+                                                  <td class="row-index text-center">
+                                                    <select id="page_sections_${caseStudyrowIdx}" class="form-control" name="section[]">
                                                     <option value="">  --- Select Section --- </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 2</label>
-                                                <select id="dependent_page_sections_2" class="form-control" name="section_2_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_2"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 3</label>
-                                                <select id="page_sections_3" class="form-control" name="section3">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                    </td>
+                                                  <td class="row-index text-center">
+                                                    <select id="dependent_page_sections_${caseStudyrowIdx}" class="form-control" name="section_type[]">
+                                                        <option></option>
+                                                    </select>
+                                                    </td>
+                                                  <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
+                                                  </tr>`);
 
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 3</label>
-                                                <select id="dependent_page_sections_3" class="form-control" name="section_3_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_3"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 4</label>
-                                                <select id="page_sections_4" class="form-control" name="section4">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 4</label>
-                                                <select id="dependent_page_sections_4" class="form-control" name="section_4_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_4"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 5</label>
-                                                <select id="page_sections_5" class="form-control" name="section5">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 5</label>
-                                                <select id="dependent_page_sections_5" class="form-control" name="section_5_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_5"> </div>
-                                            
-                                        </div>
-                                    </div>
-
-
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 6</label>
-                                                <select id="page_sections_6" class="form-control" name="section6">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 6</label>
-                                                <select id="dependent_page_sections_6" class="form-control" name="section_6_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_6"> </div>
-                                            
-                                        </div>
-                                    </div>
-                                    
-
-
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 7</label>
-                                                <select id="page_sections_7" class="form-control" name="section7">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 7</label>
-                                                <select id="dependent_page_sections_7" class="form-control" name="section_7_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_7"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 8</label>
-                                                <select id="page_sections_8" class="form-control" name="section8">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 8</label>
-                                                <select id="dependent_page_sections_8" class="form-control" name="section_8_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_8"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Section 9</label>
-                                                <select id="page_sections_9" class="form-control" name="section9">
-                                                    <option value="">  --- Select Section --- </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label  style="font-weight:bold" for="account-username">Select Section 9</label>
-                                                <select id="dependent_page_sections_9" class="form-control" name="section_9_type">
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data_9"> </div>
-                                            
-                                        </div>
-                                    </div>
+                                                  $(`#page_sections_${caseStudyrowIdx}`).change(function(){
+                                                        var page_section = $(this).children("option:selected").val();
+                                                            // alert(page_section);
+                                                        $.ajax({
+                                                            type:'GET',
+                                                            url:'page_section_id/'+page_section,
+                                                            success:function(data){
+                                                                console.log(data);
+                                                                $(`#dependent_page_sections_${caseStudyrowIdx}`).html(data);
+                                                            }});
+                                                        
+                                                    });
+                                                  
+                                            });
+                                            // jQuery button click event to remove a row.
+                                            $('#caseStudytbody').on('click', '.remove', function () {
+                                              // Getting all the rows next to the row
+                                              // containing the clicked button
+                                              var child = $(this).closest('tr').nextAll();
+                                              // Iterating across all the rows 
+                                              // obtained to change the index
+                                              child.each(function () {
+                                                // Getting <tr> id.
+                                                var id = $(this).attr('id');
+                                                // Getting the <p> inside the .row-index class.
+                                                var idx = $(this).children('.row-index').children('p');
+                                                // Gets the row number from <tr> id.
+                                                var dig = parseInt(id.substring(1));
+                                                // Modifying row index.
+                                                idx.html(`Row ${dig - 1}`);
+                                                // Modifying row id.
+                                                $(this).attr('id', `R${dig - 1}`);
+                                              });
+                                              // Removing the current row.
+                                              $(this).closest('tr').remove();
+                                              // Decreasing total number of rows by 1.
+                                              caseStudyrowIdx--;
+                                            });
+                                          });
+                                        </script>
                                       
+                                        <div class="container pt-4">
+                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Case Study </button>
+                                          <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                              <thead>
+                                                <tr>
+                                                  <th class="text-center">Section</th>
+                                                  <th class="text-center">Select Section</th>
+                                                  <th style="width:100px;" class="text-center">Remove Row</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody id="caseStudytbody">
+                                        
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                          
+                                        </div>
+                                  </div>
+
+                                    
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                           <button type="submit" class="btn btn-success mr-sm-1 mb-1 mb-sm-0">Create
                                               Page</button>

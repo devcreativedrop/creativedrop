@@ -1,5 +1,11 @@
 @extends('layouts.backend')
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 @section('content')
  <!-- BEGIN: Content-->
@@ -93,6 +99,42 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                        <label  style="font-weight:bold" for="account-username">Main Menu</label>
+                                                        <select id="page_sections" class="form-control" name="main_menu_id">
+                                                            <option value="{{$page[0]->menu_id}}">  {{$page[0]->menu_id}} </option>
+                                                            @foreach($main_menu as $row_main_menu)
+                                                                <option value="{{$row_main_menu->id}}"> {{$row_main_menu->menu_name}} </option>
+                                                            @endforeach
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label  style="font-weight:bold" for="account-username">Sub Menu</label>
+                                                        <select id="dependent_page_sections" class="form-control" name="sub_menu_id">
+                                                            <option value="{{$page[0]->sub_menu_id}}">  {{$page[0]->sub_menu_id}} </option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label  style="font-weight:bold" for="account-username">Child Menu</label>
+                                                        <select id="child_dependent_page_sections" class="form-control" name="child_menu_id">
+                                                            <option value="{{$page[0]->child_menu_id}}">  {{$page[0]->child_menu_id}} </option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
                 
                                     <div class="col-12">
                                         <div class="form-group">
@@ -127,344 +169,168 @@
                                             </div>
                                         </div>
                                     </div>
-                
+
+                                    @foreach($page as $row_pages)
                                     <div class="col-6">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 1: <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section1 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_1" class="form-control" name="section1">
-                                                    <option value="{{$page[0]->section1}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section1 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
+                                                <label style="font-weight:bold;"for="account-username">Section: {{$row_pages->section_no}} ::: 
+                                                    <span class="badge badge-pill badge-success"  style="font-weight:bold; font-size:21px;">
+                                                        @foreach($page_section as $row_page_section)
+                                                            @if($row_page_section->id == $row_pages->section)
+                                                                <span> {{$row_page_section->name}} </span>
+                                                            @endif
+                                                        @endforeach
+                                                        </span>
+                                                    </label>
+                                                {{-- <input type="text" value="{{$page[0]->title}}" name="title" class="form-control" id="account-username" required
+                                                    data-validation-required-message="This username field is required"> --}}
+                                                    
+                                                    <select id="page_sections_{{$row_pages->section_no}}" class="form-control" name="section[]">
+                                                        @foreach($page_section as $row_page_section)
+                                                            @if($row_page_section->id == $row_pages->section)
+                                                                <option value="{{$row_pages->section}}">  {{$row_page_section->name}} </option>
+                                                            @endif
+                                                        @endforeach
+                                                        
+                                                        @foreach($page_section as $row_page_section)
+                                                            <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
+                                                        @endforeach
+                                                    </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label style="font-weight:bold;"for="account-username">Type Section {{$row_pages->section_no}} ::: <span class="badge badge-pill badge-info" style="font-weight:bold; font-size:21px;">
+                                                    {{$row_pages->section_type}}
+                                                </label>
+                                                {{-- <input type="text" value="{{$page[0]->title}}" name="title" class="form-control" id="account-username" required
+                                                    data-validation-required-message="This username field is required"> --}}
+                                                    
+                                                    <select id="dependent_page_sections_{{$row_pages->section_no}}" class="form-control" name="section_type[]">
+                                                        <option value="{{$row_pages->section_type}}"> {{$row_pages->section_type}} </option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                                        <script>
+                                        $(document).ready(function(){
+
+                                            $("#page_sections_{{$row_pages->section_no}}").change(function(){
+                                                var page_section = $(this).children("option:selected").val();
+                                                    //    alert(page_section);
+                                                $.ajax({
+                                                                        type:'GET',
+                                                                        url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
+                                                                        success:function(data){
+                                                                            console.log(data);
+                                                                        $('#dependent_page_sections_{{$row_pages->section_no}}').html(data);
+
+                                                                        
+                                                                        }
+                                                                    });
+                                            });
+                                        });
+                                        </script>
+
+                                    @endforeach
+
+
+                                    <div class="col-12">
+                                        <script>
+                                          $(document).ready(function () {
+                                            // Denotes total number of rows
+                                            var caseStudyrowIdx = {{$count}}
+                                            // jQuery button click event to add a row
+                                            $('#caseStudyaddBtn').on('click', function () {
+                                              // Adding a row inside the tbody.
+                                              $('#caseStudytbody').append(`<tr id="R${++caseStudyrowIdx}">
+                                                  <td class="row-index text-center">
+                                                    <select id="page_sections_${caseStudyrowIdx}" class="form-control" name="section[]">
+                                                    <option value="">  --- Select Section --- </option>
                                                     @foreach($page_section as $row_page_section)
                                                         <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                                    </td>
+                                                  <td class="row-index text-center">
+                                                    <select id="dependent_page_sections_${caseStudyrowIdx}" class="form-control" name="section_type[]">
+                                                        <option></option>
+                                                    </select>
+                                                    </td>
+                                                  <td class="text-center"><button class="btn btn-danger remove" type="button">Remove</button></td>
+                                                  </tr>`);
+
+                                                  $(`#page_sections_${caseStudyrowIdx}`).change(function(){
+                                                        var page_section = $(this).children("option:selected").val();
+                                                            // alert(page_section);
+                                                        $.ajax({
+                                                            type:'GET',
+                                                            url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
+                                                            success:function(data){
+                                                                console.log(data);
+                                                                $(`#dependent_page_sections_${caseStudyrowIdx}`).html(data);
+                                                            }});
+                                                        
+                                                    });
+                                                  
+                                            });
+                                            // jQuery button click event to remove a row.
+                                            $('#caseStudytbody').on('click', '.remove', function () {
+                                              // Getting all the rows next to the row
+                                              // containing the clicked button
+                                              var child = $(this).closest('tr').nextAll();
+                                              // Iterating across all the rows 
+                                              // obtained to change the index
+                                              child.each(function () {
+                                                // Getting <tr> id.
+                                                var id = $(this).attr('id');
+                                                // Getting the <p> inside the .row-index class.
+                                                var idx = $(this).children('.row-index').children('p');
+                                                // Gets the row number from <tr> id.
+                                                var dig = parseInt(id.substring(1));
+                                                // Modifying row index.
+                                                idx.html(`Row ${dig - 1}`);
+                                                // Modifying row id.
+                                                $(this).attr('id', `R${dig - 1}`);
+                                              });
+                                              // Removing the current row.
+                                              $(this).closest('tr').remove();
+                                              // Decreasing total number of rows by 1.
+                                              caseStudyrowIdx--;
+                                            });
+                                          });
+                                        </script>
+                                      
+                                        <div class="container pt-4">
+                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Case Study </button>
+                                          <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                              <thead>
+                                                <tr>
+                                                  <th class="text-center">Section</th>
+                                                  <th class="text-center">Select Section</th>
+                                                  <th style="width:100px;" class="text-center">Remove Row</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody id="caseStudytbody">
+                                        
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                          
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 1: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_1_type}}</span></label>
-                                                <select id="dependent_page_sections_1" class="form-control" name="section_1_type">
-                                                    <option value="{{$page[0]->section_1_type}}">  {{$page[0]->section_1_type}} </option>
-                                                </select>
-                                            </div>
-                                            <div id="sliders_data"> </div>
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 2: <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section2 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_2" class="form-control" name="section2">
-                                                    <option value="{{$page[0]->section2}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section2 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 2 : <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_2_type}}</span></label>
-                                                <select id="dependent_page_sections_2" class="form-control" name="section_2_type">
-                                                    <option value="{{$page[0]->section_2_type}}">  {{$page[0]->section_2_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 3 : <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section3 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_3" class="form-control" name="section3">
-                                                    <option value="{{$page[0]->section3}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section3 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 3: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_3_type}}</span></label>
-                                                <select id="dependent_page_sections_3" class="form-control" name="section_3_type">
-                                                    <option value="{{$page[0]->section_3_type}}">  {{$page[0]->section_3_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 4 : <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section3 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_4" class="form-control" name="section4">
-                                                    <option value="{{$page[0]->section4}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section4 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 4: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_4_type}}</span></label>
-                                                <select id="dependent_page_sections_4" class="form-control" name="section_4_type">
-                                                    <option value="{{$page[0]->section_4_type}}">  {{$page[0]->section_4_type}} </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 5 : <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section5 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_5" class="form-control" name="section5">
-                                                    <option value="{{$page[0]->section5}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section5 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 5: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_5_type}}</span></label>
-                                                <select id="dependent_page_sections_5" class="form-control" name="section_5_type">
-                                                    <option value="{{$page[0]->section_5_type}}">  {{$page[0]->section_5_type}} </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 6: <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section6 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_6" class="form-control" name="section6">
-                                                    <option value="{{$page[0]->section6}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section6 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 6: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_6_type}}</span></label>
-                                                <select id="dependent_page_sections_6" class="form-control" name="section_6_type">
-                                                    <option value="{{$page[0]->section_6_type}}">  {{$page[0]->section_6_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
+                                  </div>
+
                                     
+
                 
-                
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 7:  <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section7 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_7" class="form-control" name="section7">
-                                                    <option value="{{$page[0]->section7}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section7 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 7 : <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_7_type}}</span></label>
-                                                <select id="dependent_page_sections_7" class="form-control" name="section_7_type">
-                                                    <option value="{{$page[0]->section_7_type}}">  {{$page[0]->section_7_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 8: <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section8 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_8" class="form-control" name="section8">
-                                                    <option value="{{$page[0]->section8}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section8 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 8: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_8_type}}</span></label>
-                                                <select id="dependent_page_sections_8" class="form-control" name="section_8_type">
-                                                    <option value="{{$page[0]->section_8_type}}">  {{$page[0]->section_8_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
-                
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Section 9: <span style="font-weight:bold; color:green; font-size:16px;">  
-                                                    @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section9 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                    </span></label>
-                                                <select id="page_sections_9" class="form-control" name="section9">
-                                                    <option value="{{$page[0]->section9}}">  @foreach($page_section as $row_ps)
-                                                        @if($page[0]->section9 == $row_ps->id)
-                                                            {{$row_ps->name}}
-                                                        @endif
-                                                    @endforeach
-                                                     </option>
-                                                    @foreach($page_section as $row_page_section)
-                                                        <option value="{{$row_page_section->id}}"> {{$row_page_section->name}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label style="font-weight:bold;"for="account-username">Select Section 9: <span style="font-weight:bold; color:green; font-size:16px;">  {{$page[0]->section_9_type}}</span></label>
-                                                <select id="dependent_page_sections_9" class="form-control" name="section_9_type">
-                                                    <option value="{{$page[0]->section_9_type}}">  {{$page[0]->section_9_type}} </option>
-                                                </select>
-                                            </div>
-                                            
-                                            
-                                        </div>
-                                    </div>
                                       
                                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                           <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Edit Page</button>
@@ -657,292 +523,6 @@
     </div>
   </div>
   <!-- END: Content-->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script>
-  $(document).ready(function(){
-
-      $("#page_sections_1").change(function(){
-          var page_section = $(this).children("option:selected").val();
-            //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_1').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_2").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_2').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_3").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_3').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_4").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_4').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_5").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_5').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_6").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_6').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_7").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_7').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_8").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_8').html(data);
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_9").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_9').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-
-
-
-
-
-
-
-
-
-
-      $("#page_sections_2").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_2').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_3").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_3').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_4").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_4').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_5").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_5').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_6").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_6').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_7").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_7').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_8").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_8').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-      $("#page_sections_9").change(function(){
-          var page_section = $(this).children("option:selected").val();
-        //    alert(page_section);
-           $.ajax({
-                                type:'GET',
-                                url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
-                                success:function(data){
-                                     console.log(data);
-                                   $('#dependent_page_sections_9').html(data);
-
-                                   
-                                }
-                            });
-         
-      });
-
-
-  });
-  </script>
+  
 
   @endsection

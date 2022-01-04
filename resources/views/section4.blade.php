@@ -1,10 +1,10 @@
 
-    @if( $pages[0]->section4 == '1' )
+    @if( $pages[0]->section == '1' )
 
     
 
     @php
-        $sliders = DB::table('sliders')->where('name', '=', $pages[0]->section_1_type)->get();
+        $sliders = DB::table('sliders')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
             <section class="home-slider section-bg-black creative-banner">
                 <!-- Images slider - Start -->
@@ -51,9 +51,9 @@
                 <!-- Images slider - End -->
             </section>
     
-    @elseif( $pages[0]->section4 == '2' )
+    @elseif( $pages[0]->section == '2' )
     @php
-        $videos = DB::table('videos')->where('video_title', '=', $pages[0]->section_1_type)->get();
+        $videos = DB::table('videos')->where('video_title', '=', $pages[0]->section_type)->get();
     @endphp
     @foreach($videos as $row_video)
 
@@ -75,10 +75,10 @@
     @endforeach
 
         
-    @elseif( $pages[0]->section4 == '3' )
+    @elseif( $pages[0]->section == '3' )
 
     @php
-        $team_section = DB::table('teams')->where('section_name', '=', $pages[0]->section_1_type)->get();
+        $team_section = DB::table('teams')->where('section_name', '=', $pages[0]->section_type)->get();
     @endphp
 
     <section class="our-team section-bg-white section-padtop-70 section-padbottom-70">
@@ -116,11 +116,11 @@
             </div>
         </div>
     </section>
-    @elseif( $pages[0]->section4 == '4' )
+    @elseif( $pages[0]->section == '4' )
         
 
     @php
-        $case_study = DB::table('case_study')->where('name', '=', $pages[0]->section_1_type)->get();
+        $case_study = DB::table('case_study')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
             <section class="section-bg-grey section-padtop-50 section-padbottom-50 portfolio">
@@ -187,7 +187,7 @@
                 </div>
             </section>
 
-    @elseif( $pages[0]->section4 == '5' )
+    @elseif( $pages[0]->section == '5' )
             <section id="section-2" class="section-bg-grey-grad section-padtop-70 section-padbottom-70 service-block">
                 <div class="web-container">
                     <div class="row">
@@ -270,10 +270,10 @@
                     </div>
                 </div>
             </section>
-    @elseif( $pages[0]->section4 == '6' )
+    @elseif( $pages[0]->section == '6' )
 
     @php
-        $client_and_partner = DB::table('clientandparterimage')->where('name', '=', $pages[0]->section_1_type)->get();
+        $client_and_partner = DB::table('clientandparterimage')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
     <section class="section-bg-white section-padtop-50 section-padbottom-50 clients">
@@ -305,10 +305,10 @@
         </div>
     </section>
     
-    @elseif( $pages[0]->section4 == '7' )
+    @elseif( $pages[0]->section == '7' )
        
     @php
-        $industries = DB::table('industries')->where('name', '=', $pages[0]->section_1_type)->get();
+        $industries = DB::table('industries')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
             <section class="section-bg-black section-padtop-70 section-padbottom-70 creative-slider">
@@ -363,11 +363,11 @@
 
 
 
-    @elseif( $pages[0]->section4 == '8' )
+    @elseif( $pages[0]->section == '8' )
         
 
     @php
-        $news = DB::table('news_and_opinions')->where('name', '=', $pages[0]->section_1_type)->get();
+        $news = DB::table('news_and_opinions')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
     <section class="section-bg-white section-padtop-50 section-padbottom-50 insight">
@@ -412,10 +412,10 @@
         </div>
     </section>
 
-    @elseif( $pages[0]->section4 == '9' )
+    @elseif( $pages[0]->section == '9' )
 
     @php
-        $requests = DB::table('requests')->where('name', '=', $pages[0]->section_1_type)->get();
+        $requests = DB::table('requests')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
             <section class="section-bg-dark-grey section-padtop-50 section-padbottom-50 discuss-block">
@@ -432,9 +432,9 @@
             </section>
     
 
-    @elseif( $pages[0]->section4 == '10' )
+    @elseif( $pages[0]->section == '10' )
     @php
-        $para_style_1 = DB::table('para_style_1')->where('name', '=', $pages[0]->section_1_type)->get();
+        $para_style_1 = DB::table('para_style_1')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
     @foreach($para_style_1 as $row_para_style_1)
@@ -458,10 +458,10 @@
     
     
 
-    @elseif( $pages[0]->section4 == '11' )
+    @elseif( $pages[0]->section == '11' )
             
     @php
-        $para_style_2 = DB::table('para_style_2')->where('name', '=', $pages[0]->section_1_type)->get();
+        $para_style_2 = DB::table('para_style_2')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
     <section class="section-bg-white section-padtop-50 section-padbottom-50 brand-tile corporate-identity-tiles">
@@ -490,10 +490,10 @@
 
 
 
-    @elseif( $pages[0]->section4 == '12' )
+    @elseif( $pages[0]->section == '12' )
 
     @php
-        $para_style_3 = DB::table('para_style_3')->where('name', '=', $pages[0]->section_1_type)->get();
+        $para_style_3 = DB::table('para_style_3')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
 <section class="section-bg-white section-padtop-50 section-padbottom-50 design-detail">
@@ -522,10 +522,10 @@
 
 
 
-    @elseif( $pages[0]->section4 == '13' )
+    @elseif( $pages[0]->section == '13' )
 
     @php
-        $para_style_4 = DB::table('para_style_4')->where('name', '=', $pages[0]->section_1_type)->get();
+        $para_style_4 = DB::table('para_style_4')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
 
@@ -548,10 +548,10 @@
     </section>
 
 
-    @elseif( $pages[0]->section4 == '14' )
+    @elseif( $pages[0]->section == '14' )
     
     @php
-        $para_style_5 = DB::table('para_style_5')->where('name', '=', $pages[0]->section_1_type)->get();
+        $para_style_5 = DB::table('para_style_5')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
     <section class="agency-brands section-bg-dark-grey section-padtop-70 section-padbottom-70">
@@ -578,10 +578,10 @@
 
 
 
-    @elseif( $pages[0]->section4 == '15' )
+    @elseif( $pages[0]->section == '15' )
     
     @php
-        $section_15 = DB::table('section_15')->where('name', '=', $pages[0]->section_1_type)->get();
+        $section_15 = DB::table('section_15')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
 
@@ -614,10 +614,10 @@
 
 
 
-    @elseif( $pages[0]->section4 == '16' )
+    @elseif( $pages[0]->section == '16' )
     
     @php
-        $section_16 = DB::table('section_16')->where('name', '=', $pages[0]->section_1_type)->get();
+        $section_16 = DB::table('section_16')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
 
@@ -646,10 +646,10 @@
 
 
 
-    @elseif( $pages[0]->section4 == '17' )
+    @elseif( $pages[0]->section == '17' )
     
     @php
-        $section_17 = DB::table('section_17')->where('name', '=', $pages[0]->section_1_type)->get();
+        $section_17 = DB::table('section_17')->where('name', '=', $pages[0]->section_type)->get();
     @endphp
 
         <section class="design-page-center">
@@ -671,10 +671,10 @@
     
 
 
-        @elseif( $pages[0]->section4 == '18' )
+        @elseif( $pages[0]->section == '18' )
     
         @php
-            $section_18 = DB::table('section_18')->where('name', '=', $pages[0]->section_1_type)->get();
+            $section_18 = DB::table('section_18')->where('name', '=', $pages[0]->section_type)->get();
         @endphp
     
     <section class="section-bg-grey creative-samples">

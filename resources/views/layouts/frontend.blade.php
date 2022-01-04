@@ -128,26 +128,6 @@
 				</div>
 			</div>
 		</nav>
-		@if(!$page->isEmpty())
-		<section class="section-bg-white design-page-menu web-border-bottom">
-			<div class="web-container">
-				<!-- Swiper -->
-				<div class="sub-nav">
-					{{-- <h4> {{ Request::segment(1)}} </h4> --}}
-					<div class="swiper mySwiper">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide"><a href="logo-design.php">Logo Design</a></div>
-							<div class="swiper-slide"><a href="corporate-identity.php">Corporate Branding</a></div>
-							<div class="swiper-slide"><a href="brand-guildeline-book.php">Brand Guideline Book</a></div>
-							<div class="swiper-slide"><a href="packaging-design.php">Brand Packaging Design</a></div>
-							<div class="swiper-slide"><a href="uniform-branding.php">Uniform Branding</a></div>
-							<div class="swiper-slide"><a href="vehicle-branding.php">Vehicle Branding</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		@endif
 	</header>
 
 	<div class="wrapper">
@@ -277,9 +257,10 @@
 	<div class="overlay"></div>
 
 	<div class="main-wrap">
-                    <div class="nk-content ">
+	    
+                    
                         @yield('content')
-                    </div>
+                    
                     <footer class="section-bg-white">
                         <section class="footer-links section-padtop-50 section-padbottom-50">
                             <div class="web-container">

@@ -50,8 +50,13 @@ class WelcomeController extends Controller
 
     public function index($id)
     {
-        $pages = DB::table('page')->where('title', '=', $id)->get();
+        $pages = DB::table('page')
+            ->join('page_detail', 'page.id', '=', 'page_detail.page_id')
+            ->where('title', '=', $id)
+            ->get();
 
+        // dd($pages);
+        // die();
         $main_menu = DB::table('menus')->where('menu_link','!=','#')->get();
         $para_style_1 = "";
         $para_style_2 = "";
