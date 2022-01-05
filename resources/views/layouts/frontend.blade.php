@@ -38,6 +38,11 @@
 	
 @php
 	$page = DB::table('page')->where('title','=',Request::segment(1))->get();
+	if(count($page)>0){
+		$child_menu = DB::table('child_menus')->where('menu_id','=',$page[0]->menu_id)->get();
+	}
+	
+	
 @endphp
 
 		<nav class="navbar navbar-expand-xl navbar-light sticky-top desktop-navbar">
@@ -128,6 +133,43 @@
 				</div>
 			</div>
 		</nav>
+
+		<section class="section-bg-white design-page-menu web-border-bottom">
+			<div class="web-container">
+				<nav class="navbar navbar-expand-xl navbar-light">
+				  
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+		
+				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav m-auto">
+					  <li class="nav-item">
+						<a class="nav-link" href="logo-design.php">Logo Design</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="corporate-identity.php">Corporate Identity</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="brand-guildeline-book.php">Brand Guideline Book</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="packaging-design.php">Brand Packaging</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="uniform-branding.php">Uniform Branding</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="vehicle-branding.php">Vehicle Branding</a>
+					  </li>
+				  </div>
+				</nav>
+			</div>
+		</section>
+
+		
+		
+
 	</header>
 
 	<div class="wrapper">

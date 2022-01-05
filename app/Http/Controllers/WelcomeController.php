@@ -52,12 +52,12 @@ class WelcomeController extends Controller
     {
         $pages = DB::table('page')
             ->join('page_detail', 'page.id', '=', 'page_detail.page_id')
-            ->where('title', '=', $id)
+            ->where('page.title', '=', $id)
             ->get();
 
-        // dd($pages);
-        // die();
+            
         $main_menu = DB::table('menus')->where('menu_link','!=','#')->get();
+        $page_section = DB::table('page_section')->get();
         $para_style_1 = "";
         $para_style_2 = "";
         $para_style_3 = "";
@@ -72,7 +72,7 @@ class WelcomeController extends Controller
         $team_section = "";
         $videos = "";
         
-        return view('welcome', Compact('id','para_style_1', 'para_style_2', 'main_menu', 'para_style_3', 'para_style_4', 'para_style_5', 'pages','client_and_partner','request','industries','news','case_study','team_section','sliders','videos'));
+        return view('welcome', Compact('id','para_style_1', 'page_section', 'para_style_2', 'main_menu', 'para_style_3', 'para_style_4', 'para_style_5', 'pages','client_and_partner','request','industries','news','case_study','team_section','sliders','videos'));
     }
     public function services_by_id($id){
         
