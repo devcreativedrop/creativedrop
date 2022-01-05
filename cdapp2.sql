@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2022 at 09:00 AM
+-- Generation Time: Jan 05, 2022 at 07:14 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -125,7 +125,6 @@ CREATE TABLE `clientandparterimage` (
 INSERT INTO `clientandparterimage` (`id`, `page_id`, `name`, `image`, `created_at`, `updated_at`) VALUES
 (9, 18, 'Home Section 1', 'team-1.jpg', '2021-12-28 12:44:53', '2021-12-28 12:44:53'),
 (10, 18, 'Home Section 1', 'ftp_access.png', '2021-12-28 12:44:53', '2021-12-28 12:44:53'),
-(11, NULL, 'client group 8', 'image4.jpg', '2021-12-30 15:07:21', '2021-12-30 15:07:21'),
 (12, NULL, 'client group 8', 'image1.jpg', '2021-12-30 15:07:21', '2021-12-30 15:07:21'),
 (13, NULL, 'client group 8', 'imaeg2.jpg', '2021-12-30 15:07:21', '2021-12-30 15:07:21');
 
@@ -455,6 +454,9 @@ INSERT INTO `news_and_opinions` (`id`, `image`, `page_id`, `name`, `title`, `des
 
 CREATE TABLE `page` (
   `id` int(11) NOT NULL,
+  `menu_id` varchar(100) DEFAULT NULL,
+  `sub_menu_id` varchar(100) DEFAULT NULL,
+  `child_menu_id` varchar(100) DEFAULT NULL,
   `title` varchar(500) DEFAULT NULL,
   `body` text DEFAULT NULL,
   `image` text DEFAULT NULL,
@@ -464,37 +466,68 @@ CREATE TABLE `page` (
   `meta_desc` text DEFAULT NULL,
   `design_menu` enum('N','Y') DEFAULT 'N',
   `user_id` int(11) DEFAULT NULL,
-  `section1` varchar(100) DEFAULT NULL,
-  `section2` varchar(100) DEFAULT NULL,
-  `section3` varchar(100) DEFAULT NULL,
-  `section4` varchar(100) DEFAULT NULL,
-  `section5` varchar(100) DEFAULT NULL,
-  `section6` varchar(100) DEFAULT NULL,
-  `section7` varchar(100) DEFAULT NULL,
-  `section8` varchar(100) DEFAULT NULL,
-  `section9` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp(),
-  `section_1_type` varchar(100) DEFAULT NULL,
-  `section_2_type` varchar(100) DEFAULT NULL,
-  `section_3_type` varchar(100) DEFAULT NULL,
-  `section_4_type` varchar(100) DEFAULT NULL,
-  `section_5_type` varchar(100) DEFAULT NULL,
-  `section_6_type` varchar(100) DEFAULT NULL,
-  `section_7_type` varchar(100) DEFAULT NULL,
-  `section_8_type` varchar(100) DEFAULT NULL,
-  `section_9_type` varchar(100) DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `page`
 --
 
-INSERT INTO `page` (`id`, `title`, `body`, `image`, `slug`, `status`, `meta_keyword`, `meta_desc`, `design_menu`, `user_id`, `section1`, `section2`, `section3`, `section4`, `section5`, `section6`, `section7`, `section8`, `section9`, `created_at`, `updated_at`, `section_1_type`, `section_2_type`, `section_3_type`, `section_4_type`, `section_5_type`, `section_6_type`, `section_7_type`, `section_8_type`, `section_9_type`) VALUES
-(24, 'Home', NULL, NULL, 'home', 'Published', 'meta keyword for home page', 'meta description for home page', 'N', NULL, '1', '4', '6', '11', '12', '11', '18', '13', '15', '2021-12-30 20:02:54', '2021-12-30 20:02:54', 'slider 1', 'case study 1', 'client group 8', 'section 1', 'section 1', 'section 1', 'Logo Design 2', 'section 1', 'section 1'),
-(25, 'logo_design', NULL, NULL, 'logo_design', 'Published', 'logo design for meta keyword', 'logo_design meta description', 'N', NULL, '8', '13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-31 12:43:35', '2021-12-31 12:43:35', 'section 1', 'section 8', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, 'work', NULL, NULL, 'work', 'Published', NULL, 'meta description for work', 'N', NULL, '17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-12-31 14:55:25', '2021-12-31 14:55:25', 'one', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'agency', NULL, NULL, 'agency', 'Published', 'meta keywords', 'agency', 'N', NULL, '1', '2', '4', '2', '16', '8', '10', '11', '13', '2022-01-02 07:38:09', '2022-01-02 07:38:09', 'slider 1', 'checking', 'case study 1', 'testing title', 'section 2', 'section 1', 'section 1', 'section 8', 'section 1');
+INSERT INTO `page` (`id`, `menu_id`, `sub_menu_id`, `child_menu_id`, `title`, `body`, `image`, `slug`, `status`, `meta_keyword`, `meta_desc`, `design_menu`, `user_id`, `created_at`, `updated_at`) VALUES
+(33, '#', NULL, NULL, 'Home', NULL, NULL, 'home', 'Published', NULL, 'home page Description keywords', 'N', NULL, '2022-01-04 10:20:23', '2022-01-04 10:20:23'),
+(35, '#', NULL, NULL, 'Home2', NULL, NULL, 'home2', 'Published', NULL, 'home page Description keywords', 'N', NULL, '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(36, '#', NULL, NULL, 'Home3', NULL, NULL, 'home3', 'Published', NULL, 'asdfasdfa', 'N', NULL, '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(37, '1', '1', '1', 'logo_design', NULL, NULL, 'logo_design', 'Published', NULL, 'Logo Design Meta Descriptions', 'N', NULL, '2022-01-04 21:23:52', '2022-01-04 21:23:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_detail`
+--
+
+CREATE TABLE `page_detail` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `section_no` int(11) DEFAULT NULL,
+  `section` int(11) DEFAULT NULL,
+  `section_type` varchar(250) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `page_detail`
+--
+
+INSERT INTO `page_detail` (`id`, `page_id`, `section_no`, `section`, `section_type`, `created_at`, `updated_at`) VALUES
+(11, 33, 1, 6, 'Home Section 1', '2022-01-04 10:20:23', '2022-01-04 10:20:23'),
+(12, 33, 2, 3, 'team group 8', '2022-01-04 10:20:23', '2022-01-04 10:20:23'),
+(13, 33, 3, 12, 'section 1', '2022-01-04 10:20:23', '2022-01-04 10:20:23'),
+(14, 34, 1, 1, 'slider 1', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(15, 34, 2, 2, 'testing title', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(16, 34, 3, 4, 'case study 1', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(17, 34, 4, 14, 'Section 1', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(18, 34, 5, 8, 'section 1', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(19, 34, 6, 14, 'Section 1', '2022-01-04 11:33:06', '2022-01-04 11:33:06'),
+(20, 35, 1, 1, 'slider 2', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(21, 35, 2, 2, 'testing title', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(22, 35, 3, 4, 'case study 2', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(23, 35, 4, 14, 'section 9', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(24, 35, 5, 16, 'section 2', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(25, 35, 6, 14, 'section 9', '2022-01-04 14:51:09', '2022-01-04 14:51:09'),
+(26, 36, 1, 19, 'PaddingTOP70_Bottom50', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(27, 36, 2, 1, 'slider 2', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(28, 36, 3, 19, 'padding100', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(29, 36, 4, 2, 'testing title', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(30, 36, 5, 19, 'PaddingTOP70_Bottom50', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(31, 36, 6, 4, 'slider 1', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(32, 36, 7, 19, 'PaddingTOP70_Bottom50', '2022-01-04 14:59:08', '2022-01-04 14:59:08'),
+(33, 37, 1, 12, 'section 1', '2022-01-04 21:23:52', '2022-01-04 21:23:52'),
+(34, 37, 2, 1, 'slider 3', '2022-01-04 21:23:52', '2022-01-04 21:23:52'),
+(35, 37, 3, 19, 'PaddingTOP70_Bottom50', '2022-01-04 21:23:52', '2022-01-04 21:23:52'),
+(36, 37, 4, 3, 'team group 2', '2022-01-04 21:23:52', '2022-01-04 21:23:52'),
+(37, 37, 5, 9, 'section 1', '2022-01-04 21:23:52', '2022-01-04 21:23:52');
 
 -- --------------------------------------------------------
 
@@ -505,6 +538,7 @@ INSERT INTO `page` (`id`, `title`, `body`, `image`, `slug`, `status`, `meta_keyw
 CREATE TABLE `page_section` (
   `id` int(11) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
+  `detail` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -513,27 +547,27 @@ CREATE TABLE `page_section` (
 -- Dumping data for table `page_section`
 --
 
-INSERT INTO `page_section` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Slider', NULL, NULL),
-(2, 'Video', NULL, NULL),
-(3, 'Team', NULL, NULL),
-(4, 'Case Study', NULL, NULL),
-(5, 'Services', NULL, NULL),
-(6, 'Clients', NULL, NULL),
-(7, 'Industries', NULL, NULL),
-(8, 'News and Opinions', NULL, NULL),
-(9, 'Meeting Sections', NULL, NULL),
-(10, 'Para Style 1', NULL, NULL),
-(11, 'Para Style 2', NULL, NULL),
-(12, 'Para Style 3', NULL, NULL),
-(13, 'Para Style 4', NULL, NULL),
-(14, 'Para Style 5', NULL, NULL),
-(15, 'Section 15', NULL, NULL),
-(16, 'Section 16', NULL, NULL),
-(17, 'Section 17', NULL, NULL),
-(18, 'Section 18', NULL, NULL),
-(19, NULL, NULL, NULL),
-(20, NULL, NULL, NULL);
+INSERT INTO `page_section` (`id`, `name`, `detail`, `created_at`, `updated_at`) VALUES
+(1, 'Slider', '<section class=\"home-slider section-bg-black creative-banner\">\n                <!-- Images slider - Start -->\n                <div class=\"web-container\">\n                    <div class=\"row\">\n                        <div class=\"col-12\">\n                            <div id=\"carouselExampleIndicators\" class=\"position-relative scrollto-section carousel slide\" data-ride=\"carousel\">\n                                <a href=\"#section-2\" id=\"sectionTwo\" class=\"mouse\" aria-hidden=\"true\">\n                                <span class=\"mouse__wheel\"></span>\n                                <span class=\"mouse__text\">SCROLL TO EXPLORE</span>\n                                </a>\n                                <ol class=\"carousel-indicators\">\n                                    @php $num = 0; @endphp\n                                        @foreach($sliders as $row_slider)\n                                            <li data-target=\"#carouselExampleIndicators\" data-slide-to=\"{{$num++}}\" class=\"{{$row_slider->status}}\"></li>\n                                        @endforeach\n                                </ol>\n                                <div class=\"carousel-inner\">\n\n                                    @foreach($sliders as $row_slider)\n                                        <div class=\"carousel-item {{$row_slider->status}}\" style=\"background: url(\'{{asset(\'slider/\'.$row_slider->image)}}\') no-repeat center right;\">\n                                            <div class=\"slider-flex-wrap\">\n                                                <div class=\"homepage-banner-content\">\n                                                    <p class=\"web-h5 text-white mb-0\">{{$row_slider->text1}}</p>\n                                                    <h2 class=\"web-h2 text-white mb-4\">{{$row_slider->text2}}</h2>\n                                                    <ul class=\"list-inline\">\n                                                        <li class=\"list-inline-item\"><a href=\"#\" class=\"btn web-btn web-btn-white\" data-toggle=\"modal\" data-target=\"#creativeModal\">Contact Now</a></li>\n                                                        <li class=\"list-inline-item\"><a href=\"#\" class=\"blue-link\">Learn more <i class=\"fas fa-chevron-right pl-1\"></i></a></li>\n                                                    </ul>\n                                                    \n                                                </div>\n                                                <div class=\"banner-img-mob\">\n                                                    <img class=\"img-fluid\" src=\"{{asset(\'slider/\'.$row_slider->image)}}\" alt=\"\">\n                                                </div>\n                                            </div>\n                                        </div>\n                                    @endforeach\n                    \n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <!-- Images slider - End -->\n            </section>', NULL, NULL),
+(2, 'Video', '<section class=\"section-bg-white section-padbottom-100 home-video-with-banner\">\n            <div class=\"web-container\">\n                <div class=\"row\">\n                    <div class=\"col-md-12\">\n                        <div style=\"margin-top:0px !important;\" class=\"home-video-content text-center\">\n                            <h3 class=\"web-h3 text-black text-left\">{{$row_video->video_title}}</h3>\n                            <iframe class=\"w-100 web-border-radius-5\" width=\"560\" height=\"315\" src=\"{{$row_video->video_link}}\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n                            <a href=\"#\" class=\"btn web-btn web-btn-white\" data-toggle=\"modal\" data-target=\"#creativeModal\">Contact Now</a>\n                        </div>\n                    </div>\n                </div>\n            </div>', NULL, NULL),
+(3, 'Team', NULL, NULL, NULL),
+(4, 'Case Study', NULL, NULL, NULL),
+(5, 'Services', NULL, NULL, NULL),
+(6, 'Clients', NULL, NULL, NULL),
+(7, 'Industries', NULL, NULL, NULL),
+(8, 'News and Opinions', NULL, NULL, NULL),
+(9, 'Meeting Sections', NULL, NULL, NULL),
+(10, 'Para Style 1', NULL, NULL, NULL),
+(11, 'Para Style 2', NULL, NULL, NULL),
+(12, 'Para Style 3', NULL, NULL, NULL),
+(13, 'Para Style 4', NULL, NULL, NULL),
+(14, 'Para Style 5', NULL, NULL, NULL),
+(15, 'Section 15', NULL, NULL, NULL),
+(16, 'Section 16', NULL, NULL, NULL),
+(17, 'Section 17', NULL, NULL, NULL),
+(18, 'Section 18', NULL, NULL, NULL),
+(19, 'Padding', NULL, NULL, NULL),
+(20, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -855,6 +889,8 @@ CREATE TABLE `section_19` (
   `id` int(11) NOT NULL,
   `page_id` int(11) DEFAULT NULL,
   `name` varchar(150) DEFAULT NULL,
+  `padding_bottom` varchar(100) DEFAULT NULL,
+  `padding_top` varchar(100) DEFAULT NULL,
   `image` varchar(150) DEFAULT NULL,
   `title` varchar(150) DEFAULT NULL,
   `paragraph` varchar(150) DEFAULT NULL,
@@ -862,6 +898,16 @@ CREATE TABLE `section_19` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `section_19`
+--
+
+INSERT INTO `section_19` (`id`, `page_id`, `name`, `padding_bottom`, `padding_top`, `image`, `title`, `paragraph`, `link`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'one', '70', '70', NULL, NULL, NULL, NULL, '2022-01-04 12:35:46', '2022-01-04 12:35:46'),
+(2, NULL, 'two', '30', '60', NULL, NULL, NULL, NULL, '2022-01-04 12:36:44', '2022-01-04 12:36:44'),
+(3, NULL, 'padding100', '100', '100', NULL, NULL, NULL, NULL, '2022-01-04 14:52:38', '2022-01-04 14:52:38'),
+(4, NULL, 'PaddingTOP70_Bottom50', '50', '70', NULL, NULL, NULL, NULL, '2022-01-04 14:57:26', '2022-01-04 14:57:26');
 
 -- --------------------------------------------------------
 
@@ -1397,6 +1443,12 @@ ALTER TABLE `page`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `page_detail`
+--
+ALTER TABLE `page_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `page_section`
 --
 ALTER TABLE `page_section`
@@ -1466,6 +1518,12 @@ ALTER TABLE `section_17`
 -- Indexes for table `section_18`
 --
 ALTER TABLE `section_18`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `section_19`
+--
+ALTER TABLE `section_19`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1634,7 +1692,13 @@ ALTER TABLE `news_and_opinions`
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT for table `page_detail`
+--
+ALTER TABLE `page_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `page_section`
@@ -1701,6 +1765,12 @@ ALTER TABLE `section_17`
 --
 ALTER TABLE `section_18`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `section_19`
+--
+ALTER TABLE `section_19`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `seo`
