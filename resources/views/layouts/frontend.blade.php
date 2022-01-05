@@ -13,13 +13,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 	
 	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
-	<link rel="stylesheet" href="{{ asset('front_theme/css/all.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('front_theme/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('front_theme/css/swiper-bundle.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('front_theme/css/ekko-lightbox.css')}}">
-	<link rel="stylesheet" href="{{ asset('front_theme/css/jquery.mCustomScrollbar.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/all.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/swiper-bundle.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/ekko-lightbox.css')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/jquery.mCustomScrollbar.min.css')}}">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="{{ asset('front_theme/css/theme.css?v=2.9')}}">
+	<link rel="stylesheet" href="{{ asset('public/front_theme/css/theme.css?v=2.9')}}">
 	<link href="https://aiqom.ai/css/bootstrap-tour-standalone.min.css" rel="stylesheet">
 	<script src="https://aiqom.ai/js/jquery-3.3.1.min.js"></script>
     <script src="https://aiqom.ai/js/bootstrap-tour-standalone.min.js"></script>
@@ -31,7 +31,7 @@
 	<header class="web-border-bottom">
 
 		<nav class="navbar navbar-expand-lg navbar-light section-bg-white mobile-navbar">
-			<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
+			<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('public/front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
 			<button type="button" id="sidebarCollapse" class="btn"><i class="fas fa-bars fa-lg"></i></button>
 		</nav>
 
@@ -56,7 +56,7 @@
 
 
 					<ul class="navbar-nav navbar-light mr-auto">
-						<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
+						<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('public/front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
 						@if(!$page->isEmpty())
 
 						
@@ -367,7 +367,7 @@
 								<div class="row">
 									<div class="col-12 col-md-4 col-lg-2">
 										<div class="footer-logo">
-											<a href="#"><img src="{{asset('front_theme/images/logo.png')}}" alt="logo" class="w-75"></a>
+											<a href="#"><img src="{{asset('public/front_theme/images/logo.png')}}" alt="logo" class="w-75"></a>
 										</div>
 									</div>
 									<div class="col-12 col-md-8 col-lg-5">
@@ -419,15 +419,15 @@
 
 					  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="{{ asset('front_theme/js/jquery.counterup.min.js')}}"></script>
-<script src="{{ asset('front_theme/js/jquery.waypoints.min.js')}}"></script>
+<script src="{{ asset('public/front_theme/js/jquery.counterup.min.js')}}"></script>
+<script src="{{ asset('public/front_theme/js/jquery.waypoints.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-<script src="{{ asset('front_theme/js/swiper-bundle.min.js')}}"></script>
-<script src="{{ asset('front_theme/js/ekko-lightbox.min.js')}}"></script>
-<script src="{{ asset('front_theme/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script src="{{ asset('public/front_theme/js/swiper-bundle.min.js')}}"></script>
+<script src="{{ asset('public/front_theme/js/ekko-lightbox.min.js')}}"></script>
+<script src="{{ asset('public/front_theme/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="{{ asset('front_theme/js/theme.js?v=1.9')}}"></script>
+<script src="{{ asset('public/front_theme/js/theme.js?v=1.9')}}"></script>
 
 
   

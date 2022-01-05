@@ -22,7 +22,7 @@
                                 <div class="carousel-inner">
 
                                     @foreach($sliders as $row_slider)
-                                        <div class="carousel-item {{$row_slider->status}}" style="background: url('{{asset('slider/'.$row_slider->image)}}') no-repeat center right;">
+                                        <div class="carousel-item {{$row_slider->status}}" style="background: url('{{asset('public/slider/'.$row_slider->image)}}') no-repeat center right;">
                                             <div class="slider-flex-wrap">
                                                 <div class="homepage-banner-content">
                                                     <p class="web-h5 text-white mb-0">{{$row_slider->text1}}</p>
@@ -34,7 +34,7 @@
                                                     
                                                 </div>
                                                 <div class="banner-img-mob">
-                                                    <img class="img-fluid" src="{{asset('slider/'.$row_slider->image)}}" alt="">
+                                                    <img class="img-fluid" src="{{asset('public/slider/'.$row_slider->image)}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@
                 <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="team-box">
                         <div class="img-block web-border-radius-10">
-                            <img src="{{asset('team/'.$row_team_section->image)}}" alt="" class="obj-cover">
+                            <img src="{{asset('public/team/'.$row_team_section->image)}}" alt="" class="obj-cover">
                         </div>
                         <div class="team-overlay web-border-radius-10">
                             <h5 class="web-h5 text-white mb-0 w-75">{{$row_team_section->designation}}</h5>
@@ -156,8 +156,8 @@
                                         <div class="portfolio-img">
                                             <div class="img-block web-border-radius-5">
                     
-                                                <a href="{{asset('case_study/'.$row_case_study->image)}}" id="ekkoLight" data-toggle="lightbox" data-gallery="example-gallery">
-                                                    <img src="{{asset('case_study/'.$row_case_study->image)}}" alt="" class="obj-cover">
+                                                <a href="{{asset('public/case_study/'.$row_case_study->image)}}" id="ekkoLight" data-toggle="lightbox" data-gallery="example-gallery">
+                                                    <img src="{{asset('public/case_study/'.$row_case_study->image)}}" alt="" class="obj-cover">
                                                 </a>
                                                 
                                             </div>
@@ -292,7 +292,7 @@
 
                         <div class="col-4 col-md-2">
                             <div class="client-box">
-                                <img src="{{asset('client_and_partner/'.$row_client_and_partner->image)}}" alt="" class="w-75">
+                                <img src="{{asset('public/client_and_partner/'.$row_client_and_partner->image)}}" alt="" class="w-75">
                             </div>
                         </div>
                     @endforeach
@@ -324,7 +324,7 @@
 
                             <div class="swiper-slide">
                                 <div class="creative-box web-border-radius-10">
-                                    <img src="{{asset('industries/'.$row_industries->image)}}" alt="" class="obj-cover web-border-radius-10">
+                                    <img src="{{asset('public/industries/'.$row_industries->image)}}" alt="" class="obj-cover web-border-radius-10">
                                     <div class="creative-overlay web-border-radius-5 text-white">
                                         <a href="javascript:void(0)" class="p-14 mb-0 text-white">{{$row_industries->title}}<i class="p-14 fas fa-chevron-right"></i></a>
                                     </div>
@@ -383,7 +383,7 @@
                             <div class="news-content">
                                 <div class="news-img">
                                     <div class="img-block web-border-radius-10">
-                                        <img src="{{asset('news_and_opinions/'.$row_news->image)}}" alt="" class="obj-cover">
+                                        <img src="{{asset('public/news_and_opinions/'.$row_news->image)}}" alt="" class="obj-cover">
                                     </div>
                                 </div>
                                 <div class="mt-3 mb-3">
@@ -440,7 +440,7 @@
             <div class="web-container">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <img src="{{asset('para_style_1/'.$row_para_style_1->image)}}" alt="" class="w-75">
+                        <img src="{{asset('public/para_style_1/'.$row_para_style_1->image)}}" alt="" class="w-75">
                     </div>
                     <div class="col-sm-6 col-md-6 align-self-center">
                         <h2 class="web-h2 mb-4">{{$row_para_style_1->title}}</h2>
@@ -474,7 +474,7 @@
                     <div class="col-sm-6 col-md-6 align-self-center">
                         <div class="corporate-tile-img">
                             <div class="img-block web-border-radius-5">
-                                <img src="{{asset('para_style_2/'.$row_para_style_2->image)}}" alt="" class="obj-cover">
+                                <img src="{{asset('public/para_style_2/'.$row_para_style_2->image)}}" alt="" class="obj-cover">
                             </div>
                         </div>
                     </div>
@@ -502,7 +502,7 @@
             <div class="col-sm-6 col-md-6 mt-5">
 				<div class="design-img">
 					<div class="img-block web-border-radius-5">
-						<img src="{{asset('para_style_3/'.$row_para_style_3->image)}}" alt="" class="obj-cover">
+						<img src="{{asset('public/para_style_3/'.$row_para_style_3->image)}}" alt="" class="obj-cover">
 					</div>
 				</div>
 				<div class="mt-3 mb-3">
@@ -593,7 +593,7 @@
 				</div>
 				<div class="banner-image text-center mt-5 mb-3">
 					<div class="img-block web-border-radius-5">
-                        <img class="obj-cover" src="{{asset('section_15/'.$section_15[0]->image)}}" alt="">
+                        <img class="obj-cover" src="{{asset('public/section_15/'.$section_15[0]->image)}}" alt="">
 					</div>
 				</div>
 			</div>
@@ -627,7 +627,7 @@
             <div class="col-sm-6 col-md-6">
 				<div class="logo-design-box mt-5">
 					<div class="box-img">
-                        <img class="img-fluid" src="{{asset('section_16/'.$row_section_16->image)}}" alt="">
+                        <img class="img-fluid" src="{{asset('public/section_16/'.$row_section_16->image)}}" alt="">
 					</div>
 					<h4 class="web-h4 mt-3 mb-4">{{$num}}.  {{$row_section_16->heading}}</h4>
 					<p class="p-14 web-grey mb-0">{{$row_section_16->text}}</p>
@@ -693,7 +693,7 @@
 
                                 <div class="swiper-slide">
                                     <div class="logo-box">
-                                        <img src="{{asset('section_18/'.$row_section_18->image)}}" alt="" class="obj-cover">
+                                        <img src="{{asset('public/section_18/'.$row_section_18->image)}}" alt="" class="obj-cover">
                                     </div>
                                 </div>
 
