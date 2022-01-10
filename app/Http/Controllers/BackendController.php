@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Mail;
 use Illuminate\Support\Facades\Hash;
-
+use App\Mail\WelcomeEmail;
 class BackendController extends Controller
 {
     /**
@@ -55,9 +56,7 @@ class BackendController extends Controller
 
     public function create_page(Request $request)
     {
-
-
-         // dd($request->text_1);
+        // dd($request->text_1);
         // die();
         $data = $request->all();
 
@@ -120,34 +119,45 @@ class BackendController extends Controller
 
     public function edit_page(Request $request)
     {
+        // dd($request);
+        // die();
+        $id = $request->id;
+        $data = $request->all();
+        DB::table('page_detail')->where('page_id', '=', $id)->delete();
 
         $affected = DB::table('page')
               ->where('id', $request->id)
               ->update([
                   'title' => $request->title,
+                  'menu_id' => $request->main_menu_id,
+                  'sub_menu_id' => $request->sub_menu_id,
+                  'child_menu_id' => $request->child_menu_id,
                   'slug' => $request->slug,
                   'meta_desc' => $request->meta_desc,
                   'meta_keyword' => $request->meta_keyword,
-                  'status' => $request->status,
-                  'section1' => $request->section1,
-                  'section2' => $request->section2,
-                  'section3' => $request->section3,
-                  'section4' => $request->section4,
-                  'section5' => $request->section5,
-                  'section6' => $request->section6,
-                  'section7' => $request->section7,
-                  'section8' => $request->section8,
-                  'section9' => $request->section9,
-                    'section_1_type' => $request->section_1_type,
-                    'section_2_type' => $request->section_2_type,
-                    'section_3_type' => $request->section_3_type,
-                    'section_4_type' => $request->section_4_type,
-                    'section_5_type' => $request->section_5_type,
-                    'section_6_type' => $request->section_6_type,
-                    'section_7_type' => $request->section_7_type,
-                    'section_8_type' => $request->section_8_type,
-                    'section_9_type' => $request->section_9_type
-                ]);
+                  'status' => $request->status]);
+                  
+        
+         // dd($data);
+        // die();
+        // $product_id = $data['product_id'];
+        for ($i = 0; $i < count($request->section); $i++) {
+
+            // $file = $data['slider_image'][$i]; // will get all files
+            // $file_name = $file->getClientOriginalName(); //Get file original name
+            // $file->move(public_path('slider') , $file_name); // move files to destination folder
+
+                // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+                // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                DB::table('page_detail')->insert(
+                    [
+                        'page_id' => $id,
+                        'section_no' => $i+1,
+                        'section' => $data['section'][$i],
+                        'section_type' => $data['section_type'][$i]
+                    ]
+                );
+        }
 
         return redirect()->back();
         
@@ -162,7 +172,7 @@ class BackendController extends Controller
         return view('pages', Compact('pages','main_menu','page_section'));
     }
 
-    public function page_sections()
+    public function sections_1()
     {
         $section_19 = DB::table('section_19')->get();
         $section_18 = DB::table('section_18')->get();
@@ -180,6 +190,7 @@ class BackendController extends Controller
         $team = DB::table('teams')->get();
         $news = DB::table('news_and_opinions')->get();
         $industries = DB::table('industries')->get();
+        $services = DB::table('services')->get();
         $clientandpartnerimage = DB::table('clientandparterimage')->get();
         $case_study = DB::table('case_study')->get();
         $sliders = DB::table('sliders')->get();
@@ -194,7 +205,47 @@ class BackendController extends Controller
         
         $pages_video = DB::table('page')->get();
         
-        return view('page_section', Compact('case_study', 'section_17', 'section_18', 'section_19', 'section_16', 'team', 'section_15', 'sub_category', 'service', 'para_style_1','para_style_2','para_style_3','para_style_4','para_style_5', 'request', 'industries_pages','news', 'industries', 'clientandpartnerimage', 'clientAndParter_pages', 'pages','sliders','videos','slider_pages', 'pages_video','caseStudy_pages','client_and_partners','industries'));
+        return view('section_1', Compact('case_study', 'services', 'section_17', 'section_18', 'section_19', 'section_16', 'team', 'section_15', 'sub_category', 'service', 'para_style_1','para_style_2','para_style_3','para_style_4','para_style_5', 'request', 'industries_pages','news', 'industries', 'clientandpartnerimage', 'clientAndParter_pages', 'pages','sliders','videos','slider_pages', 'pages_video','caseStudy_pages','client_and_partners','industries'));
+    }
+    
+    
+    public function page_sections()
+    {
+        $section_22 = DB::table('section_22')->get();
+        $section_21 = DB::table('section_21')->get();
+        $section_20 = DB::table('section_20')->get();
+        $section_19 = DB::table('section_19')->get();
+        $section_18 = DB::table('section_18')->get();
+        $section_17 = DB::table('section_17')->get();
+        $section_16 = DB::table('section_16')->get();
+        $section_15 = DB::table('section_15')->get();
+        $service = DB::table('menus')->get();
+        $sub_category = DB::table('child_menus')->get();
+        $para_style_1 = DB::table('para_style_1')->get();
+        $para_style_2 = DB::table('para_style_2')->get();
+        $para_style_3 = DB::table('para_style_3')->get();
+        $para_style_4 = DB::table('para_style_4')->get();
+        $para_style_5 = DB::table('para_style_5')->get();
+        $request = DB::table('requests')->get();
+        $team = DB::table('teams')->get();
+        $news = DB::table('news_and_opinions')->get();
+        $industries = DB::table('industries')->get();
+        $services = DB::table('services')->get();
+        $clientandpartnerimage = DB::table('clientandparterimage')->get();
+        $case_study = DB::table('case_study')->get();
+        $sliders = DB::table('sliders')->get();
+        $videos = DB::table('videos')->get();
+        $pages = DB::table('page')->get();
+        $slider_pages = DB::table('page')->get();
+        $caseStudy_pages = DB::table('page')->get();
+        $clientAndParter_pages = DB::table('page')->get();
+        $industries_pages = DB::table('page')->get();
+        
+        $client_and_partners = DB::table('page')->get();
+        
+        $pages_video = DB::table('page')->get();
+        
+        return view('page_section', Compact('case_study', 'services', 'section_22', 'section_17', 'section_20', 'section_21', 'section_18', 'section_19', 'section_16', 'team', 'section_15', 'sub_category', 'service', 'para_style_1','para_style_2','para_style_3','para_style_4','para_style_5', 'request', 'industries_pages','news', 'industries', 'clientandpartnerimage', 'clientAndParter_pages', 'pages','sliders','videos','slider_pages', 'pages_video','caseStudy_pages','client_and_partners','industries'));
     }
 
     // main menu
@@ -334,7 +385,7 @@ class BackendController extends Controller
         $affected = DB::table('sliders')
         ->where('id', $request->id)
         ->update(
-            ['image' => $file_name, 'page_id' => $request->page_id, 'slider_name' => $request->slider_name, 'status' => $request->status, 'text1' => $request->text1, 'text2' => $request->text2, 'contact_button_link' => $request->contact_button_link]
+            ['image' => $file_name, 'page_id' => $request->page_id, 'name' => $request->name, 'status' => $request->status, 'text1' => $request->text1, 'text2' => $request->text2, 'contact_button_link' => $request->contact_button_link]
         );
     
 
@@ -517,12 +568,36 @@ class BackendController extends Controller
     // Industry Section
     public function store_industries(Request $request)
     {
-            $file_industries = $request->file('industry_image'); // will get all files
-                $file_name_file_industries = $file_industries->getClientOriginalName(); //Get file original name
-                $file_industries->move(public_path('industries') , $file_name_file_industries); // move files to destination folder
+        
+        // dd($request->text_1);
+        // die();
+        $data = $request->all();
+        
+        for ($i = 0; $i < count($request->industry_image); $i++) {
+
+            $file = $data['industry_image'][$i]; // will get all files
+            $file_name = $file->getClientOriginalName(); //Get file original name
+            $file->move(public_path('industries') , $file_name); // move files to destination folder
+            
+                // $file_industries = $request->file('industry_image'); // will get all files
+                // $file_name_file_industries = $file_industries->getClientOriginalName(); //Get file original name
+                // $file_industries->move(public_path('industries') , $file_name_file_industries); // move files to destination folder
+
+                // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+                // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                // DB::table('teams')->insert(
+                //     ['image' => $file_name, 'section_name' => $data['name'], 'name' => $data['team_member_title'][$i], 'designation' => $data['team_member_designation'][$i]]
+                // );
+                
                 DB::table('industries')->insert(
-                    ['image' => $file_name_file_industries, 'page_id' => $request->page_id, 'title' => $request->industry_name, 'link' => $request->link]
+                    ['image' => $file_name, 'page_id' => $request->page_id, 'title' => $data['title'][$i]]
                 );
+        }
+
+
+
+            
+                
         return redirect()->back();
     }
 
@@ -1051,14 +1126,14 @@ class BackendController extends Controller
 
          if($id == 5){
              //it is for services
-            // $teams = DB::table('case_study')->get();
+            $services = DB::table('services')->get();
             
-            // $Array = [];
-            // foreach($teams->unique('name') as $row){
+            $Array = [];
+            foreach($services->unique('name') as $row){
                 
-            //     $Array[] = '<option value="'.$row->id.'">'.$row->name.'</option>';
-            // }
-            $final_Result = [];
+                $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
+            }
+            $final_Result = $Array;
             // return response()->json(["sliders" => $final_Result]);
             return $final_Result;
          }
@@ -1252,6 +1327,42 @@ class BackendController extends Controller
             $Array = [];
             foreach($teams->unique('name') as $row){
                 
+                $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
+            }
+            $final_Result = $Array;
+            // return response()->json(["sliders" => $final_Result]);
+            return $final_Result;
+         }
+         
+         if($id == 20){
+            $teams = DB::table('section_20')->get();
+            
+            $Array = [];
+            foreach($teams->unique('name') as $row){
+                $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
+            }
+            $final_Result = $Array;
+            // return response()->json(["sliders" => $final_Result]);
+            return $final_Result;
+         }
+         
+         if($id == 21){
+            $teams = DB::table('section_21')->get();
+            
+            $Array = [];
+            foreach($teams->unique('name') as $row){
+                $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
+            }
+            $final_Result = $Array;
+            // return response()->json(["sliders" => $final_Result]);
+            return $final_Result;
+         }
+         
+         if($id == 22){
+            $teams = DB::table('section_22')->get();
+            
+            $Array = [];
+            foreach($teams->unique('name') as $row){
                 $Array[] = '<option value="'.$row->name.'">'.$row->name.'</option>';
             }
             $final_Result = $Array;
@@ -1534,46 +1645,65 @@ class BackendController extends Controller
          // dd($data);
          // die();
          // $product_id = $data['product_id'];
-         for ($i = 0; $i < count($request->footer_section_1_menu); $i++) {
-             //  $file = $data['icon'][$i]; // will get all files
-            //  $file_name = $file->getClientOriginalName(); //Get file original name
-            //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
-                  DB::table('footer_sections')->insert(
-                     [
-                        'section_id' => $data['footer_section_1_id'], 
-                        'name' => $data['footer_section_name_1'],
-                         'menu' => $data['footer_section_1_menu'][$i],
-                         'link' => $data['footer_section_1_link'][$i]
-                         ]
-                 );
+         if(isset($data['footer_section_1_menu'])) {
+             
+                for ($i = 0; $i < count($request->footer_section_1_menu); $i++) {
+                 //  $file = $data['icon'][$i]; // will get all files
+                //  $file_name = $file->getClientOriginalName(); //Get file original name
+                //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                      DB::table('footer_sections')->insert(
+                         [
+                            'section_id' => $data['footer_section_1_id'], 
+                            'name' => $data['footer_section_name_1'],
+                             'menu' => $data['footer_section_1_menu'][$i],
+                             'link' => $data['footer_section_1_link'][$i]
+                             ]
+                     );
+             }
+                
+            }
+         
+        
+         
+         if(isset($data['footer_section_2_menu'])) {
+             
+            for ($i = 0; $i < count($request->footer_section_2_menu); $i++) {
+                //  $file = $data['icon'][$i]; // will get all files
+               //  $file_name = $file->getClientOriginalName(); //Get file original name
+               //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                     DB::table('footer_sections')->insert(
+                        [
+                           'section_id' => $data['footer_section_2_id'], 
+                           'name' => $data['footer_section_name_2'],
+                            'menu' => $data['footer_section_2_menu'][$i],
+                            'link' => $data['footer_section_2_link'][$i]
+                            ]
+                    );
+            }
+        
          }
-         for ($i = 0; $i < count($request->footer_section_2_menu); $i++) {
-            //  $file = $data['icon'][$i]; // will get all files
-           //  $file_name = $file->getClientOriginalName(); //Get file original name
-           //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
-                 DB::table('footer_sections')->insert(
-                    [
-                       'section_id' => $data['footer_section_2_id'], 
-                       'name' => $data['footer_section_name_2'],
-                        'menu' => $data['footer_section_2_menu'][$i],
-                        'link' => $data['footer_section_2_link'][$i]
-                        ]
-                );
-        }
+         
+        
+        
+        if(isset($data['footer_section_3_menu'])) {
+             
+            for ($i = 0; $i < count($request->footer_section_3_menu); $i++) {
+                //  $file = $data['icon'][$i]; // will get all files
+               //  $file_name = $file->getClientOriginalName(); //Get file original name
+               //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
+                     DB::table('footer_sections')->insert(
+                        [
+                           'section_id' => $data['footer_section_3_id'], 
+                           'name' => $data['footer_section_name_3'],
+                            'menu' => $data['footer_section_3_menu'][$i],
+                            'link' => $data['footer_section_3_link'][$i]
+                            ]
+                    );
+            }
+        
+         }
 
-        for ($i = 0; $i < count($request->footer_section_3_menu); $i++) {
-            //  $file = $data['icon'][$i]; // will get all files
-           //  $file_name = $file->getClientOriginalName(); //Get file original name
-           //  $file->move(public_path('social_media') , $file_name); // move files to destination folder
-                 DB::table('footer_sections')->insert(
-                    [
-                       'section_id' => $data['footer_section_3_id'], 
-                       'name' => $data['footer_section_name_3'],
-                        'menu' => $data['footer_section_3_menu'][$i],
-                        'link' => $data['footer_section_3_link'][$i]
-                        ]
-                );
-        }
+        
 
      //return dd($data);
      $message = 'Footer Section Inserted successfully';
@@ -1679,7 +1809,7 @@ class BackendController extends Controller
 
 
 
-     // Para Style 18  Section
+     // Para Style 19  Section
      public function store_section_19(Request $request)
      {
         $data = $request->all();
@@ -1723,6 +1853,252 @@ class BackendController extends Controller
          DB::table('section_19')->where('id', '=', $id)->delete();
          return redirect()->back();
      }
+     
+     
+     
+     // Para Style 20  Section
+     public function store_section_20(Request $request)
+     {
+        // dd($request->text_1);
+        // die();
+        $data = $request->all();
+        // dd($data);
+        // die();
+        // $product_id = $data['product_id'];
+        for ($i = 0; $i < count($request->text_1); $i++) {
+
+            $file = $data['slider_image'][$i]; // will get all files
+            $file_name = $file->getClientOriginalName(); //Get file original name
+            $file->move(public_path('section_20_slider') , $file_name); // move files to destination folder
+
+                // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+                // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                DB::table('sliders')->insert(
+                    [
+                        'image' => $file_name,
+                        
+                        'name' => $data['name'],
+                        'status' => $data['status'][$i],
+                        'text1' => $data['text_1'][$i],
+                        'text2' => $data['text_2'][$i],
+                        'contact_button_link' => $data['link'][$i]]
+                );
+        }
+    //return dd($data);
+    $message = 'Sliders Inserted successfully';
+    return redirect('admin/page_sections')->with('message', $message);
+
+
+     }
+ 
+     public function edit_section_20(Request $request)
+     {
+        // $file = $request->file('image'); // will get all files
+        // $file_name = $file->getClientOriginalName(); //Get file original name
+        // $file->move(public_path('para_style_5') , $file_name); // move files to destination folder
+         $affected = DB::table('section_20')
+         ->where('id', $request->id)
+         ->update([
+            // 'image' => $file_name,
+            
+            'name' => $request->name,
+            'heading_1' => $request->heading_1,
+            'heading_2' => $request->heading_2,
+            'btn_class' => $request->btn_class,
+            'btn_label' => $request->btn_label
+            ]
+         );
+         return redirect()->back();
+     }
+ 
+     public function delete_section_20($id)
+     {
+         DB::table('section_20')->where('id', '=', $id)->delete();
+         return redirect()->back();
+     }
+     
+     
+      // Para Style 21  Section
+     public function store_section_21(Request $request)
+     {
+        $data = $request->all();
+      
+                DB::table('section_21')->insert(
+                    [
+                     'name' => $request->name,
+                     'heading_1' => $data['heading_1'],
+                     'heading_2' => $data['heading_2'],
+                     'btn_class' => $data['btn_class'],
+                     'btn_label' => $data['btn_label']
+                    ]
+                );
+      
+
+        //return dd($data);
+        $message = 'Section 21 Added successfully';
+        return redirect('admin/page_sections')->with('message', $message);
+
+
+     }
+ 
+     public function edit_section_21(Request $request)
+     {
+        // $file = $request->file('image'); // will get all files
+        // $file_name = $file->getClientOriginalName(); //Get file original name
+        // $file->move(public_path('para_style_5') , $file_name); // move files to destination folder
+         $affected = DB::table('section_21')
+         ->where('id', $request->id)
+         ->update([
+            // 'image' => $file_name,
+            
+            'name' => $request->name,
+            'heading_1' => $request->heading_1,
+            'heading_2' => $request->heading_2,
+            'btn_class' => $request->btn_class,
+            'btn_label' => $request->btn_label
+            ]
+         );
+         return redirect()->back();
+     }
+ 
+     public function delete_section_21($id)
+     {
+         DB::table('section_21')->where('id', '=', $id)->delete();
+         return redirect()->back();
+     }
+     
+     
+     
+     // 22  Section
+     public function store_section_22(Request $request)
+     {
+        $data = $request->all();
+        
+        if(!empty($request->file('image'))) {
+            
+            $file = $request->file('image'); // will get all files
+            $file_name = $file->getClientOriginalName(); //Get file original name
+            $file->move(public_path('section_22') , $file_name); // move files to destination folder
+        
+        }else{
+            $file_name = "";
+        }
+    
+        
+            
+        
+        
+      
+                DB::table('section_22')->insert(
+                    [
+                     'name' => $request->name,
+                     'heading_1' => $data['heading_1'],
+                     'heading_2' => $data['heading_2'],
+                     'image' => $file_name,
+                     'video' => $data['video'],
+                     'text' => $data['text']
+                    ]
+                );
+      
+
+        //return dd($data);
+        $message = 'Section 22 Added successfully';
+        return redirect('admin/page_sections')->with('message', $message);
+
+
+     }
+ 
+     public function edit_section_22(Request $request)
+     {
+        // $file = $request->file('image'); // will get all files
+        // $file_name = $file->getClientOriginalName(); //Get file original name
+        // $file->move(public_path('para_style_5') , $file_name); // move files to destination folder
+         $affected = DB::table('section_22')
+         ->where('id', $request->id)
+         ->update([
+            // 'image' => $file_name,
+            
+            'name' => $request->name,
+            'heading_1' => $request->heading_1,
+            'heading_2' => $request->heading_2,
+            'btn_class' => $request->btn_class,
+            'btn_label' => $request->btn_label
+            ]
+         );
+         return redirect()->back();
+     }
+ 
+     public function delete_section_22($id)
+     {
+         DB::table('section_22')->where('id', '=', $id)->delete();
+         return redirect()->back();
+     }
+     
+     
+     
+     
+     
+     
+     public function store_service(Request $request)
+    {
+
+        // dd($request->text_1);
+        // die();
+        $data = $request->all();
+        // dd($data);
+        // die();
+        // $product_id = $data['product_id'];
+        for ($i = 0; $i < count($request->sub_service); $i++) {
+
+            // $file = $data['slider_image'][$i]; // will get all files
+            // $file_name = $file->getClientOriginalName(); //Get file original name
+            // $file->move(public_path('slider') , $file_name); // move files to destination folder
+
+            //     // $file_name = $data['slider_image'][$i]->getClientOriginalName(); //Get file original name
+            //     // $file->move(public_path('slider') , $file_name); // move files to destination folder
+                DB::table('services')->insert(
+                    [
+                        'name' => $data['name'],
+                        'main_service' => $data['main_service'],
+                        'bootstrap_class_name' => $data['class_name'],
+                        'sub_service' => $data['sub_service'][$i],
+                        'sub_service_link' => $data['sub_service_link'][$i]
+                        ]
+                );
+        }
+    //return dd($data);
+    $message = 'Services Inserted successfully';
+    return redirect('admin/page_sections')->with('message', $message);
+
+    }
+
+    public function edit_service(Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        // die();
+        // $file = $request->file('slider_image'); // will get all files
+        // $file_name = $file->getClientOriginalName(); //Get file original name
+        // $file->move(public_path('slider') , $file_name); // move files to destination folder
+        $affected = DB::table('services')
+        ->where('id', $request->id)
+        ->update(
+            ['name' => $request->name, 'main_service' => $request->main_service, 'bootstrap_class_name' => $request->class_name, 'sub_service' => $request->sub_service, 'sub_service_link' => $request->sub_service_link]
+        );
+    
+        return redirect()->back();
+    
+    }
+
+    public function delete_service($id)
+    {
+        DB::table('services')->where('id', '=', $id)->delete();
+        return redirect()->back();
+    }
+    
+    
+    
+   
 
    
 

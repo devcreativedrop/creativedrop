@@ -5,7 +5,7 @@
 
  <!-- BEGIN: Content-->
  
- @if(!$pages->isEmpty())
+ <!--@if(!$pages->isEmpty())-->
 
 
     @foreach($pages as $row_pages)
@@ -105,34 +105,34 @@
 
 
 
-@endif
+<!--@endif-->
 
 
-@if($pages->isEmpty())
+<!--@if($pages->isEmpty())-->
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    Oops!</h1>
-                <h2>
-                    404 Not Found</h2>
-                <div style="font-size:21px;" class="error-details">
-                    Sorry, an error has occured, Requested page not found!
-                </div>
-                <div class="error-actions">
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12">-->
+<!--            <div class="error-template">-->
+<!--                <h1>-->
+<!--                    Oops!</h1>-->
+<!--                <h2>-->
+<!--                    404 Not Found</h2>-->
+<!--                <div style="font-size:21px;" class="error-details">-->
+<!--                    Sorry, an error has occured, Requested page not found!-->
+<!--                </div>-->
+<!--                <div class="error-actions">-->
                     
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
-@endif
+<!--@endif-->
 
 @endsection
 

@@ -77,7 +77,7 @@
 
                               <form method="POST" action="{{url('admin/edit_page')}}">
                                 @csrf
-                                <input type="hidden" value="{{$page[0]->id}}" name="id" >
+                                <input type="hidden" value="{{Request::segment(3)}}" name="id" >
                 
                                   <div class="row">
                                       <div class="col-12">
@@ -171,7 +171,7 @@
                                     </div>
 
                                     @foreach($page as $row_pages)
-                                    <div class="col-6">
+                                    <div class="col-5">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label style="font-weight:bold;"for="account-username">Section: {{$row_pages->section_no}} ::: 
@@ -201,7 +201,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-5">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label style="font-weight:bold;"for="account-username">Type Section {{$row_pages->section_no}} ::: <span class="badge badge-pill badge-info" style="font-weight:bold; font-size:21px;">
@@ -216,6 +216,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                     <div class="col-2">
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label style="font-weight:bold;"for="account-username">Section Number {{$row_pages->section_no}} 
+                                                    
+                                                </label>
+                                                    <input type="text" class="form-control" name="section_no[]" value="{{$row_pages->section_no}}"/>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
                                     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -227,7 +238,7 @@
                                                     //    alert(page_section);
                                                 $.ajax({
                                                                         type:'GET',
-                                                                        url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
+                                                                        url:'https://new.creativedrop.com/admin/page_section_id/'+page_section,
                                                                         success:function(data){
                                                                             console.log(data);
                                                                         $('#dependent_page_sections_{{$row_pages->section_no}}').html(data);
@@ -272,7 +283,7 @@
                                                             // alert(page_section);
                                                         $.ajax({
                                                             type:'GET',
-                                                            url:'http://localhost/creativedrop/final_cd_web_git/creativedrop/public/admin/page_section_id/'+page_section,
+                                                            url:'https://new.creativedrop.com/admin/page_section_id/'+page_section,
                                                             success:function(data){
                                                                 console.log(data);
                                                                 $(`#dependent_page_sections_${caseStudyrowIdx}`).html(data);
@@ -309,7 +320,7 @@
                                         </script>
                                       
                                         <div class="container pt-4">
-                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Case Study </button>
+                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Page Sections </button>
                                           <div class="table-responsive">
                                             <table class="table table-bordered">
                                               <thead>
@@ -523,6 +534,355 @@
     </div>
   </div>
   <!-- END: Content-->
+  <!-- END: Content-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+  $(document).ready(function(){
+
+      $("#page_sections_1").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_1').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_2").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_2').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_3").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_3').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_4").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_4').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_5").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_5').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_6").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_6').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_7").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_7').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_8").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_8').html(data);
+                                }
+                            });
+         
+      });
+
+      $("#page_sections_9").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#dependent_page_sections_9').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+
+
+
+
+
+
+
+
+
+      $("#edit_page_sections_1").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_1').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_2").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_2').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_3").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_3').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_4").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_4').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_5").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_5').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_6").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_6').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_7").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_7').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_8").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_8').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+      $("#edit_page_sections_9").change(function(){
+          var page_section = $(this).children("option:selected").val();
+        //    alert(page_section);
+           $.ajax({
+                                type:'GET',
+                                url:'page_section_id/'+page_section,
+                                success:function(data){
+                                     console.log(data);
+                                   $('#edit_dependent_page_sections_9').html(data);
+
+                                   
+                                }
+                            });
+         
+      });
+
+
+  });
+
   
+$('#page_sections').change(function() {
+    if ($(this).val() != '') {
+        var select = $(this).attr("id");
+        var value = $(this).val();
+
+        var dependent = $(this).data('dependent');
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "https://new.creativedrop.com/admin/services_by_id/" + value,
+            method: "GET",
+            success: function(result) {
+                console.log(result);
+                $('#dependent_page_sections').html(result);
+            }
+        })
+    }
+    
+    if ($(this).val() == '#') {
+        $('#dependent_page_sections').val('');
+        $('#child_dependent_page_sections').val('');
+    }
+    
+});
+
+$('#dependent_page_sections').change(function() {
+    if ($(this).val() != '') {
+        var select = $(this).attr("id");
+        var value = $(this).val();
+
+        var dependent_page_sections = $(this).data('dependent');
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "https://new.creativedrop.com/admin/child_services_by_id/" + value,
+            method: "GET",
+            success: function(result) {
+                console.log(result);
+                $('#child_dependent_page_sections').html(result);
+            }
+
+        })
+    }
+    
+});
+
+  </script>
+
 
   @endsection

@@ -5,14 +5,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name ="description" content="@yield('meta_description', 'We build e-commerce site, management site, Android, iOS apps.Laravel, Java, NodeJs, PHP technology, React js, Vue js, React Native, Flutter.')">
     <meta name ="keywords" content="@yield('meta_keywords', 'We build e-commerce site, management site, Android, iOS apps.Laravel, Java, NodeJs, PHP technology, React js, Vue js, React Native, Flutter.')">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-	
-	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    
+	<link rel="shortcut icon" href="{{ asset('public/front_theme/images/favicon.png')}}" type="image/png">
 	<link rel="stylesheet" href="{{ asset('public/front_theme/css/all.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('public/front_theme/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('public/front_theme/css/swiper-bundle.min.css')}}">
@@ -23,6 +24,83 @@
 	<link href="https://aiqom.ai/css/bootstrap-tour-standalone.min.css" rel="stylesheet">
 	<script src="https://aiqom.ai/js/jquery-3.3.1.min.js"></script>
     <script src="https://aiqom.ai/js/bootstrap-tour-standalone.min.js"></script>
+    
+    <style>
+      .contact-form-left {
+        background-image: url("{{asset('public/front_theme/images/contact-form.jpeg') }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        /*margin-top: -1px;*/
+        /*margin-bottom: -1px;*/
+      }
+      .signup-form .form-control::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #000;
+        opacity: 1; /* Firefox */
+      }
+
+      .signup-form .form-control:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #000;
+      }
+
+      .signup-form .form-control::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: #000;
+      }
+      /*.signup-form .form-control {*/
+      /*  border-top: 0px !important;*/
+      /*  border-left: 0px;*/
+      /*  border-right: 0px;*/
+      /*  border-bottom: 2px solid #000;*/
+      /*  border-radius: 0px !important;*/
+      /*  padding-left: 0px;*/
+      /*}*/
+      /*.form-control:focus {*/
+      /*  border-color: #000 !important;*/
+      /*  box-shadow: 0 0 0px !important;*/
+      /*}*/
+      
+      #creativeModal .form-control, #creativeModal .form-control:focus {
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    color: #000 !important;
+    font-size: 14px !important;
+    font-family: 'helvetica regular' !important;
+     padding-left: 0px !important; 
+    background-color: transparent !important;
+}
+      
+      .signup-form .button {
+        border: 0px !important;
+      }
+      #creativeModal .modal-content
+      {
+         border: 0; 
+         /*width: 95% !important;*/
+      }
+      /* ,
+      .form-control:focus {
+        outline: 0;
+      } */
+      
+      /*.new-modal i.bi.bi-x-circle-fill {*/
+      /*  position: absolute;*/
+      /*  top: -15px !important;*/
+      /*}*/
+      
+     i.fa.fa-times-circle {
+    position: absolute;
+    top: -15px;
+    right: -25px;
+}
+
+    </style>
+    
+       
 </head>
 
 <body>
@@ -38,14 +116,18 @@
 	
 @php
 	$page = DB::table('page')->where('title','=',Request::segment(1))->get();
+	
 	if(count($page)>0){
 		$child_menu = DB::table('child_menus')->where('menu_id','=',$page[0]->menu_id)->get();
 	}
 	
+	$main_menu = DB::table('menus')->get();
+	
 	
 @endphp
 
-		<nav class="navbar navbar-expand-xl navbar-light sticky-top desktop-navbar">
+
+	<nav class="navbar navbar-expand-xl navbar-light sticky-top desktop-navbar">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div class="web-container-fluid">
 					<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile_nav" aria-controls="mobile_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,52 +139,65 @@
 
 					<ul class="navbar-nav navbar-light mr-auto">
 						<a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('public/front_theme/images/logo.png')}}" alt="Creative Drop" class="img-fluid"></a>
-						@if(!$page->isEmpty())
-
 						
-                        @php
-                            $main_menus = DB::table('menus')->where('menu_link', '!=', '#')->get();
-                        @endphp
-						<li class="nav-item dropdown megamenu-li dmenu"><a class="nav-link" href="{{url('/work')}}">Work</a></li>
-
-                        @foreach($main_menus as $main_menus_row)
-                        @php
-                            $child_menus = DB::table('child_menus')->where('menu_id', '=', $main_menus_row->id)->get();
-                        @endphp
-                            <li class="nav-item dropdown megamenu-li dmenu">
-                                <a class="nav-link" href="{{url('/'.$main_menus_row->menu_name.'')}}">{{$main_menus_row->menu_name}}</a>
-
-                            
-                            <div class="dropdown-menu megamenu sm-menu border-top" aria-labelledby="dropdown01">
+						
+						<li class="nav-item active"><a class="nav-link" href="{{url('work')}}">Work</a></li>
+						
+						@foreach($main_menu as $row_main_menu)
+						
+						<li class="nav-item dropdown megamenu-li dmenu">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown01" aria-haspopup="true" aria-expanded="false">{{$row_main_menu->menu_name}}</a>
+							<div class="dropdown-menu megamenu sm-menu border-top" aria-labelledby="dropdown01" style="display: none;">
 								<section class="design-menu section-padtop-50 section-padbottom-50">
-                                    <div class="web-container-fluid">
-                                        <div class="row">
-                                            @foreach($child_menus as $child_menus_rows)
-                                            @php
-                                                $child_menus = DB::table('child_menus')->where('menu_id', '=', $main_menus_row->id)->get();
-                                                $sub_child_menus = DB::table('sub_child_menus')->where('child_menu_id', '=', $child_menus_rows->id)->get();
-                                            @endphp
-                                            <div class="col-md">
-                                                <div class="sub-links">
-                                                    <h6 class="web-h6 web-border-bottom pb-4 mb-0"><a href="{{url('/'.$child_menus_rows->item_link.'')}}" class="web-bold">{{$child_menus_rows->item_name}}</a></h6>
-                                                    <ul class="mt-3">
-                                                        @foreach($sub_child_menus as $row_sub_child_menus)
-                                                            <li><a href="{{url('/'.$row_sub_child_menus->item_link.'')}}" class="p-14">{{$row_sub_child_menus->item_name}}</a></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                            
-                                        </div>
-                                    </div>
-                                </section>
-							</div>
-                            
-                            
-                            </li>
-                        @endforeach
+                                	<div class="web-container-fluid">
+                                		<div class="row">
+                                		    
+                                		    @php
+                                		        $sub_menu = DB::table('child_menus')->where('menu_id','=',$row_main_menu->id)->get();
+                                		    @endphp
+                                		    
+                                		        @foreach($sub_menu as $row_sub_menu)
 
+                                            		    <div class="col-md">
+                                            				<div class="sub-links">
+                                            					<h6 class="web-h6 web-border-bottom pb-4 mb-0"><a href="#" class="web-bold">{{$row_sub_menu->item_name}}</a></h6>
+                                            					<ul class="mt-3">
+                                            					    @php
+                                                        		        $sub_child_menu = DB::table('sub_child_menus')->where('child_menu_id','=',$row_sub_menu->id)->get();
+                                                        		    @endphp
+                                                        		        @foreach($sub_child_menu as $row_sub_child_menu)
+                                                        		        <li><a href="{{$row_sub_child_menu->item_link}}" class="p-14">{{$row_sub_child_menu->item_name}}</a></li>
+                                                        		        @endforeach
+                                            					</ul>
+                                            				</div>
+                                            			</div>
+
+                                		        @endforeach
+                                			
+                                			<div class="col-md">
+                                				<div class="sub-links">
+                                                        <h3 class="web-h3">Get a Quote</h3>
+                                                        <p class="p-14">Do not hesitate to contact us for any questions or queries you might have.</p>
+                                                        <p class="p-14">You can reach us through email, phone or on WhatsApp.</p>
+                                                        <ul>
+                                                            <li class="mb-2"><a href="mailto:info@creativedrop.com" class="btn web-btn web-btn-white">Email</a></li>
+                                                            <li class="mb-2"><a href="tel:+971503119300" class="btn web-btn web-btn-blue">Call Now</a></li>
+                                                            <li><a href="https://api.whatsapp.com/send?phone=+971503119300" class="btn web-btn" target="_blank"><i class="fab fa-whatsapp fa-lg pr-2"></i>Whatsapp</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                		</div>
+                                	</div>
+                                </section>
+                            </div>
+						</li>
+						
+						
+						@endforeach
+
+					
+
+					
 						
 
 						<!--====-->
@@ -112,7 +207,7 @@
 								<li class="nav-item">
 									<a class="nav-link" href="{{url('agency')}}">Agency</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="{{url('insight')}}">Insight</a></li>
+								<li class="nav-item"><a class="nav-link" href="{{url('insight/topic-title')}}">Insight</a></li>
 
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,45 +223,49 @@
 							<a href="tel:+971503119300" class="btn web-btn web-btn-blue">Call Now</a>
 							<a href="https://api.whatsapp.com/send?phone=+971503119300" class="text-white whatsapp-link" target="_blank"><i class="fab fa-whatsapp fa-lg"></i></a>
 						</form>
-					@endif
+
 					</ul>
 				</div>
 			</div>
 		</nav>
-
-		<section class="section-bg-white design-page-menu web-border-bottom">
-			<div class="web-container">
-				<nav class="navbar navbar-expand-xl navbar-light">
-				  
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				  </button>
+		        
+		        
+		      @if(count($page)>0)
+		            @php
+		            $child_menu = DB::table('sub_child_menus')->where('child_menu_id','=',$page[0]->sub_menu_id)->get();
+		            @endphp
+		            
+		            @if(!$child_menu->isEmpty())
+		            
+		            <section class="section-bg-white design-page-menu web-border-bottom">
+                    	<div class="web-container">
+                               <!-- Swiper -->
+                                <div class="sub-nav">
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach($child_menu as $row_child_menu)
+                                            
+                                                <div class="swiper-slide"><a href="" class="p-14">{{$row_child_menu->item_name}}</a></div>
+                                                
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                    	</div>
+                    </section>
+                    
+		            @endif
+        		    
+            
+		      @endif
+                
+    		
+        
+        
+        
 		
-				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav m-auto">
-					  <li class="nav-item">
-						<a class="nav-link" href="logo-design.php">Logo Design</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="corporate-identity.php">Corporate Identity</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="brand-guildeline-book.php">Brand Guideline Book</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="packaging-design.php">Brand Packaging</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="uniform-branding.php">Uniform Branding</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="vehicle-branding.php">Vehicle Branding</a>
-					  </li>
-				  </div>
-				</nav>
-			</div>
-		</section>
 
+		
 		
 		
 
@@ -181,7 +280,7 @@
 
 
 			<div class="sidebar-header">
-				<a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+				<a href="index.html"><img src="{{asset('public/front_theme/images/logo.png')}}" alt="Logo"></a>
 				<button id="dismiss" class="btn float-right">
 					<i class="fas fa-arrow-left"></i>
 				</button>
@@ -391,46 +490,206 @@
 
 
 					<!-- Modal -->
-					<div class="modal" id="creativeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-						  <div class="modal-content">
-							<div class="modal-header">
-							  <h5 class="modal-title web-h4" id="exampleModalLabel">Connect With Us !</h5>
-							  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							  </button>
-							</div>
-							<div class="modal-body">
-							 <form>
-								  <input type="text" class="form-control mb-3" placeholder="Full Name" required>
-								  <input type="email" class="form-control mb-3" placeholder="Work Email" required>
-								  <input type="tel" class="form-control mb-3" placeholder="Phone Number" required>
-								  <textarea class="form-control" placeholder="Message"></textarea>
-							  </form>
-							</div>
-							<div class="modal-footer justify-content-center">
-							  <a href="javascript:void(0)" class="btn web-btn web-btn-blue">Submit</a>
-							</div>
-						  </div>
-						</div>
-					  </div> 
   
+        <!-- The Modal -->
+      <div
+        class="modal"
+        id="creativeModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-xl modal-dialog-centered"
+          role="document"
+        >
+          <div class="modal-content">
+              
+            <!-- Modal Header -->
+            <div class="row g-0">
+              <div class="col-md-6 contact-form-left">
+                <div class="modal-body p-5">
+                  <div id="get-in-touch" class="text w-100">
+                    <h1 class="text-white web-h1">
+                      Get In<br />
+                      Touch
+                    </h1>
+                    <p class="p-14 pt-4 text-white">
+                      If you have any question please feel free to leave me a
+                      line. Just fill the entries that are given and press the
+                      button
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 bg-white">
+                <div class="modal-body pt-5">
+                    
+                  <div id="right_content" class="text w-100">
+                        <form class="signup-form" method="post" action="javascript:void(0)" id="contact_us" >
+                            <h1 class="web-h1 pb-5">Contact</h1>
+                            <input type="hidden" name="url" value="{{url()->full()}}"/>
+                              <div class="form-group row mb-0">
+                                <div class="col-md-6 mb-5 col-sm-12 col-12">
+                                  <input
+                                    type="text"
+                                    name="first_name"
+                                    class="form-control"
+                                    required
+                                    placeholder="First Name"
+                                  />
+                                  <div style="width:100%;" id="first_name_error_message"> </div>
+                                </div>
+                                <div class="col-md-6 mb-5 col-sm-12 col-12">
+                                  <input
+                                    type="text"
+                                    name="last_name"
+                                    class="form-control"
+                                    required
+                                    placeholder="Last Name"
+                                  />
+                                </div>
+                              </div>
+                              <div class="form-group mb-5">
+                                <input
+                                  type="text"
+                                  name="phone"
+                                  class="form-control"
+                                  required
+                                  placeholder="Phone"
+                                />
+                                <div style="width:100%;" id="phone_number_error_message"> </div>
+                              </div>
+                              <div class="form-group mb-5">
+                                <input type="email" name="email" class="form-control"  placeholder="Email" required/>
+                                <div style="width:100%;" id="email_error_message"> </div>
+                              </div>
+                              <div class="form-group mb-5">
+                                <textarea class="form-control" name="message" id="exampleFormControlTextarea2" rows="1" placeholder="Please Type your Message" required ></textarea>
+                              </div>
+        
+                              <div class="form-group text-center">
+                                <button type="submit" id="send_form" class="btn web-btn web-btn-blue">
+                                  Submit  </button> 
+                                  <img id="loader" style="width:50px;" src="{{url('public/spinner.gif')}}"/>
+                                
+                              </div>
+                        </form>
+                  </div>
+                  
+                  
+                   <div id="right_content_two" style="height:500px !important;" class="col-md-12 text-center">
+                       
+                      <img src="{{asset('public/front_theme/tick.svg') }}" alt="" class="img-responsive" />
+    						
+    						<div style="width:100%;" id="res_message"> </div>
+                </div>
+                 
+            
+                </div>
+              </div>
+            </div>
+            <!--button-->
+            <div class="modal-button">
+              <button
+                type="button"
+                class="close d-flex align-items-center justify-content-center"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <!--<i class="bi bi-x-circle-fill"></i>-->
+                <!--<i class="far fa-times-circle fa-lg"></i>-->
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                        
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                        <script src="{{ asset('public/front_theme/js/jquery.counterup.min.js')}}"></script>
+                        <script src="{{ asset('public/front_theme/js/jquery.waypoints.min.js')}}"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+                        <script src="{{ asset('public/front_theme/js/swiper-bundle.min.js')}}"></script>
+                        <script src="{{ asset('public/front_theme/js/ekko-lightbox.min.js')}}"></script>
+                        <script src="{{ asset('public/front_theme/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+                        <script src="{{ asset('public/front_theme/js/theme.js?v=1.9')}}"></script>
+
+
   
-
-					  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="{{ asset('public/front_theme/js/jquery.counterup.min.js')}}"></script>
-<script src="{{ asset('public/front_theme/js/jquery.waypoints.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-<script src="{{ asset('public/front_theme/js/swiper-bundle.min.js')}}"></script>
-<script src="{{ asset('public/front_theme/js/ekko-lightbox.min.js')}}"></script>
-<script src="{{ asset('public/front_theme/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="{{ asset('public/front_theme/js/theme.js?v=1.9')}}"></script>
-
-
-  
+<script>
+//-----------------
+$(document).ready(function(){
+    
+    $('#right_content_two').hide();
+    $('#loader').hide();
+    
+$('#send_form').click(function(e){
+   e.preventDefault();
+   
+            var f = $("#form");
+            var formData = f.serialize();
+           
+                   /*Ajax Request Header setup*/
+                   $.ajaxSetup({
+                      headers: {
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      }
+                  });
+                    $('.thankyou').hide();
+                   $('#send_form').html('Submit');
+                   /* Submit form data using ajax*/
+                   $.ajax({
+                      url: "{{ url('ajax_post')}}",
+                      method: 'post',
+                      data: $('form').serialize(),
+                      success: function(response){
+                         //------------------------
+                         if(response.msg){
+                             console.log(response);
+                                $('#send_form').html('Submit');
+                                $('#right_content_two').show();
+                                
+                                $('#get-in-touch').hide();
+                                $('#right_content').hide();
+                                $('#res_message').show();
+                                
+                                $('form').hide();
+                                $('#res_message').html(response.msg);
+                                
+                                $('#msg_div').removeClass('d-none');     
+                         }
+                         if(response.first_name_error_msg){
+                             $('#first_name_error_message').html(response.first_name_error_msg);
+                             $('#loader').show();
+                         }
+                         
+                         if(response.phone_number_error_msg){
+                             $('#phone_number_error_message').html(response.phone_number_error_msg);
+                             $('#loader').show();
+                         }
+                         
+                         if(response.email_error_msg){
+                             $('#email_error_message').html(response.email_error_msg);
+                             $('#loader').show();
+                         }
+                        
+                
+                            document.getElementsByTagName("form").reset(); 
+                            setTimeout(function(){
+                                $('#creativeModal').hide();
+                            },1000);
+                         //--------------------------
+                      }});
+            
+   });
+});
+//-----------------
+</script>
   <!--filter-->
   <!-- Select2 -->
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>-->

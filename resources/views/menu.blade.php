@@ -374,7 +374,11 @@
                                                             $main_menuID =  DB::table('menus')->where('id', '=', $row_child_menus->menu_id)->get();
                                                         @endphp
                                                         <tr>
-                                                          <td>{{$main_menuID[0]->menu_name}}</td>
+                                                          <td>
+                                                              @if(!$main_menuID->isEmpty())
+                                                              {{$main_menuID[0]->menu_name}}
+                                                              @endif
+                                                              </td>
                                                           <td>{{$row_child_menus->item_name}}</td>
                                                           <td>{{$row_child_menus->item_link}}</td>
                                                           <td>{{$row_child_menus->featured_service}}</td>

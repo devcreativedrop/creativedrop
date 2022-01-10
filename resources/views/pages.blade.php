@@ -203,9 +203,7 @@
                                                                 console.log(data);
                                                                 $(`#dependent_page_sections_${caseStudyrowIdx}`).html(data);
                                                             }});
-                                                        
                                                     });
-                                                  
                                             });
                                             // jQuery button click event to remove a row.
                                             $('#caseStudytbody').on('click', '.remove', function () {
@@ -235,7 +233,7 @@
                                         </script>
                                       
                                         <div class="container pt-4">
-                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Case Study </button>
+                                          <button class="btn btn-md btn-primary" id="caseStudyaddBtn" type="button"> Add Sections </button>
                                           <div class="table-responsive">
                                             <table class="table table-bordered">
                                               <thead>
@@ -830,6 +828,12 @@ $('#page_sections').change(function() {
 
         })
     }
+    
+    if ($(this).val() == '#') {
+        $('#dependent_page_sections').val('');
+        $('#child_dependent_page_sections').val('');
+    }
+    
 });
 
 $('#dependent_page_sections').change(function() {
@@ -849,6 +853,7 @@ $('#dependent_page_sections').change(function() {
 
         })
     }
+    
 });
 
   </script>

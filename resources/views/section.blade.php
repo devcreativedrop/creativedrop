@@ -1,8 +1,11 @@
-    @if( $row_pages->section== '1' )
 
+
+    @if( $row_pages->section== '1' )
+<section class="banner-with-video">
     @php
         $sliders = DB::table('sliders')->where('name', '=', $row_pages->section_type)->get();
     @endphp
+    
             <section class="home-slider section-bg-black creative-banner">
                 <!-- Images slider - Start -->
                 <div class="web-container">
@@ -28,7 +31,7 @@
                                                     <p class="web-h5 text-white mb-0">{{$row_slider->text1}}</p>
                                                     <h2 class="web-h2 text-white mb-4">{{$row_slider->text2}}</h2>
                                                     <ul class="list-inline">
-                                                        <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-white" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+                                                        <li class="list-inline-item"><a id="contact_us" href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
                                                         <li class="list-inline-item"><a href="#" class="blue-link">Learn more <i class="fas fa-chevron-right pl-1"></i></a></li>
                                                     </ul>
                                                     
@@ -61,7 +64,7 @@
                         <div style="margin-top:0px !important;" class="home-video-content text-center">
                             <h3 class="web-h3 text-black text-left">{{$row_video->video_title}}</h3>
                             <iframe class="w-100 web-border-radius-5" width="560" height="315" src="{{$row_video->video_link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <a href="#" class="btn web-btn web-btn-white" data-toggle="modal" data-target="#creativeModal">Contact Now</a>
+                            <a href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +73,7 @@
         </section>
 
     @endforeach
-
+</section>
         
     @elseif( $row_pages->section== '3' )
 
@@ -153,20 +156,18 @@
 
                                 <div class="col-6 col-md-4 col-lg-3 mt-5">
                                     <div class="single-portfolio">
+                                        <a href="{{url('case_study',$row_case_study->title)}}">
                                         <div class="portfolio-img">
                                             <div class="img-block web-border-radius-5">
-                    
-                                                <a href="{{asset('public/case_study/'.$row_case_study->image)}}" id="ekkoLight" data-toggle="lightbox" data-gallery="example-gallery">
                                                     <img src="{{asset('public/case_study/'.$row_case_study->image)}}" alt="" class="obj-cover">
-                                                </a>
-                                                
                                             </div>
                                         </div>
+                                        </a>
                                         <div class="web-border-bottom mt-4 mb-3">
                                             <h5 class="web-h5">{{$row_case_study->title}}</h5>
                                             <p class="mb-0 p-14 pb-3">{{$row_case_study->short_description}}</p>
                                         </div>
-                                        <a target="_blank" href="{{url('case_study',$row_case_study->title)}}" class="blue-link web-h6">Construction</a>
+                                        <a target="_blank" href="#" class="blue-link web-h6">Construction</a>
                                     </div>
                                 </div>
 
@@ -176,7 +177,7 @@
 
                         <div class="col-md-12">
                             <ul class="list-inline mt-5 text-center">
-                                <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-grey" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+                                <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
                                 <li class="list-inline-item"><a href="work.php" class="blue-link web-h6">View more <i class="fas fa-chevron-right pl-1"></i></a></li>
                             </ul>
                         </div>
@@ -185,6 +186,12 @@
             </section>
 
     @elseif( $row_pages->section== '5' )
+    
+    @php
+        $services = DB::table('services')->where('name', '=', $row_pages->section_type)->get();
+        
+    @endphp
+    
             <section id="section-2" class="section-bg-grey-grad section-padtop-70 section-padbottom-70 service-block">
                 <div class="web-container">
                     <div class="row">
@@ -192,78 +199,24 @@
                             <h4 class="web-h4">Services</h4>
                             <h2 class="web-h2 mb-0">What We Do</h2>
                         </div>
+                        
+                        @foreach($services->unique('main_service')  as $row)
+                        
                         <div class="col-6 col-md-6 col-lg-4">
                             <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">Design Services</h6>
+                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">{{$row->main_service}}</h6>
                                 <ul class="mt-3">
-                                    <li><a href="#">Logo & Branding</a></li>
-                                    <li><a href="#">Graphic Design</a></li>
-                                    <li><a href="#">Creative Ads</a></li>
-                                    <li><a href="#">Brochures</a></li>
-                                    <li><a href="#">Presentations</a></li>
+                                    @php
+                                        $sub_services = DB::table('services')->where('main_service', '=', $row->main_service)->get();
+                                    @endphp
+                                    @foreach($sub_services as $row_sub_services)
+                                        <li><a href="#">{{$row_sub_services->sub_service}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-6 col-md-6 col-lg-4">
-                            <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">Website & Mobile Apps</h6>
-                                <ul class="mt-3">
-                                    <li><a href="#">Website Design</a></li>
-                                    <li><a href="#">UI / UX Desgin</a></li>
-                                    <li><a href="#">Mobile Apps</a></li>
-                                    <li><a href="#">Cloud Softwares</a></li>
-                                    <li><a href="#">eCommerce Experts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4">
-                            <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">Videos & Photography</h6>
-                                <ul class="mt-3">
-                                    <li><a href="#">Corporate Videos</a></li>
-                                    <li><a href="#">Presentation Videos</a></li>
-                                    <li><a href="#">Products Photography</a></li>
-                                    <li><a href="#">Food Photography</a></li>
-                                    <li><a href="#">Marketing Videos</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4">
-                            <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">3D & 2D Animation</h6>
-                                <ul class="mt-3">
-                                    <li><a href="#">3D Architecture Videos</a></li>
-                                    <li><a href="#">3D Modelling & Animation</a></li>
-                                    <li><a href="#">Explainer Videos</a></li>
-                                    <li><a href="#">Products Modelling</a></li>
-                                    <li><a href="#">Safety Induction Videos</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4">
-                            <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">Consultancy Services</h6>
-                                <ul class="mt-3">
-                                    <li><a href="#">Marketing Strategies</a></li>
-                                    <li><a href="#">Business Plans</a></li>
-                                    <li><a href="#">eCommerce Consultancy</a></li>
-                                    <li><a href="#">Marketing Consultancy</a></li>
-                                    <li><a href="#">Creative Consultancy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6 col-lg-4">
-                            <div class="service-links mt-5">
-                                <h6 class="web-h6 web-border-bottom pb-4 mb-0">Digital Marketing</h6>
-                                <ul class="mt-3">
-                                    <li><a href="#">Social Media Marketing</a></li>
-                                    <li><a href="#">Google Ads</a></li>
-                                    <li><a href="#">Google SEO</a></li>
-                                    <li><a href="#">Video Marketing</a></li>
-                                    <li><a href="#">PPC Management</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </section>
@@ -349,7 +302,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-white" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+                                <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
                                 <li class="list-inline-item"><a href="#" class="blue-link">Learn more <i class="fas fa-chevron-right pl-1"></i></a></li>
                             </ul>
                         </div>
@@ -399,7 +352,7 @@
     
                 <div class="col-md-12">
                     <ul class="list-inline mt-5 text-center">
-                        <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-white" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+                        <li class="list-inline-item"><a href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
                         <li class="list-inline-item"><a href="#" class="blue-link">Learn more <i class="fas fa-chevron-right pl-1"></i></a></li>
                     </ul>
                 </div>
@@ -414,7 +367,7 @@
     @php
         $requests = DB::table('requests')->where('name', '=', $row_pages->section_type)->get();
     @endphp
-
+<div class="container">
             <section class="section-bg-dark-grey section-padtop-50 section-padbottom-50 discuss-block">
                 <div class="web-container">
                     <div class="row">
@@ -427,7 +380,7 @@
                     </div>
                 </div>
             </section>
-    
+</div>
 
     @elseif( $row_pages->section== '10' )
     @php
@@ -533,8 +486,8 @@
 
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h4 class="web-h4 mb-5">{{$row_para_style_4->paragraph}}</h4>
-                        <a href="javascript:void(0)" class="btn web-btn web-btn-blue">Meet Us</a>
+                        <h4 class="web-h4 mb-5">{{$row_para_style_4->title}}</h4>
+                        <a href="javascript:void(0)" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Meet Us</a>
                     </div>
                 </div>
 
@@ -556,17 +509,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="web-h2 mb-4 text-white text-center">
-                        {{$para_style_5[0]->title}}
+                        
+                        {{$para_style_5[0]->heading}}
                     </h2>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-md-6 align-self-center">
                     <h3 class="web-h3 mb-0 text-white">
-                        {{$para_style_5[0]->para_left}}</h3>
+                        {{$para_style_5[0]->text_left}}</h3>
                 </div>
                 <div class="col-md-6 align-self-center">
-                    <p class="web-light-grey web-h6 mb-0">{{$para_style_5[0]->paragraph}}
+                    <p class="web-light-grey web-h6 mb-0">{{$para_style_5[0]->text_right}}
                     </p>
                 </div>
             </div>
@@ -718,12 +672,203 @@
         $section_19 = DB::table('section_19')->where('name', '=', $row_pages->section_type)->get();
     @endphp
 
+    
+    
+    
+    
 
+    @elseif( $row_pages->section== '20' )
     
-    
-    
+    @php
+        $section_20 = DB::table('section_20')->where('name', '=', $row_pages->section_type)->get();
         
+    @endphp
 
     
+    <section class="section-bg-black agency-banner">
+    	<div class="web-container">
+    		<div class="row">
+    			<div class="col-md-10 col-lg-7 align-self-center">
+    				<div class="agency-banner-content">
+    					<p class="web-h5 text-white mb-0">@if(!$section_20->isEmpty()) {{$section_20[0]->heading_1}} @endif</p>
+    					<h2 class="web-h2 text-white mb-5">@if(!$section_20->isEmpty()) {{$section_20[0]->heading_2}} @endif</h2>
+    					<a href="javascript:void(0)" class="@if(!$section_20->isEmpty()) {{$section_20[0]->btn_class}} @endif" data-toggle="modal" data-target="#creativeModal">@if(!$section_20->isEmpty()) {{$section_20[0]->btn_label}} @endif</a>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+    
+    
+    
+    @elseif( $row_pages->section== '21' )
+    
+    @php
+        $section_21 = DB::table('section_21')->where('name', '=', $row_pages->section_type)->get();
+        
+        $sliders = DB::table('sliders')->where('name', '=', $section_21[0]->slider_name)->get();
+        $videos = DB::table('videos')->where('name', '=', $section_21[0]->video_name)->get();
+    @endphp
+    
+    
+    <section class="banner-with-video">
+	<section class="home-slider section-bg-black creative-banner">
+		<!-- Images slider - Start -->
 
+		<div class="web-container">
+			<div class="row">
+				<div class="col-12">
+					<div id="carouselExampleIndicators" class="position-relative scrollto-section carousel slide" data-ride="carousel">
+						<a href="#section-2" id="sectionTwo" class="mouse" aria-hidden="true">
+						<span class="mouse__wheel"></span>
+						<span class="mouse__text">SCROLL TO EXPLORE</span>
+						</a>
+						 <ol class="carousel-indicators">
+                                    @php $num = 0; @endphp
+                                        @foreach($sliders as $row_slider)
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="{{$num++}}" class="{{$row_slider->status}}"></li>
+                                        @endforeach
+                                </ol>
+                                
+						        <div class="carousel-inner">
+                                    @foreach($sliders as $row_slider)
+                                        <div class="carousel-item {{$row_slider->status}}" style="background: url('{{asset('public/slider/'.$row_slider->image)}}') no-repeat center right;">
+                                            <div class="slider-flex-wrap">
+                                                <div class="homepage-banner-content">
+                                                    <p class="web-h5 text-white mb-0">{{$row_slider->text1}}</p>
+                                                    <h2 class="web-h2 text-white mb-4">{{$row_slider->text2}}</h2>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a id="contact_us" href="#" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+                                                        <li class="list-inline-item"><a href="#" class="blue-link">Learn more <i class="fas fa-chevron-right pl-1"></i></a></li>
+                                                    </ul>
+                                                    
+                                                </div>
+                                                <div class="banner-img-mob">
+                                                    <img class="img-fluid" src="{{asset('public/slider/'.$row_slider->image)}}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Images slider - End -->
+
+
+		<!-- Video slider - Start -->
+		<div class="cdrop-video-slider d-none">
+			<div class="header-bg">
+				<div class="ml-0 mr-0" style="background-color: rgba(0,0,0,0.5); height: 100%;">
+					<div class="iframe-div-before">
+						<iframe style="width: 100vw;
+						height: 56.25vw;
+						min-height: 100vh;
+						min-width: 177.77vh;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);" src="https://player.vimeo.com/video/343159654?autoplay=1&amp;loop=1&amp;muted=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+					</div>
+	
+					<div class="homepage-banner-content homepage-video-banner-content">
+						<p class="web-h5 text-white mb-0">Creative Agency</p>
+						<h2 class="web-h2 text-white mb-4">Designing, Branding &amp; Marketing Services</h2>
+						<ul class="list-inline">
+							<li class="list-inline-item"><a href="#" class="btn web-btn web-btn-white" data-toggle="modal" data-target="#creativeModal">Contact Now</a></li>
+							<li class="list-inline-item"><a href="#" class="blue-link">Learn more <i class="fas fa-chevron-right pl-1"></i></a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Video slider - end -->
+		
+	</section>
+    
+    
+    @foreach($videos as $row_video)
+    
+            <section class="section-bg-white section-padbottom-100 home-video-with-banner">
+    		<div class="web-container">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<div class="home-video-content text-center">
+    						<h3 class="web-h3 text-black text-left">{{$row_video->video_title}}</h3>
+    						<iframe class="w-100 web-border-radius-5" width="560" height="315" src="{{$row_video->video_link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    						<a href="javascript:void(0)" class="btn web-btn web-btn-blue mt-5" data-toggle="modal" data-target="#creativeModal">Contact Now</a>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	
+    
+        @endforeach
+    
+	
+	
+</section>
+    
+
+
+    @elseif( $row_pages->section== '22' )
+    
+    @php
+        $section_22 = DB::table('section_22')->where('name', '=', $row_pages->section_type)->get();
+        
+    @endphp
+
+    
+    <section class="section-bg-white section-padtop-50 section-padbottom-50 design-banner">
+	<div class="web-container">
+		<div class="row no-gutters">
+			<div class="col-md-12">
+				<div class="design-banner-content text-center w-100">
+					<h1 class="web-h1 mb-0">{{$section_22[0]->heading_1}}</h1>
+					<h4 class="web-h4 mt-4 mb-4">{{$section_22[0]->heading_2}}</h4>
+					<a href="javascript:void(0)" class="btn web-btn web-btn-blue" data-toggle="modal" data-target="#creativeModal">Contact Now</a>
+				</div>
+				@php
+				    $image = $section_22[0]->image;
+				@endphp
+				
+				 @if(!empty($image))
+				
+				<div class="banner-image text-center mt-5 mb-3">
+					<div class="img-block web-border-radius-5">
+						
+						<img src="{{asset('public/section_22/'.$section_22[0]->image)}}" alt="{{$section_22[0]->heading_1}}" class="obj-cover">
+					</div>
+				</div>
+				
+				@endif
+				
+				@php
+				    $video = $section_22[0]->video;
+				@endphp
+				
+				 @if(!empty($video))
+				
+    				<div class="banner-video text-center mt-5 mb-3">
+    					<iframe class="w-100 web-border-radius-5" width="560" height="315" src="{{$section_22[0]->video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    				</div>
+				@endif
+				
+				
+			</div>
+			<div class="col-sm-8 col-md-8 col-lg-9 align-self-center">
+				<h3 class="web-h3 mb-0">{{$section_22[0]->text}}</h3>
+			</div>
+			<div class="col-sm-4 col-md-4 col-lg-3 align-self-center">
+				<a href="javascript:void(0)" class="btn web-btn web-btn-blue float-right" data-toggle="modal" data-target="#creativeModal">Request for a meeting</a>
+			</div>
+		</div>
+	</div>
+</section>
+    
+    
+    
     @endif

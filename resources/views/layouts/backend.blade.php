@@ -9,56 +9,56 @@
     <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="CreateDrop">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Creative Drop | Dashboard</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    {{-- <script src="{{ asset('public/js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <link href="{{ asset('public/css/app.css') }}" rel="stylesheet"> --}}
 
     <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('public/front_theme/images/favicon.png')}}" type="image/png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/forms/icheck/icheck.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/forms/icheck/custom.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/charts/morris.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/extensions/unslider.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/weather-icons/climacons.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/charts/leaflet.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/forms/icheck/icheck.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/forms/icheck/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/charts/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/extensions/unslider.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/weather-icons/climacons.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/charts/leaflet.css') }}">
     <!-- END: Vendor CSS-->
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
     
     
 
     <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/bootstrap-extended.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/colors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/components.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/bootstrap-extended.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/colors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/components.min.css') }}">
     <!-- END: Theme CSS-->
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/core/menu/menu-types/horizontal-menu.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/core/colors/palette-gradient.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/core/colors/palette-climacon.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/fonts/simple-line-icons/style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/fonts/meteocons/style.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/app-assets/css/pages/users.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/core/menu/menu-types/horizontal-menu.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/core/colors/palette-gradient.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/core/colors/palette-climacon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/fonts/simple-line-icons/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/fonts/meteocons/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/app-assets/css/pages/users.min.css') }}">
     <!-- END: Page CSS-->
 
     
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('theme/assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/theme/assets/css/style.css') }}">
     <!-- END: Custom CSS-->
     
     <body class="horizontal-layout horizontal-menu 2-columns  " data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
@@ -73,7 +73,7 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="feather icon-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href={{ url('/') }}><img class="brand-logo" alt="stack admin logo" src="{{ asset('theme/app-assets/images/logo/stack-logo-light.png') }}">
+                    <a class="navbar-brand" href={{ url('/') }}><img class="brand-logo" alt="stack admin logo" src="{{ asset('public/theme/app-assets/images/logo/stack-logo-light.png') }}">
                         <h2 class="brand-text">{{ config('app.name', 'Laravel') }}</h2>
                     </a>
                 </li>
@@ -212,7 +212,7 @@
                                 <a href="javascript:void(0)">
                                     <div class="media">
                                         <div class="media-left">
-                                            <div class="avatar avatar-online avatar-sm rounded-circle"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div>
+                                            <div class="avatar avatar-online avatar-sm rounded-circle"><img src="{{ asset('public/theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Margaret Govan</h6>
@@ -223,7 +223,7 @@
                                 </a>
                                 <a href="javascript:void(0)">
                                     <div class="media">
-                                        <div class="media-left"><span class="avatar avatar-sm avatar-busy rounded-circle"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-2.png') }}" alt="avatar"><i></i></span></div>
+                                        <div class="media-left"><span class="avatar avatar-sm avatar-busy rounded-circle"><img src="{{ asset('public/theme/app-assets/images/portrait/small/avatar-s-2.png') }}" alt="avatar"><i></i></span></div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Bret Lezama</h6>
                                             <p class="notification-text font-small-3 text-muted">I have seen your work, there is</p><small>
@@ -234,7 +234,7 @@
                                 <a href="javascript:void(0)">
                                     <div class="media">
                                         <div class="media-left">
-                                            <div class="avatar avatar-online avatar-sm rounded-circle"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-3.png') }}" alt="avatar"><i></i></div>
+                                            <div class="avatar avatar-online avatar-sm rounded-circle"><img src="{{ asset('public/theme/app-assets/images/portrait/small/avatar-s-3.png') }}" alt="avatar"><i></i></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Carie Berra</h6>
@@ -245,7 +245,7 @@
                                 </a>
                                 <a href="javascript:void(0)">
                                     <div class="media">
-                                        <div class="media-left"><span class="avatar avatar-sm avatar-away rounded-circle"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-6.png') }}" alt="avatar"><i></i></span></div>
+                                        <div class="media-left"><span class="avatar avatar-sm avatar-away rounded-circle"><img src="{{ asset('public/theme/app-assets/images/portrait/small/avatar-s-6.png') }}" alt="avatar"><i></i></span></div>
                                         <div class="media-body">
                                             <h6 class="media-heading">Eric Alsobrook</h6>
                                             <p class="notification-text font-small-3 text-muted">We have project party this saturday.</p><small>
@@ -259,7 +259,7 @@
                     </li>
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="avatar avatar-online"><img src="{{ asset('theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div><span class="user-name">
+                            <div class="avatar avatar-online"><img src="{{ asset('public/theme/app-assets/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></div><span class="user-name">
                                     {{auth()->user()->name}}
                             </span></a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{url('admin/user_profile/'.auth()->user()->id)}}"><i class="feather icon-user"></i> View Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a>
@@ -316,41 +316,41 @@
 
 </div>
     <!-- BEGIN: Vendor JS-->
-    <script src="{{ asset('theme/app-assets/vendors/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('theme/app-assets/vendors/js/ui/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/leaflet/leaflet.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/forms/icheck/icheck.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/extensions/jquery.knob.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/raphael-min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/morris.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/extensions/unslider-min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/charts/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/ui/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/forms/icheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/extensions/jquery.knob.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/raphael-min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/morris.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/extensions/unslider-min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/charts/apexcharts/apexcharts.min.js') }}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/jszip.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/vendors/js/tables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/datatable/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/jszip.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/vendors/js/tables/buttons.print.min.js') }}"></script>
 
-    <script src="{{ asset('theme/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/js/core/app-menu.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/js/core/app.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/js/scripts/customizer.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/scripts/tables/datatables/datatable-advanced.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/core/app-menu.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/core/app.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/scripts/customizer.min.js') }}"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="{{ asset('theme/app-assets/js/scripts/ui/breadcrumbs-with-stats.min.js') }}"></script>
-    <script src="{{ asset('theme/app-assets/js/scripts/pages/dashboard-fitness.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/scripts/ui/breadcrumbs-with-stats.min.js') }}"></script>
+    <script src="{{ asset('public/theme/app-assets/js/scripts/pages/dashboard-fitness.min.js') }}"></script>
     <!-- END: Page JS-->
 
 </body>

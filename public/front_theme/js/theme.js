@@ -249,11 +249,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
-
 $('#page_sections').change(function() {
     if ($(this).val() != '') {
         var select = $(this).attr("id");
@@ -273,9 +268,9 @@ $('#page_sections').change(function() {
     }
 });
 
-$('#country').change(function() {
-    $('#state').val('');
-    $('#city').val('');
+$('#page_sections').change(function() {
+    $('#dependent_page_sections').val('');
+    $('#child_dependent_page_sections').val('');
 });
 
 $('#state').change(function() {

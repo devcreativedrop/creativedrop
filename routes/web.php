@@ -12,12 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/admin', function () {
+    return redirect('admin/home');
+});
+
+
+Route::get('/insight/{id}', 'WelcomeController@insight');
 
 Route::get('/', function () {
     return redirect('/home');
 });
 
 Auth::routes();
+
+Route::get('/send_email', 'WelcomeController@send_email');
 
 Route::get('/case_study/{id}', 'WelcomeController@case_study');
 
@@ -157,6 +165,22 @@ Route::post('/admin/store_section_19', 'BackendController@store_section_19')->na
 Route::post('/admin/edit_section_19', 'BackendController@edit_section_19')->name('edit_section_19');
 Route::get('/admin/delete_section_19/{id}', 'BackendController@delete_section_19')->name('delete_section_19');
 
+// Section 20
+Route::post('/admin/store_section_20', 'BackendController@store_section_20')->name('store_section_20');
+Route::post('/admin/edit_section_20', 'BackendController@edit_section_20')->name('edit_section_20');
+Route::get('/admin/delete_section_20/{id}', 'BackendController@delete_section_20')->name('delete_section_20');
+
+// Section 21
+Route::post('/admin/store_section_21', 'BackendController@store_section_21')->name('store_section_21');
+Route::post('/admin/edit_section_21', 'BackendController@edit_section_21')->name('edit_section_21');
+Route::get('/admin/delete_section_21/{id}', 'BackendController@delete_section_21')->name('delete_section_21');
+
+// Section 22
+Route::post('/admin/store_section_22', 'BackendController@store_section_22')->name('store_section_22');
+Route::post('/admin/edit_section_22', 'BackendController@edit_section_22')->name('edit_section_22');
+Route::get('/admin/delete_section_22/{id}', 'BackendController@delete_section_22')->name('delete_section_22');
+
+
 
 // Social Media
 Route::post('/admin/store_social_media', 'BackendController@store_social_media')->name('store_social_media');
@@ -185,5 +209,9 @@ Route::get('/{id}', 'WelcomeController@index')->name('pages');
 Route::get('/admin/page_sections', 'BackendController@page_sections')->name('page_sections');
 
 
+Route::post('/ajax_post', 'WelcomeController@ajax_post')->name('ajax_post');
 
-
+// Services Section
+Route::post('/admin/store_service', 'BackendController@store_service')->name('store_service');
+Route::post('/admin/edit_service', 'BackendController@edit_service')->name('edit_service');
+Route::get('/admin/delete_service/{id}', 'BackendController@delete_service')->name('delete_service');

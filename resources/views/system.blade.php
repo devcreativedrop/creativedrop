@@ -106,7 +106,7 @@
                               <form method="POST" action="{{url('admin/store_social_media')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                  {{-- <img style="width:100%" src="{{asset('page_sections/slider.png')}}"/> --}}
+                                  {{-- <img style="width:100%" src="{{asset('public/page_sections/slider.png')}}"/> --}}
                                     <div class="col-md-12">
                                        <h1>Add Social Media</h1>
 
@@ -196,7 +196,7 @@
                                     @foreach( $social as $row_social_media)
 
                                     <tr>
-                                      <td><img style="width:50px;" src="{{asset('social_media/'.$row_social_media->icon)}}"/></td>
+                                      <td><img style="width:50px;" src="{{asset('public/social_media/'.$row_social_media->icon)}}"/></td>
                                       <td>{{$row_social_media->name}}</td>
                                       <td>{{$row_social_media->link}}</td>
                                       <td><a class="btn btn-danger" href="{{url('admin/delete_social_media/'.$row_social_media->id)}}">Delete</a></td>
@@ -226,7 +226,7 @@
                             <form method="POST" action="{{url('admin/store_footer_section')}}" enctype="multipart/form-data">
                               @csrf
                               <div class="row">
-                                {{-- <img style="width:100%" src="{{asset('page_sections/slider.png')}}"/> --}}
+                                {{-- <img style="width:100%" src="{{asset('public/page_sections/slider.png')}}"/> --}}
                                   <div class="col-md-4">
                                      <h1>Add Footer Section 1</h1>
 
@@ -234,7 +234,7 @@
                                       <div class="form-group">
                                           <div class="controls">
                                               <label for="account-username">Footer Section 1 Name </label>
-                                              <input type="text" name="footer_section_name_1" class="form-control" id="account-username" required
+                                              <input type="text" name="footer_section_name_1" class="form-control" id="account-username" 
                                                   data-validation-required-message="This username field is required">
                                                   <input type="hidden" name="footer_section_1_id" value="1">
                                           </div>
@@ -312,7 +312,7 @@
                                      <div class="form-group">
                                          <div class="controls">
                                              <label for="account-username">Footer Section 2 Name </label>
-                                             <input type="text" name="footer_section_name_2" class="form-control" id="account-username" required
+                                             <input type="text" name="footer_section_name_2" class="form-control" id="account-username" 
                                                  data-validation-required-message="This username field is required">
                                                  <input type="hidden" name="footer_section_2_id" value="2">
                                          </div>
@@ -390,7 +390,7 @@
                                     <div class="form-group">
                                         <div class="controls">
                                             <label for="account-username">Footer Section 3 Name </label>
-                                            <input type="text" name="footer_section_name_3" class="form-control" id="account-username" required
+                                            <input type="text" name="footer_section_name_3" class="form-control" id="account-username" 
                                                 data-validation-required-message="This username field is required">
                                                 <input type="hidden" name="footer_section_3_id" value="3">
                                         </div>
@@ -549,7 +549,7 @@
                               <tbody>
                                 @foreach($logo as $row_logo)
                                 <tr>
-                                  <th><img class="img-responsive" src="{{asset('logo/'.$row_logo->logo)}}"/></th>
+                                  <th><img class="img-responsive" src="{{asset('public/logo/'.$row_logo->logo)}}"/></th>
                                   <th><a class="btn btn-danger" href="{{url('admin/delete_logo/'.$row_logo->id)}}"> Delete</a></th>
                                 </tr>
                                 @endforeach
